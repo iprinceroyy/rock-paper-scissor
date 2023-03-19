@@ -1,0 +1,15 @@
+.Game__Info {
+	display: flex;
+	justify-content: space-between;
+	gap: 3rem;
+	padding: 1rem;
+	border: 2px solid white;
+	border-radius: 5px;
+}
+
+.Game__Score {
+	text-align: center;
+	padding: 1rem;
+	background-color: white;
+	border-radius: 4px;
+}

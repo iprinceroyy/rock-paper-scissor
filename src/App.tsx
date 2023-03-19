@@ -1,26 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import GameInfo from './components/gameInfo/GameInfoComponent';
+import GameBody from './components/gameBody/GameBodyComponent';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+	return (
+		<main className='App'>
+			<div className='Game Game__Container'>
+				<GameInfo />
+				<GameBody />
+				<div className='Game__Rules'>{/* <span>rules</span> */}</div>
+			</div>
+		</main>
+	);
+};
 
 export default App;
