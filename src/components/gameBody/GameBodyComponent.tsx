@@ -3,7 +3,7 @@ import iconPaper from '../../assets/images/icon-paper.svg';
 import iconScissors from '../../assets/images/icon-scissors.svg';
 import bgTriangle from '../../assets/images/bg-triangle.svg';
 
-import { GameBodyContainer, Icon, ThirdIcon } from './GameBodyStyles';
+import { GameBodyContainer, Icon, ThirdIcon, IconWrapper } from './GameBodyStyles';
 
 const icons = [
 	{
@@ -29,11 +29,15 @@ const GameBody = () => {
 			{icons.map(({ id, title, image }) =>
 				id === 3 ? (
 					<ThirdIcon title={title} key={id}>
-						<img src={image} alt='' />
+						<IconWrapper>
+							<img src={image} alt='' />
+						</IconWrapper>
 					</ThirdIcon>
 				) : (
 					<Icon title={title} key={id}>
-						<img src={image} alt='' />
+						<IconWrapper>
+							<img src={image} alt='' />
+						</IconWrapper>
 					</Icon>
 				)
 			)}
