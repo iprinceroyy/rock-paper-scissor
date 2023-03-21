@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap');
+@use './sass-partials/variables' as var;
 
 * {
 	margin: 0;
@@ -7,9 +7,9 @@
 }
 
 body {
-	font-family: 'Barlow Semi Condensed', sans-serif;
-	font-weight: 600;
-	color: hsl(217, 16%, 45%);
+	font-family: var.$font-family;
+	font-weight: var.$fw-600;
+	color: var.$dark-text;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }

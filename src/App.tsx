@@ -1,6 +1,7 @@
 import './App.scss';
 import GameInfo from './components/gameInfo/GameInfoComponent';
 import GameBody from './components/gameBody/GameBodyComponent';
+import GameRules from './components/gameRules/GameRulesComponent';
 
 const App = () => {
 	return (
@@ -8,7 +9,7 @@ const App = () => {
 			<div className='Game Game__Container'>
 				<GameInfo />
 				<GameBody />
-				<div className='Game__Rules'>{/* <span>rules</span> */}</div>
+				<GameRules />
 			</div>
 		</main>
 	);
