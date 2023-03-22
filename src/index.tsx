@@ -5,10 +5,14 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 
+import { RulesProvider } from './contexts/rulesContext';
+
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
 	<React.StrictMode>
-		<App />
+		<RulesProvider>
+			<App />
+		</RulesProvider>
 	</React.StrictMode>
 );
 

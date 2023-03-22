@@ -16,6 +16,10 @@ export const GameBodyContainer = styled.div<BackgroundImageProps>`
 	background-repeat: no-repeat;
 	background-size: 60% 50%;
 	background-position: center;
+
+	@media (min-width: 1024px) {
+		padding-inline: 2rem;
+	}
 `;
 
 const selectColor = (color: string): string => {

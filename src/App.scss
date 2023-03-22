@@ -1,7 +1,10 @@
 .App {
 	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: white;
 	background-image: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
-	padding: 2rem;
 }
 
 span {
@@ -10,7 +13,8 @@ span {
 }
 
 .Game__Container {
-	display: flex;
-	flex-direction: column;
+	width: min(100%, 560px);
+	display: grid;
 	gap: 5rem;
+	padding: 2rem;
 }
