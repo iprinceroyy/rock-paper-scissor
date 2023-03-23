@@ -27,10 +27,10 @@ export const GameRulesImage = () => {
 		<div className='Rules__Image'>
 			<span>rules</span>
 			<div>
-				<img src={imageRules} alt='image describing rules' />
+				<img src={imageRules} alt='' />
 			</div>
 			<div>
-				<img src={closeIcon} onClick={crossHandler} alt='' />
+				<img src={closeIcon} onClick={crossHandler} alt='close the rules' />
 			</div>
 		</div>
 	);

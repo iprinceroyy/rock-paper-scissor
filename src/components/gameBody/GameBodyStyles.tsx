@@ -89,11 +89,13 @@ export const ThirdIcon = styled(Icon)`
 	justify-self: center;
 `;
 
-export const IconWrapper = styled.div`
+export const IconWrapper = styled.button`
 	width: 75%;
 	height: 75%;
 	display: grid;
 	place-items: center center;
+	outline: 3px solid transparent;
+	border: none;
 	border-radius: 50%;
 	background-color: white;
 	box-shadow: inset 0 6px rgba(199, 199, 199, 0.7);

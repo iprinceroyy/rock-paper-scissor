@@ -6,12 +6,15 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 
 import { RulesProvider } from './contexts/rulesContext';
+import { GameProvider } from './contexts/gameContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
 	<React.StrictMode>
 		<RulesProvider>
-			<App />
+			<GameProvider>
+				<App />
+			</GameProvider>
 		</RulesProvider>
 	</React.StrictMode>
 );
