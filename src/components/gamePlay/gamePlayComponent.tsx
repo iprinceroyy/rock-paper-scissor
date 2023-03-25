@@ -1,18 +1,24 @@
 import { useEffect, useContext } from 'react';
 
+import Icon from '../Icon/iconComponent';
+
 import { GamePlayContainer, PlayerContainer, SecondPlayer } from './gamePlayStyles';
 import { GameContext } from '../../contexts/gameContext';
-import Icon from '../Icon/iconComponent';
 
 import icons from '../../data';
 
 const GamePlay = () => {
-	const { btnVal, compChoice, setCompChoice } = useContext(GameContext);
+	const { btnVal, compChoice, setCompChoice, isLoading, setIsLoading } = useContext(GameContext);
 
 	useEffect(() => {
-		const randVal = Math.floor(Math.random() * 4);
+		// setTimeout(() => {
+
+		// }, 2000);
+
+		const randVal = 1 + Math.floor(Math.random() * 3);
 
 		setCompChoice(randVal);
+		setIsLoading(!isLoading);
 	}, []);
 
 	const [{ title: secondPlayerTitle = '', image: secondPlayer }] = icons.filter(
@@ -29,7 +35,7 @@ const GamePlay = () => {
 			</PlayerContainer>
 
 			<PlayerContainer>
-				{compChoice ? (
+				{isLoading ? (
 					<Icon id={2} title={secondPlayerTitle} image={secondPlayer} />
 				) : (
 					<SecondPlayer></SecondPlayer>

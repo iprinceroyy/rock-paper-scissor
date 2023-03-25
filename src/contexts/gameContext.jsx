@@ -7,12 +7,15 @@ export const GameContext = createContext({
 	setBtnVal: val => {},
 	compChoice: '',
 	setCompChoice: val => {},
+	isLoading: false,
+	setIsLoading: val => {},
 });
 
 export const GameProvider = ({ children }) => {
 	const [btnVal, setBtnVal] = useState('scissors');
 	const [isBtnClicked, setIsBtnClicked] = useState(false);
 	const [compChoice, setCompChoice] = useState(1);
+	const [isLoading, setIsLoading] = useState(false);
 
 	const value = {
 		isBtnClicked,
@@ -21,6 +24,8 @@ export const GameProvider = ({ children }) => {
 		setBtnVal,
 		compChoice,
 		setCompChoice,
+		isLoading,
+		setIsLoading,
 	};
 
 	return <GameContext.Provider value={value}>{children}</GameContext.Provider>;
