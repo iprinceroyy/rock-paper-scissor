@@ -1,6 +1,12 @@
+import { useContext } from 'react';
+
+import { ScoreContext } from '../../contexts/scoreContext';
+
 import './GameInfoStyles.scss';
 
 const GameInfo = () => {
+	const { score } = useContext(ScoreContext);
+
 	return (
 		<div className='Game__Info'>
 			<p className='Game__Title'>
@@ -10,7 +16,7 @@ const GameInfo = () => {
 			</p>
 			<p className='Game__Score'>
 				<span>score</span>
-				<span>12</span>
+				<span>{score}</span>
 			</p>
 		</div>
 	);

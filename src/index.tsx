@@ -7,14 +7,17 @@ import reportWebVitals from './reportWebVitals';
 
 import { RulesProvider } from './contexts/rulesContext';
 import { GameProvider } from './contexts/gameContext';
+import { ScoreProvider } from './contexts/scoreContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
 	<React.StrictMode>
 		<RulesProvider>
-			<GameProvider>
-				<App />
-			</GameProvider>
+			<ScoreProvider>
+				<GameProvider>
+					<App />
+				</GameProvider>
+			</ScoreProvider>
 		</RulesProvider>
 	</React.StrictMode>
 );

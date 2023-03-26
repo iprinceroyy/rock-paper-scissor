@@ -10,17 +10,21 @@ import { GameContext } from '../../contexts/gameContext';
 import { GameBodyContainer } from './GameBodyStyles';
 
 const GameBody = () => {
-	const { isBtnClicked, setIsBtnClicked, setBtnVal, isNewGameStart, setIsNewGameStart } =
-		useContext(GameContext);
+	const {
+		isBtnClicked,
+		setIsBtnClicked,
+		setBtnVal,
+		isNewGameStart,
+		setIsNewGameStart,
+		setIsLoading,
+	} = useContext(GameContext);
 
 	const iconClickHandler = (e: any) => {
-		setIsBtnClicked(!isBtnClicked);
+		setIsBtnClicked(true);
 		setBtnVal(e.target.closest('#icon-wrapper').value);
 		setIsNewGameStart(!isNewGameStart);
+		setIsLoading(false);
 	};
-
-	console.log('game start', isNewGameStart);
-	console.log('btn clicked', isBtnClicked);
 
 	return isBtnClicked && isNewGameStart ? (
 		<GamePlay />
