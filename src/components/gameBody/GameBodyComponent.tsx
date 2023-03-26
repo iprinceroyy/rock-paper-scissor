@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useCallback, useContext, useEffect } from 'react';
 import icons from '../../data';
 
 import bgTriangle from '../../assets/images/bg-triangle.svg';
@@ -10,14 +10,19 @@ import { GameContext } from '../../contexts/gameContext';
 import { GameBodyContainer } from './GameBodyStyles';
 
 const GameBody = () => {
-	const { isBtnClicked, setIsBtnClicked, setBtnVal } = useContext(GameContext);
+	const { isBtnClicked, setIsBtnClicked, setBtnVal, isNewGameStart, setIsNewGameStart } =
+		useContext(GameContext);
 
 	const iconClickHandler = (e: any) => {
 		setIsBtnClicked(!isBtnClicked);
 		setBtnVal(e.target.closest('#icon-wrapper').value);
+		setIsNewGameStart(!isNewGameStart);
 	};
 
-	return isBtnClicked ? (
+	console.log('game start', isNewGameStart);
+	console.log('btn clicked', isBtnClicked);
+
+	return isBtnClicked && isNewGameStart ? (
 		<GamePlay />
 	) : (
 		<GameBodyContainer imageUrl={bgTriangle}>

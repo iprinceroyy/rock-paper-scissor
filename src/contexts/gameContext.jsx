@@ -9,6 +9,8 @@ export const GameContext = createContext({
 	setCompChoice: val => {},
 	isLoading: false,
 	setIsLoading: val => {},
+	isNewGameStart: false,
+	setIsNewGameStart: val => {},
 });
 
 export const GameProvider = ({ children }) => {
@@ -16,6 +18,7 @@ export const GameProvider = ({ children }) => {
 	const [isBtnClicked, setIsBtnClicked] = useState(false);
 	const [compChoice, setCompChoice] = useState(1);
 	const [isLoading, setIsLoading] = useState(false);
+	const [isNewGameStart, setIsNewGameStart] = useState(false);
 
 	const value = {
 		isBtnClicked,
@@ -26,6 +29,8 @@ export const GameProvider = ({ children }) => {
 		setCompChoice,
 		isLoading,
 		setIsLoading,
+		isNewGameStart,
+		setIsNewGameStart,
 	};
 
 	return <GameContext.Provider value={value}>{children}</GameContext.Provider>;
