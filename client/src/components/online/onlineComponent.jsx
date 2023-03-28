@@ -28,6 +28,8 @@ function Online() {
 		socket.emit('move', direction);
 	};
 
+	console.log(playerId);
+
 	return (
 		<div>
 			<h1>Online Multiplayer Game</h1>

@@ -3,7 +3,6 @@ import { useContext } from 'react';
 import GameInfo from './components/gameInfo/GameInfoComponent';
 import GameBody from './components/gameBody/GameBodyComponent';
 import GameRules, { GameRulesImage } from './components/gameRules/GameRulesComponent';
-import Online from './components/online/onlineComponent';
 
 import { RulesContext } from './contexts/rulesContext';
 
@@ -21,7 +20,6 @@ const App = () => {
 					<GameInfo />
 					<GameBody />
 					<GameRules />
-					<Online />
 				</div>
 			)}
 		</main>
