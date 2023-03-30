@@ -8,17 +8,20 @@ import reportWebVitals from './reportWebVitals';
 import { RulesProvider } from './contexts/rulesContext';
 import { GameProvider } from './contexts/gameContext';
 import { ScoreProvider } from './contexts/scoreContext';
+import { ChoiceProvider } from './contexts/choiceContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
 	<React.StrictMode>
-		<RulesProvider>
-			<ScoreProvider>
-				<GameProvider>
-					<App />
-				</GameProvider>
-			</ScoreProvider>
-		</RulesProvider>
+		<ChoiceProvider>
+			<RulesProvider>
+				<ScoreProvider>
+					<GameProvider>
+						<App />
+					</GameProvider>
+				</ScoreProvider>
+			</RulesProvider>
+		</ChoiceProvider>
 	</React.StrictMode>
 );
 
