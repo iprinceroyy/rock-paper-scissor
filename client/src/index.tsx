@@ -9,18 +9,21 @@ import { RulesProvider } from './contexts/rulesContext';
 import { GameProvider } from './contexts/gameContext';
 import { ScoreProvider } from './contexts/scoreContext';
 import { ChoiceProvider } from './contexts/choiceContext';
+import { SocketProvider } from './contexts/socketContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
 	<React.StrictMode>
 		<ChoiceProvider>
-			<RulesProvider>
-				<ScoreProvider>
-					<GameProvider>
-						<App />
-					</GameProvider>
-				</ScoreProvider>
-			</RulesProvider>
+			<SocketProvider>
+				<RulesProvider>
+					<ScoreProvider>
+						<GameProvider>
+							<App />
+						</GameProvider>
+					</ScoreProvider>
+				</RulesProvider>
+			</SocketProvider>
 		</ChoiceProvider>
 	</React.StrictMode>
 );

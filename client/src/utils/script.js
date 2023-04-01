@@ -27,7 +27,7 @@ export const receivedMessage = () => {
 	});
 };
 
-export let usersList = {};
+export let usersList = [];
 
 export const assignUserId = (user, userId = socket.id) => {
 	socket.emit('login', user, userId);
@@ -35,6 +35,7 @@ export const assignUserId = (user, userId = socket.id) => {
 
 export const showUser = () => {
 	socket.on('users-list', users => {
-		usersList = { ...users };
+		console.log(users);
+		usersList.push(Object.create(users));
 	});
 };
