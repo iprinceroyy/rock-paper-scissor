@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 
 import { io } from 'socket.io-client';
 import { SocketContext } from '../../contexts/socket.context';
-import GameStart from '../game-start/game-start.component';
+import GameStart from '../../components/game-start/game-start.component';
 
 const socket = io('http://localhost:3000');
 
@@ -38,11 +38,11 @@ const Online = () => {
 		};
 	}, [sockets]);
 
-	const handleChangeRoom = e => {
+	const handleChangeRoom = (e: any) => {
 		setRoom(e.target.value);
 	};
 
-	const handleJoinRoom = e => {
+	const handleJoinRoom = (e: any) => {
 		e.preventDefault();
 		socket.emit('join-room', room);
 	};
