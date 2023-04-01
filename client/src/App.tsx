@@ -1,19 +1,23 @@
 import { useState, useContext } from 'react';
 
-import GameStart from './components/gameStart/GameStartComponent';
+import GameStart from './components/game-start/game-start.component';
 
 import './App.scss';
-import { ChoiceContext } from './contexts/choiceContext';
-import Online from './components/online/onlineComponent';
+import { ChoiceContext } from './contexts/choice.context';
+import Online from './components/online/online.component';
 
 const App = () => {
 	const { playOnline, setPlayOnline, playOffline, setPlayOffline } = useContext(ChoiceContext);
 
 	const onlinePlayHandler = () => {
 		setPlayOnline(true);
+		setPlayOffline(false);
 	};
 
-	const offlinePlayHandler = () => setPlayOffline(true);
+	const offlinePlayHandler = () => {
+		setPlayOffline(true);
+		setPlayOnline(false);
+	};
 
 	return (
 		<main className='App'>

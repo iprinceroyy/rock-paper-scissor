@@ -2,12 +2,12 @@ import { useCallback, useContext, useEffect } from 'react';
 import icons from '../../data';
 
 import bgTriangle from '../../assets/images/bg-triangle.svg';
-import GamePlay from '../gamePlay/gamePlayComponent';
-import Icon from '../Icon/iconComponent';
+import GamePlay from '../game-play/game-play.component';
+import Icon from '../icon/icon.component';
 
-import { GameContext } from '../../contexts/gameContext';
+import { GameContext } from '../../contexts/game.context';
 
-import { GameBodyContainer } from './GameBodyStyles';
+import { GameBodyContainer } from './game-body.styles';
 
 const GameBody = () => {
 	const {
@@ -31,7 +31,7 @@ const GameBody = () => {
 	) : (
 		<GameBodyContainer imageUrl={bgTriangle}>
 			{icons.map(({ id, title, image }) => (
-				<Icon id={id} title={title} image={image} handler={iconClickHandler} />
+				<Icon key={id} title={title} image={image} handler={iconClickHandler} />
 			))}
 		</GameBodyContainer>
 	);

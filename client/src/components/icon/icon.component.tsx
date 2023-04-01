@@ -1,16 +1,16 @@
-import { IconContainer, IconWrapper } from './iconStyles';
+import { IconContainer, IconWrapper } from './icon.styles';
 import { FC } from 'react';
 
 type IconProps = {
-	id: number;
+	key: number | string;
 	title: string;
 	image: string;
 	handler?: any;
 };
 
-const Icon: FC<IconProps> = ({ id, title, image, handler }) => {
+const Icon: FC<IconProps> = ({ title, image, handler }) => {
 	return (
-		<IconContainer title={title} key={id}>
+		<IconContainer title={title}>
 			<IconWrapper type='button' id='icon-wrapper' value={title} onClick={handler}>
 				<img src={image} alt={title} />
 			</IconWrapper>

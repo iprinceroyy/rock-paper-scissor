@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 
-import { ScoreContext } from '../../contexts/scoreContext';
+import { ScoreContext } from '../../contexts/score.context';
 
-import './GameInfoStyles.scss';
+import './game-info.styles.scss';
 
 const GameInfo = () => {
 	const { score } = useContext(ScoreContext);

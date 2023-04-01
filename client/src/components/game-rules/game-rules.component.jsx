@@ -1,10 +1,11 @@
 import { useContext } from 'react';
 
-import './GameRulesStyles.scss';
-import { RulesContext } from '../../contexts/rulesContext';
+import { RulesContext } from '../../contexts/rules.context';
 
 import imageRules from '../../assets/images/image-rules.svg';
 import closeIcon from '../../assets/images/icon-close.svg';
+
+import './game-rules.styles.scss';
 
 const GameRules = () => {
 	const { isClicked, setIsClicked } = useContext(RulesContext);

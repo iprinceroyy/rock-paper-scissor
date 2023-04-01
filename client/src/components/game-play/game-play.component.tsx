@@ -3,12 +3,12 @@ import { useEffect, useContext } from 'react';
 import { winner } from '../../utils/winner';
 import icons from '../../data';
 
-import Icon from '../Icon/iconComponent';
+import Icon from '../icon/icon.component';
 
-import { ScoreContext } from '../../contexts/scoreContext';
-import { GameContext } from '../../contexts/gameContext';
+import { ScoreContext } from '../../contexts/score.context';
+import { GameContext } from '../../contexts/game.context';
 
-import { GamePlayContainer, PlayerContainer, SecondPlayer, GameResult } from './gamePlayStyles';
+import { GamePlayContainer, PlayerContainer, SecondPlayer, GameResult } from './game-play.styles';
 
 const GamePlay = () => {
 	const {
@@ -48,13 +48,13 @@ const GamePlay = () => {
 		<>
 			<GamePlayContainer>
 				<PlayerContainer>
-					<Icon id={1} title={btnVal} image={image} />
+					<Icon key={1} title={btnVal} image={image} />
 					<p>you picked</p>
 				</PlayerContainer>
 
 				<PlayerContainer>
 					{isLoading ? (
-						<Icon id={2} title={secondPlayerTitle} image={secondPlayerIcon} />
+						<Icon key={2} title={secondPlayerTitle} image={secondPlayerIcon} />
 					) : (
 						<SecondPlayer></SecondPlayer>
 					)}

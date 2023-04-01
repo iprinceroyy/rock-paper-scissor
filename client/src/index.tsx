@@ -5,11 +5,11 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 
-import { RulesProvider } from './contexts/rulesContext';
-import { GameProvider } from './contexts/gameContext';
-import { ScoreProvider } from './contexts/scoreContext';
-import { ChoiceProvider } from './contexts/choiceContext';
-import { SocketProvider } from './contexts/socketContext';
+import { RulesProvider } from './contexts/rules.context';
+import { GameProvider } from './contexts/game.context';
+import { ScoreProvider } from './contexts/score.context';
+import { ChoiceProvider } from './contexts/choice.context';
+import { SocketProvider } from './contexts/socket.context';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
