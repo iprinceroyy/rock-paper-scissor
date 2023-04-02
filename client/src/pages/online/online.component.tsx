@@ -2,13 +2,21 @@ import { useContext, useEffect, useState } from 'react';
 
 import { io } from 'socket.io-client';
 import { SocketContext } from '../../contexts/socket.context';
-import GameStart from '../../components/game-start/game-start.component';
+import OnlineGameStart from './game-start.component';
 
-const socket = io('http://localhost:3000');
+export const socket = io('http://localhost:3000');
 
 const Online = () => {
-	const [room, setRoom] = useState('');
-	const { sockets, setSocket, isPlaying, setIsPlaying } = useContext(SocketContext);
+	const {
+		room,
+		setRoom,
+		sockets,
+		setSocket,
+		isPlaying,
+		setIsPlaying,
+		playerOneActive,
+		setPlayerOneActive,
+	} = useContext(SocketContext);
 
 	useEffect(() => {
 		socket.on('connect', () => {
@@ -42,6 +50,12 @@ const Online = () => {
 		setRoom(e.target.value);
 	};
 
+	const handleCreateRoom = (e: any) => {
+		e.preventDefault();
+		socket.emit('join-room', room);
+		setPlayerOneActive(true);
+	};
+
 	const handleJoinRoom = (e: any) => {
 		e.preventDefault();
 		socket.emit('join-room', room);
@@ -50,9 +64,14 @@ const Online = () => {
 	return (
 		<>
 			{isPlaying ? (
-				<GameStart />
+				<OnlineGameStart />
 			) : (
 				<div>
+					<form onSubmit={handleCreateRoom}>
+						<input type='text' onChange={handleChangeRoom} aria-label='join-room' />
+						<button type='submit'>Create Room</button>
+					</form>
+
 					<form onSubmit={handleJoinRoom}>
 						<input type='text' onChange={handleChangeRoom} aria-label='join-room' />
 						<button type='submit'>Join Room</button>

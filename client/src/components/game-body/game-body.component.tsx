@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import icons from '../../data';
 
 import bgTriangle from '../../assets/images/bg-triangle.svg';
