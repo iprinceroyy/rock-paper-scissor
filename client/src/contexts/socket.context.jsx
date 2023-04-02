@@ -9,8 +9,6 @@ export const SocketContext = createContext({
 	setIsPlaying: val => {},
 	playerOneActive: false,
 	setPlayerOneActive: val => {},
-	playerTwoActive: false,
-	setPlayerTwoActive: val => {},
 	playerChoice: 'paper',
 	setPlayerChoice: val => {},
 	gamePlay: false,
@@ -22,7 +20,6 @@ export const SocketProvider = ({ children }) => {
 	const [room, setRoom] = useState('');
 	const [isPlaying, setIsPlaying] = useState(false);
 	const [playerOneActive, setPlayerOneActive] = useState(false);
-	const [playerTwoActive, setPlayerTwoActive] = useState(false);
 	const [playerChoice, setPlayerChoice] = useState('paper');
 	const [gamePlay, setGamePlay] = useState(false);
 
@@ -35,8 +32,6 @@ export const SocketProvider = ({ children }) => {
 		setIsPlaying,
 		playerOneActive,
 		setPlayerOneActive,
-		playerTwoActive,
-		setPlayerTwoActive,
 		playerChoice,
 		setPlayerChoice,
 		gamePlay,
