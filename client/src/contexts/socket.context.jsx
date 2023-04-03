@@ -13,6 +13,12 @@ export const SocketContext = createContext({
 	setPlayerChoice: val => {},
 	gamePlay: false,
 	setGamePlay: val => {},
+	resultOut: false,
+	setResultOut: val => {},
+	opponent: '',
+	setOpponent: val => {},
+	winnerText: '',
+	setWinnerText: val => {},
 });
 
 export const SocketProvider = ({ children }) => {
@@ -22,6 +28,10 @@ export const SocketProvider = ({ children }) => {
 	const [playerOneActive, setPlayerOneActive] = useState(false);
 	const [playerChoice, setPlayerChoice] = useState('paper');
 	const [gamePlay, setGamePlay] = useState(false);
+	const [opponent, setOpponent] = useState('paper');
+	const [winnerText, setWinnerText] = useState('');
+
+	const [resultOut, setResultOut] = useState(false);
 
 	const value = {
 		room,
@@ -36,6 +46,12 @@ export const SocketProvider = ({ children }) => {
 		setPlayerChoice,
 		gamePlay,
 		setGamePlay,
+		resultOut,
+		setResultOut,
+		opponent,
+		setOpponent,
+		winnerText,
+		setWinnerText,
 	};
 
 	return <SocketContext.Provider value={value}>{children}</SocketContext.Provider>;

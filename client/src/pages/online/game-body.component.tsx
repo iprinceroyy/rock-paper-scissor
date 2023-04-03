@@ -6,22 +6,23 @@ import { GameBodyContainer } from '../../components/game-body/game-body.styles';
 import bgTriangle from '../../assets/images/bg-triangle.svg';
 import Icon from '../../components/icon/icon.component';
 import { SocketContext } from '../../contexts/socket.context';
-import {
-	GamePlayContainer,
-	GameResult,
-	PlayerContainer,
-} from '../../components/game-play/game-play.styles';
-import { SecondPlayer } from '../../components/game-play/game-play.styles';
 
 import { socket } from '../online/online.component';
+import OnlineGamePlay from './game-play.component';
 
 const OnlineGameBody = () => {
-	const [resultOut, setResultOut] = useState(false);
-	const [winnerText, setWinnerText] = useState('');
-	const [opponent, setOpponent] = useState('paper');
 	const [playerTwoActive, setPlayerTwoActive] = useState(false);
-	const { room, playerOneActive, playerChoice, setPlayerChoice, gamePlay, setGamePlay } =
-		useContext(SocketContext);
+	const {
+		room,
+		resultOut,
+		setResultOut,
+		playerOneActive,
+		setPlayerChoice,
+		gamePlay,
+		setGamePlay,
+		setOpponent,
+		setWinnerText,
+	} = useContext(SocketContext);
 
 	useEffect(() => {
 		socket.on('p1Choice', data => {
@@ -56,6 +57,8 @@ const OnlineGameBody = () => {
 		socket.emit(choiceEvent, { choice, room: room });
 	};
 
+	const startNewGame = () => setGamePlay(false);
+
 	useEffect(() => {
 		socket.on('result', data => {
 			setResultOut(!resultOut);
@@ -72,32 +75,10 @@ const OnlineGameBody = () => {
 		};
 	}, [resultOut]);
 
-	const [{ image }] = icons.filter(({ title }) => title === playerChoice);
-
-	const [{ image: oppImage, title: oppTitle }] = icons.filter(({ title }) => title === opponent);
-
 	console.log('player 2', playerTwoActive);
 
 	return gamePlay ? (
-		<>
-			<GamePlayContainer>
-				<PlayerContainer>
-					<Icon key={1} title={playerChoice} image={image} />
-					<p>You picked</p>
-				</PlayerContainer>
-
-				<PlayerContainer>
-					{resultOut ? (
-						<SecondPlayer></SecondPlayer>
-					) : (
-						<Icon key={2} title={oppTitle} image={oppImage} />
-					)}
-				</PlayerContainer>
-			</GamePlayContainer>
-			<GameResult>
-				<p>{!resultOut && winnerText}</p>
-			</GameResult>
-		</>
+		<OnlineGamePlay handler={startNewGame} />
 	) : (
 		<div>
 			<GameBodyContainer imageUrl={bgTriangle}>

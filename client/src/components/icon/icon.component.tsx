@@ -1,11 +1,11 @@
+import { FC, MouseEventHandler } from 'react';
 import { IconContainer, IconWrapper } from './icon.styles';
-import { FC } from 'react';
 
 type IconProps = {
 	key: number | string;
 	title: string;
 	image: string;
-	handler?: any;
+	handler?: MouseEventHandler<HTMLButtonElement>;
 };
 
 const Icon: FC<IconProps> = ({ title, image, handler }) => {

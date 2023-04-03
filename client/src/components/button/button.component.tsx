@@ -3,7 +3,7 @@ import { FC, MouseEventHandler, ReactNode } from 'react';
 import { PrimaryButton, SecondaryButton } from './button.styles';
 
 type ButtonProps = {
-	btnStyle?: any;
+	btnStyle?: string;
 	type: 'submit' | 'reset' | 'button' | undefined;
 	children: ReactNode;
 	handler: MouseEventHandler<HTMLButtonElement> | undefined;
