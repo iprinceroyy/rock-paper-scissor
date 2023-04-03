@@ -1,11 +1,15 @@
-import { useState, createContext } from 'react';
+import { FC, ReactNode, useState, createContext } from 'react';
 
 export const ScoreContext = createContext({
 	score: 0,
-	setScore: val => {},
+	setScore: (val: number) => {},
 });
 
-export const ScoreProvider = ({ children }) => {
+type ScoreProviderProps = {
+	children: ReactNode;
+};
+
+export const ScoreProvider: FC<ScoreProviderProps> = ({ children }) => {
 	const [score, setScore] = useState(0);
 
 	const value = { score, setScore };

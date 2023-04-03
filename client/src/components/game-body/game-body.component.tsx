@@ -11,22 +11,22 @@ import { GameBodyContainer } from './game-body.styles';
 
 const GameBody = () => {
 	const {
-		isBtnClicked,
-		setIsBtnClicked,
-		setBtnVal,
+		firstPlayerChose,
+		setFirstPlayerChose,
+		setFirstPlayerTitle,
 		isNewGameStart,
 		setIsNewGameStart,
-		setIsLoading,
+		setCompChose,
 	} = useContext(GameContext);
 
 	const iconClickHandler = (e: any) => {
-		setIsBtnClicked(true);
-		setBtnVal(e.target.closest('#icon-wrapper').value);
+		setFirstPlayerChose(true);
+		setFirstPlayerTitle(e.target.closest('#icon-wrapper').value);
 		setIsNewGameStart(!isNewGameStart);
-		setIsLoading(false);
+		setCompChose(false);
 	};
 
-	return isBtnClicked && isNewGameStart ? (
+	return firstPlayerChose && isNewGameStart ? (
 		<GamePlay />
 	) : (
 		<GameBodyContainer imageUrl={bgTriangle}>

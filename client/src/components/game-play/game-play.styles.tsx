@@ -30,12 +30,4 @@ export const GameResult = styled.div`
 		text-transform: uppercase;
 		text-align: center;
 	}
-
-	button {
-		border: none;
-		border-radius: 8px;
-		outline: 3px solid transparent;
-		padding-inline: 4rem;
-		padding-block: 1rem;
-	}
 `;

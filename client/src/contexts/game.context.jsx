@@ -1,34 +1,34 @@
 import { createContext, useState } from 'react';
 
 export const GameContext = createContext({
-	isBtnClicked: false,
-	setIsBtnClicked: val => {},
-	btnVal: '',
-	setBtnVal: val => {},
-	compChoice: '',
+	firstPlayerChose: false,
+	setFirstPlayerChose: val => {},
+	firstPlayerTitle: '',
+	setFirstPlayerTitle: val => {},
+	compChose: false,
+	setCompChose: val => {},
+	compChoice: 0,
 	setCompChoice: val => {},
-	isLoading: false,
-	setIsLoading: val => {},
 	isNewGameStart: false,
 	setIsNewGameStart: val => {},
 });
 
 export const GameProvider = ({ children }) => {
-	const [btnVal, setBtnVal] = useState('scissors');
-	const [isBtnClicked, setIsBtnClicked] = useState(false);
+	const [firstPlayerChose, setFirstPlayerChose] = useState(false);
+	const [firstPlayerTitle, setFirstPlayerTitle] = useState('scissors');
+	const [compChose, setCompChose] = useState(false);
 	const [compChoice, setCompChoice] = useState(1);
-	const [isLoading, setIsLoading] = useState(false);
 	const [isNewGameStart, setIsNewGameStart] = useState(false);
 
 	const value = {
-		isBtnClicked,
-		setIsBtnClicked,
-		btnVal,
-		setBtnVal,
+		firstPlayerChose,
+		setFirstPlayerChose,
+		firstPlayerTitle,
+		setFirstPlayerTitle,
 		compChoice,
 		setCompChoice,
-		isLoading,
-		setIsLoading,
+		compChose,
+		setCompChose,
 		isNewGameStart,
 		setIsNewGameStart,
 	};

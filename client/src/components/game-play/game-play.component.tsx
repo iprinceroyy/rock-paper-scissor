@@ -1,36 +1,26 @@
 import { useEffect, useContext, useState } from 'react';
 
-import { winner } from '../../utils/winner';
 import icons from '../../data';
 
 import Icon from '../icon/icon.component';
+import GameResult from '../game-result/game-result.component';
 
-import { ScoreContext } from '../../contexts/score.context';
 import { GameContext } from '../../contexts/game.context';
 
-import { GamePlayContainer, PlayerContainer, SecondPlayer, GameResult } from './game-play.styles';
-import Button from '../button/button.component';
+import { GamePlayContainer, PlayerContainer, SecondPlayer } from './game-play.styles';
 
 const GamePlay = () => {
-	const [winnerText, setWinnerText] = useState('');
-	const {
-		btnVal,
-		compChoice,
-		setCompChoice,
-		isLoading,
-		setIsLoading,
-		isNewGameStart,
-		setIsNewGameStart,
-	} = useContext(GameContext);
+	const [compChoice, setCompChoice] = useState(1);
 
-	const { score, setScore } = useContext(ScoreContext);
+	const { firstPlayerTitle, compChose, setCompChose } = useContext(GameContext);
 
 	useEffect(() => {
 		const id = setTimeout(() => {
 			const randVal = 1 + Math.floor(Math.random() * 3);
+			console.log('random', randVal);
 
 			setCompChoice(randVal);
-			setIsLoading(!isLoading);
+			setCompChose(!compChose);
 		}, 1000);
 
 		return () => {
@@ -38,56 +28,30 @@ const GamePlay = () => {
 		};
 	}, []);
 
-	const [{ title: secondPlayerTitle = '', image: secondPlayerIcon }] = icons.filter(
+	const [{ title: compChoiceTitle = '', image: compChoiceIcon }] = icons.filter(
 		({ id }) => id === +compChoice
 	);
 
-	const [{ image }] = icons.filter(({ title }) => title === btnVal);
-
-	const startNewGameHandler = (e: any) => {
-		winnerText === 'YOU WIN' && setScore(score + 1);
-		winnerText === 'YOU LOSS' && setScore(score - 1);
-		winnerText === 'DRAW' && setScore(score);
-
-		setIsNewGameStart(!isNewGameStart);
-	};
+	const [{ image: firstPlayerIcon }] = icons.filter(({ title }) => title === firstPlayerTitle);
 
 	return (
 		<>
 			<GamePlayContainer>
 				<PlayerContainer>
-					<Icon key={1} title={btnVal} image={image} />
+					<Icon key={1} title={firstPlayerTitle} image={firstPlayerIcon} />
 					<p>you picked</p>
 				</PlayerContainer>
 
 				<PlayerContainer>
-					{isLoading ? (
-						<Icon key={2} title={secondPlayerTitle} image={secondPlayerIcon} />
+					{compChose ? (
+						<Icon key={2} title={compChoiceTitle} image={compChoiceIcon} />
 					) : (
 						<SecondPlayer></SecondPlayer>
 					)}
 					<p>the house picked</p>
 				</PlayerContainer>
 			</GamePlayContainer>
-			<GameResult>
-				{isLoading && (
-					<p>
-						{winner(btnVal, secondPlayerTitle) === btnVal
-							? 'You win'
-							: winner(btnVal, secondPlayerTitle) === secondPlayerTitle
-							? 'You loss'
-							: 'draw'}
-					</p>
-				)}
-				{isLoading && (
-					<Button
-						type={'button'}
-						children={'Play Again'}
-						handler={startNewGameHandler}
-						btnStyle={'primary'}
-					/>
-				)}
-			</GameResult>
+			{compChose && <GameResult player1={firstPlayerTitle} player2={compChoiceTitle} />}
 		</>
 	);
 };
