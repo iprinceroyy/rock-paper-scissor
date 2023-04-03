@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useState } from 'react';
 
 import { winner } from '../../utils/winner';
 import icons from '../../data';
@@ -9,8 +9,10 @@ import { ScoreContext } from '../../contexts/score.context';
 import { GameContext } from '../../contexts/game.context';
 
 import { GamePlayContainer, PlayerContainer, SecondPlayer, GameResult } from './game-play.styles';
+import Button from '../button/button.component';
 
 const GamePlay = () => {
+	const [winnerText, setWinnerText] = useState('');
 	const {
 		btnVal,
 		compChoice,
@@ -24,12 +26,16 @@ const GamePlay = () => {
 	const { score, setScore } = useContext(ScoreContext);
 
 	useEffect(() => {
-		setTimeout(() => {
+		const id = setTimeout(() => {
 			const randVal = 1 + Math.floor(Math.random() * 3);
 
 			setCompChoice(randVal);
 			setIsLoading(!isLoading);
 		}, 1000);
+
+		return () => {
+			clearTimeout(id);
+		};
 	}, []);
 
 	const [{ title: secondPlayerTitle = '', image: secondPlayerIcon }] = icons.filter(
@@ -39,7 +45,9 @@ const GamePlay = () => {
 	const [{ image }] = icons.filter(({ title }) => title === btnVal);
 
 	const startNewGameHandler = (e: any) => {
-		e.target.previousElementSibling.innerText === 'YOU WIN' && setScore(score + 1);
+		winnerText === 'YOU WIN' && setScore(score + 1);
+		winnerText === 'YOU LOSS' && setScore(score - 1);
+		winnerText === 'DRAW' && setScore(score);
 
 		setIsNewGameStart(!isNewGameStart);
 	};
@@ -72,9 +80,12 @@ const GamePlay = () => {
 					</p>
 				)}
 				{isLoading && (
-					<button type='button' onClick={startNewGameHandler}>
-						Play Again
-					</button>
+					<Button
+						type={'button'}
+						children={'Play Again'}
+						handler={startNewGameHandler}
+						btnStyle={'primary'}
+					/>
 				)}
 			</GameResult>
 		</>

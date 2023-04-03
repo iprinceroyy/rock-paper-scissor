@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 
 import { ScoreContext } from '../../contexts/score.context';
+import logo from '../../assets/images/logo.svg';
 
 import './game-info.styles.scss';
 
@@ -9,15 +10,13 @@ const GameInfo = () => {
 
 	return (
 		<div className='Game__Info'>
-			<p className='Game__Title'>
-				<span>rock</span>
-				<span>paper</span>
-				<span>scissor</span>
-			</p>
-			<p className='Game__Score'>
+			<div className='Game__Logo'>
+				<img src={logo} alt='' />
+			</div>
+			<div className='Game__Score'>
 				<span>score</span>
 				<span>{score}</span>
-			</p>
+			</div>
 		</div>
 	);
 };

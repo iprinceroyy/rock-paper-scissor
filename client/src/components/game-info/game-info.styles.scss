@@ -2,15 +2,34 @@
 	display: flex;
 	justify-content: space-between;
 	gap: 3rem;
-	padding: 1rem;
-	border: 2px solid white;
+	padding-block: 0.7rem;
+	padding-inline: 1rem 0.7rem;
+	border: 3px solid hsl(217, 16%, 45%);
 	border-radius: 5px;
 	align-items: center;
+
+	.Game__Logo {
+		display: grid;
+		img {
+			width: 50%;
+		}
+	}
 }
 
 .Game__Score {
 	text-align: center;
-	padding: 1rem;
+	padding-block: 0.5rem;
+	padding-inline: 1.4rem;
 	background-color: white;
 	border-radius: 4px;
+
+	:first-child {
+		font-size: 0.6rem;
+		color: hsl(230, 89%, 62%);
+		letter-spacing: 1px;
+	}
+
+	:last-child {
+		font-size: 2rem;
+	}
 }

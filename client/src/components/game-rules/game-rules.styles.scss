@@ -1,15 +1,3 @@
-.Game__Rules {
-	font-size: 1rem;
-	color: white;
-	border: 2px solid white;
-	border-radius: 8px;
-	text-align: center;
-	letter-spacing: 2px;
-	justify-self: center;
-	padding-block: 0.6rem;
-	padding-inline: 2.2rem;
-}
-
 .Rules__Image {
 	display: flex;
 	flex-direction: column;
@@ -19,7 +7,7 @@
 	background-color: white;
 	min-height: 100vh;
 
-	span {
+	p {
 		font-size: 2rem;
 		font-weight: 700;
 		color: hsl(229, 25%, 31%);

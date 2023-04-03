@@ -4,6 +4,7 @@ import { RulesContext } from '../../contexts/rules.context';
 
 import imageRules from '../../assets/images/image-rules.svg';
 import closeIcon from '../../assets/images/icon-close.svg';
+import Button from '../button/button.component';
 
 import './game-rules.styles.scss';
 
@@ -13,9 +14,9 @@ const GameRules = () => {
 	const rulesHandler = () => setIsClicked(!isClicked);
 
 	return (
-		<div className='Game__Rules'>
-			<span onClick={rulesHandler}>rules</span>
-		</div>
+		<>
+			<Button type='button' children={'rules'} handler={rulesHandler} btnStyle={'secondary'} />
+		</>
 	);
 };
 
@@ -26,7 +27,7 @@ export const GameRulesImage = () => {
 
 	return (
 		<div className='Rules__Image'>
-			<span>rules</span>
+			<p>rules</p>
 			<div>
 				<img src={imageRules} alt='' />
 			</div>
