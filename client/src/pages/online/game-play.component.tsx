@@ -9,8 +9,8 @@ import {
 } from '../../components/game-play/game-play.styles';
 import Icon from '../../components/icon/icon.component';
 import Button from '../../components/button/button.component';
-import { GameResult } from '../../components/game-play/game-play.styles';
 import { SocketContext } from '../../contexts/socket.context';
+import { GameResultContainer } from '../../components/game-result/game-result.styles';
 
 type OnlineGamePlayProp = {
 	handler: MouseEventHandler<HTMLButtonElement>;
@@ -39,12 +39,20 @@ const OnlineGamePlay: FC<OnlineGamePlayProp> = ({ handler }) => {
 					)}
 				</PlayerContainer>
 			</GamePlayContainer>
-			<GameResult>
-				<p>{!resultOut && winnerText}</p>
+			<>
 				{!resultOut && (
-					<Button type={'button'} btnStyle={'primary'} children={'play again'} handler={handler} />
+					<GameResultContainer>
+						<p>{winnerText}</p>
+
+						<Button
+							type={'button'}
+							btnStyle={'primary'}
+							children={'play again'}
+							handler={handler}
+						/>
+					</GameResultContainer>
 				)}
-			</GameResult>
+			</>
 		</>
 	);
 };

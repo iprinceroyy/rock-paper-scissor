@@ -1,6 +1,9 @@
 import { useContext } from 'react';
 
 import { ChoiceContext } from '../../contexts/choice.context';
+import Button from '../../components/button/button.component';
+
+import './home.styles.scss';
 
 const Home = () => {
 	const { setPlayOffline, setPlayOnline } = useContext(ChoiceContext);
@@ -17,12 +20,18 @@ const Home = () => {
 
 	return (
 		<div className='choice'>
-			<button type='button' onClick={onlinePlayHandler}>
-				Play Online
-			</button>
-			<button type='button' onClick={offlinePlayHandler}>
-				Play with computer
-			</button>{' '}
+			<Button
+				type='button'
+				btnStyle='play online'
+				children='play online'
+				handler={onlinePlayHandler}
+			/>
+			<Button
+				type='button'
+				btnStyle='play with computer'
+				children='play with computer'
+				handler={offlinePlayHandler}
+			/>
 		</div>
 	);
 };

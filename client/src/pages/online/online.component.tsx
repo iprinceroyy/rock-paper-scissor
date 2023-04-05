@@ -66,7 +66,7 @@ const Online = () => {
 			{isPlaying ? (
 				<OnlineGameStart />
 			) : (
-				<div>
+				<div className=''>
 					<form onSubmit={handleCreateRoom}>
 						<input type='text' onChange={handleChangeRoom} aria-label='join-room' />
 						<button type='submit'>Create Room</button>
