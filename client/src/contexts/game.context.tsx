@@ -1,6 +1,23 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, ReactNode } from 'react';
 
-export const GameContext = createContext({
+interface GameContextType {
+	firstPlayerChose: boolean;
+	setFirstPlayerChose: (val: boolean) => void;
+	firstPlayerTitle: string;
+	setFirstPlayerTitle: (val: string) => void;
+	compChose: boolean;
+	setCompChose: (val: boolean) => void;
+	compChoice: number;
+	setCompChoice: (val: number) => void;
+	isNewGameStart: boolean;
+	setIsNewGameStart: (val: boolean) => void;
+}
+
+interface GameProviderPropsType {
+	children: ReactNode;
+}
+
+export const GameContext = createContext<GameContextType>({
 	firstPlayerChose: false,
 	setFirstPlayerChose: val => {},
 	firstPlayerTitle: '',
@@ -13,7 +30,7 @@ export const GameContext = createContext({
 	setIsNewGameStart: val => {},
 });
 
-export const GameProvider = ({ children }) => {
+export const GameProvider = ({ children }: GameProviderPropsType) => {
 	const [firstPlayerChose, setFirstPlayerChose] = useState(false);
 	const [firstPlayerTitle, setFirstPlayerTitle] = useState('scissors');
 	const [compChose, setCompChose] = useState(false);
