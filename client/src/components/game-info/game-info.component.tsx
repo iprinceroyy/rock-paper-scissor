@@ -1,13 +1,14 @@
-import { useContext } from 'react';
+import { FC } from 'react';
 
-import { ScoreContext } from '../../contexts/score.context';
 import logo from '../../assets/images/logo.svg';
 
 import './game-info.styles.scss';
 
-const GameInfo = () => {
-	const { score } = useContext(ScoreContext);
+type GameInfoProps = {
+	score: number;
+};
 
+const GameInfo: FC<GameInfoProps> = ({ score }) => {
 	return (
 		<div className='Game__Info'>
 			<div className='Game__Logo'>

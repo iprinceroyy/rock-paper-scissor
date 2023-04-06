@@ -4,7 +4,7 @@ const io = require('socket.io')(3000, {
 	},
 });
 
-const rooms = {};
+let rooms = {};
 io.on('connection', socket => {
 	console.log(socket.id);
 
@@ -38,27 +38,32 @@ io.on('connection', socket => {
 			console.log(rooms);
 		});
 
-		function declareWinner(data) {
-			const player1 = rooms['p1Choice'];
-			const player2 = rooms['p2Choice'];
-
-			let winner = '';
-
-			if (
-				(player1 === 'scissors' && player2 === 'paper') ||
-				(player1 === 'paper' && player2 === 'rock') ||
-				(player1 === 'rock' && player2 === 'scissors')
-			)
-				winner = 'p1';
-			else if (
-				(player2 === 'scissors' && player1 === 'paper') ||
-				(player2 === 'paper' && player1 === 'rock') ||
-				(player2 === 'rock' && player1 === 'scissors')
-			)
-				winner = 'p2';
-			else winner = 'd';
-
-			io.to(room).emit('result', { winner: winner });
-		}
+		socket.on('restart-game', () => {
+			rooms = {};
+			console.log(rooms);
+		});
 	});
+
+	function declareWinner(room) {
+		const player1 = rooms['p1Choice'];
+		const player2 = rooms['p2Choice'];
+
+		let winner = '';
+
+		if (
+			(player1 === 'scissors' && player2 === 'paper') ||
+			(player1 === 'paper' && player2 === 'rock') ||
+			(player1 === 'rock' && player2 === 'scissors')
+		)
+			winner = 'p1';
+		else if (
+			(player2 === 'scissors' && player1 === 'paper') ||
+			(player2 === 'paper' && player1 === 'rock') ||
+			(player2 === 'rock' && player1 === 'scissors')
+		)
+			winner = 'p2';
+		else winner = 'd';
+
+		io.to(room).emit('result', { winner: winner });
+	}
 });

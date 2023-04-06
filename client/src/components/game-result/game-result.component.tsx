@@ -36,7 +36,12 @@ const GameResult: FC<GameResultProps> = ({ player1, player2 }) => {
 		<GameResultContainer>
 			<p>{winnerText}</p>
 
-			<Button type={'button'} children={'Play Again'} handler={startNewGameHandler} />
+			<Button
+				type={'button'}
+				btnStyle='primary'
+				children={'Play Again'}
+				handler={startNewGameHandler}
+			/>
 		</GameResultContainer>
 	);
 };

@@ -5,9 +5,11 @@ import GameBody from '../game-body/game-body.component';
 import GameRules, { GameRulesImage } from '../game-rules/game-rules.component';
 
 import { RulesContext } from '../../contexts/rules.context';
+import { ScoreContext } from '../../contexts/score.context';
 
 const GameStart = () => {
 	const { isClicked } = useContext(RulesContext);
+	const { score } = useContext(ScoreContext);
 
 	return (
 		<>
@@ -15,7 +17,7 @@ const GameStart = () => {
 				<GameRulesImage />
 			) : (
 				<div className='Game Game__Container'>
-					<GameInfo />
+					<GameInfo score={score} />
 					<GameBody />
 					<GameRules />
 				</div>

@@ -5,9 +5,11 @@ import OnlineGameBody from './game-body.component';
 import GameRules, { GameRulesImage } from '../../components/game-rules/game-rules.component';
 
 import { RulesContext } from '../../contexts/rules.context';
+import { SocketContext } from '../../contexts/socket.context';
 
 const OnlineGameStart = () => {
 	const { isClicked } = useContext(RulesContext);
+	const { score } = useContext(SocketContext);
 
 	return (
 		<>
@@ -15,7 +17,7 @@ const OnlineGameStart = () => {
 				<GameRulesImage />
 			) : (
 				<div className='Game Game__Container'>
-					<GameInfo />
+					<GameInfo score={score} />
 					<OnlineGameBody />
 					<GameRules />
 				</div>

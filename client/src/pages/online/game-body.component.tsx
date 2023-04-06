@@ -22,6 +22,8 @@ const OnlineGameBody = () => {
 		setGamePlay,
 		setOpponent,
 		setWinnerText,
+		score,
+		setScore,
 	} = useContext(SocketContext);
 
 	useEffect(() => {
@@ -57,25 +59,31 @@ const OnlineGameBody = () => {
 		socket.emit(choiceEvent, { choice, room: room });
 	};
 
-	const startNewGame = () => setGamePlay(false);
+	const startNewGame = () => {
+		setGamePlay(false);
+		socket.emit('restart-game');
+	};
 
 	useEffect(() => {
 		socket.on('result', data => {
 			setResultOut(!resultOut);
 			const { winner } = data;
 
-			if ((winner === 'p1' && playerOneActive) || (winner === 'p2' && !playerOneActive))
+			if ((winner === 'p1' && playerOneActive) || (winner === 'p2' && !playerOneActive)) {
 				setWinnerText(`You win`);
-			else if (winner === 'p1' || winner === 'p2') setWinnerText(`You lose`);
-			else setWinnerText(`It's a draw`);
+				setScore(score + 1);
+			} else if (winner === 'p1' || winner === 'p2') {
+				setWinnerText(`You lose`);
+				score > 0 && setScore(score - 1);
+			} else {
+				setWinnerText(`It's a draw`);
+			}
 		});
 
 		return () => {
 			socket.off('result');
 		};
 	}, [resultOut]);
-
-	console.log('player 2', playerTwoActive);
 
 	return gamePlay ? (
 		<OnlineGamePlay handler={startNewGame} />
