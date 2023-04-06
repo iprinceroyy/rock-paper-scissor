@@ -9,8 +9,8 @@ import { GameContext } from '../../contexts/game.context';
 
 import { GamePlayContainer, PlayerContainer, SecondPlayer } from './game-play.styles';
 
-const GamePlay = () => {
-	const [compChoice, setCompChoice] = useState(1);
+const GamePlay = (): JSX.Element => {
+	const [compChoice, setCompChoice] = useState<number>(1);
 
 	const { firstPlayerTitle, compChose, setCompChose } = useContext(GameContext);
 

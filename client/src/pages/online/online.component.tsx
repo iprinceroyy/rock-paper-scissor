@@ -11,7 +11,7 @@ import './online.styles.scss';
 
 export const socket = io('http://localhost:3000');
 
-const Online = () => {
+const Online = (): JSX.Element => {
 	const { room, setRoom, sockets, setSocket, isPlaying, setIsPlaying, setPlayerOneActive } =
 		useContext(SocketContext);
 	const [successMessage, setSuccessMessage] = useState('');
@@ -72,7 +72,6 @@ const Online = () => {
 						<Button type='submit' btnStyle='primary' children='join room' />
 					</form>
 
-					{/* <div>{sockets && sockets.map((socket, i) => <p key={i}>{socket}</p>)}</div> */}
 					<p>{successMessage}</p>
 				</div>
 			)}

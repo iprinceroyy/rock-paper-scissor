@@ -10,7 +10,7 @@ import { SocketContext } from '../../contexts/socket.context';
 import { socket } from '../online/online.component';
 import OnlineGamePlay from './game-play.component';
 
-const OnlineGameBody = () => {
+const OnlineGameBody = (): JSX.Element => {
 	const {
 		room,
 		resultOut,

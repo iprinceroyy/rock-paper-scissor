@@ -7,7 +7,7 @@ import Home from './pages/home/home.component';
 
 import './App.scss';
 
-const App = () => {
+const App = (): JSX.Element => {
 	const { playOnline, playOffline } = useContext(ChoiceContext);
 
 	return (

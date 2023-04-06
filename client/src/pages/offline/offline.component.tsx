@@ -1,6 +1,6 @@
 import GameStart from '../../components/game-start/game-start.component';
 
-const Offline = () => {
+const Offline = (): JSX.Element => {
 	return <GameStart />;
 };
 

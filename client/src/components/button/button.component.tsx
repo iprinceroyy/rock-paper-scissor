@@ -1,20 +1,15 @@
-import { FC, MouseEventHandler, ReactNode } from 'react';
+import { MouseEventHandler, ReactNode } from 'react';
 
 import { PlayOnline, PlayOffline, PrimaryButton, SecondaryButton } from './button.styles';
 
 type ButtonProps = {
-	btnStyle?: string;
-	type: 'submit' | 'reset' | 'button' | undefined;
-	children: ReactNode;
-	handler?: MouseEventHandler<HTMLButtonElement> | undefined;
+	readonly btnStyle?: string;
+	readonly type: 'submit' | 'reset' | 'button';
+	readonly children: ReactNode;
+	readonly handler?: MouseEventHandler<HTMLButtonElement>;
 };
 
-const ButtonType = {
-	playOnline: 'play online',
-	playOffline: 'play with computer',
-};
-
-const Button: FC<ButtonProps> = ({ btnStyle, type, children, handler }) => {
+const Button = ({ btnStyle, type, children, handler }: ButtonProps): JSX.Element => {
 	return (
 		<>
 			{btnStyle === 'primary' && (

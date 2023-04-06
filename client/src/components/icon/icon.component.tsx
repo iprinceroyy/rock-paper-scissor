@@ -1,14 +1,13 @@
-import { FC, MouseEventHandler } from 'react';
+import { MouseEventHandler } from 'react';
 import { IconContainer, IconWrapper } from './icon.styles';
 
 type IconProps = {
-	key: number | string;
 	title: string;
 	image: string;
 	handler?: MouseEventHandler<HTMLButtonElement>;
 };
 
-const Icon: FC<IconProps> = ({ title, image, handler }) => {
+const Icon = ({ title, image, handler }: IconProps): JSX.Element => {
 	return (
 		<IconContainer title={title}>
 			<IconWrapper type='button' id='icon-wrapper' value={title} onClick={handler}>

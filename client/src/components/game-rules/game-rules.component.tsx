@@ -8,7 +8,7 @@ import Button from '../button/button.component';
 
 import './game-rules.styles.scss';
 
-const GameRules = () => {
+const GameRules = (): JSX.Element => {
 	const { isClicked, setIsClicked } = useContext(RulesContext);
 
 	const rulesHandler = () => setIsClicked(!isClicked);
@@ -20,7 +20,7 @@ const GameRules = () => {
 	);
 };
 
-export const GameRulesImage = () => {
+export const GameRulesImage = (): JSX.Element => {
 	const { isClicked, setIsClicked } = useContext(RulesContext);
 
 	const crossHandler = () => setIsClicked(!isClicked);

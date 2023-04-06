@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { FormEvent, SyntheticEvent, UIEvent, useContext } from 'react';
 import icons from '../../data';
 
 import bgTriangle from '../../assets/images/bg-triangle.svg';
@@ -9,7 +9,7 @@ import { GameContext } from '../../contexts/game.context';
 
 import { GameBodyContainer } from './game-body.styles';
 
-const GameBody = () => {
+const GameBody = (): JSX.Element => {
 	const {
 		firstPlayerChose,
 		setFirstPlayerChose,

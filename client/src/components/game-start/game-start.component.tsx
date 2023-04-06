@@ -7,7 +7,7 @@ import GameRules, { GameRulesImage } from '../game-rules/game-rules.component';
 import { RulesContext } from '../../contexts/rules.context';
 import { ScoreContext } from '../../contexts/score.context';
 
-const GameStart = () => {
+const GameStart = (): JSX.Element => {
 	const { isClicked } = useContext(RulesContext);
 	const { score } = useContext(ScoreContext);
 

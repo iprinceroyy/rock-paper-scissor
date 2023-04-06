@@ -2,7 +2,7 @@ import { createContext, useState } from 'react';
 
 export const RulesContext = createContext({
 	isClicked: false,
-	setIsClicked: () => {},
+	setIsClicked: val => {},
 });
 
 export const RulesProvider = ({ children }) => {

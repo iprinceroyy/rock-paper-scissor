@@ -7,7 +7,7 @@ import GameRules, { GameRulesImage } from '../../components/game-rules/game-rule
 import { RulesContext } from '../../contexts/rules.context';
 import { SocketContext } from '../../contexts/socket.context';
 
-const OnlineGameStart = () => {
+const OnlineGameStart = (): JSX.Element => {
 	const { isClicked } = useContext(RulesContext);
 	const { score } = useContext(SocketContext);
 

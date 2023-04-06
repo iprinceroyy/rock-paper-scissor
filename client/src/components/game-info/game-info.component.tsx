@@ -1,14 +1,12 @@
-import { FC } from 'react';
-
 import logo from '../../assets/images/logo.svg';
 
 import './game-info.styles.scss';
 
 type GameInfoProps = {
-	score: number;
+	readonly score: number;
 };
 
-const GameInfo: FC<GameInfoProps> = ({ score }) => {
+const GameInfo = ({ score }: GameInfoProps): JSX.Element => {
 	return (
 		<div className='Game__Info'>
 			<div className='Game__Logo'>

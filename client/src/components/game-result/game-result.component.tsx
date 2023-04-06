@@ -1,4 +1,4 @@
-import { FC, useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import { GameContext } from '../../contexts/game.context';
 import { ScoreContext } from '../../contexts/score.context';
@@ -8,14 +8,14 @@ import Button from '../button/button.component';
 import { GameResultContainer } from './game-result.styles';
 
 type GameResultProps = {
-	player1: string;
-	player2: string;
+	readonly player1: string;
+	readonly player2: string;
 };
 
-const GameResult: FC<GameResultProps> = ({ player1, player2 }) => {
+const GameResult = ({ player1, player2 }: GameResultProps): JSX.Element => {
 	const { score, setScore } = useContext(ScoreContext);
 	const { isNewGameStart, setIsNewGameStart, compChose } = useContext(GameContext);
-	const [winnerText, setWinnerText] = useState('');
+	const [winnerText, setWinnerText] = useState<string>('');
 
 	useEffect(() => {
 		const winnerRes = winner(player1, player2);

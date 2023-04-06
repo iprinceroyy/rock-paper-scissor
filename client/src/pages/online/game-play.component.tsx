@@ -1,4 +1,4 @@
-import { FC, MouseEventHandler, useState, useContext, useEffect } from 'react';
+import { MouseEventHandler, useState, useContext, useEffect } from 'react';
 
 import icons from '../../data';
 
@@ -12,11 +12,11 @@ import Button from '../../components/button/button.component';
 import { SocketContext } from '../../contexts/socket.context';
 import { GameResultContainer } from '../../components/game-result/game-result.styles';
 
-type OnlineGamePlayProp = {
+type OnlineGamePlayProps = {
 	handler: MouseEventHandler<HTMLButtonElement>;
 };
 
-const OnlineGamePlay: FC<OnlineGamePlayProp> = ({ handler }) => {
+const OnlineGamePlay = ({ handler }: OnlineGamePlayProps): JSX.Element => {
 	const { opponent, playerChoice, resultOut, winnerText } = useContext(SocketContext);
 
 	const [firstPlayerData] = icons.filter(({ title }) => title === playerChoice);
