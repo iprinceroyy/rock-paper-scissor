@@ -6,7 +6,7 @@ type ButtonProps = {
 	btnStyle?: string;
 	type: 'submit' | 'reset' | 'button' | undefined;
 	children: ReactNode;
-	handler: MouseEventHandler<HTMLButtonElement> | undefined;
+	handler?: MouseEventHandler<HTMLButtonElement> | undefined;
 };
 
 const ButtonType = {

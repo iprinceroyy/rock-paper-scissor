@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 
 import icons from '../../data';
 
@@ -11,7 +11,6 @@ import { socket } from '../online/online.component';
 import OnlineGamePlay from './game-play.component';
 
 const OnlineGameBody = () => {
-	const [playerTwoActive, setPlayerTwoActive] = useState(false);
 	const {
 		room,
 		resultOut,
@@ -27,20 +26,11 @@ const OnlineGameBody = () => {
 	} = useContext(SocketContext);
 
 	useEffect(() => {
-		socket.on('p1Choice', data => {
-			const { choice } = data;
-			console.log('p1 choice', playerOneActive);
-
-			!playerOneActive && setPlayerTwoActive(true);
+		socket.on('p1Choice', ({ choice }) => {
 			!playerOneActive && setOpponent(choice);
 		});
 
-		socket.on('p2Choice', data => {
-			const { choice } = data;
-
-			console.log('p2 choice', playerOneActive);
-
-			playerOneActive && setPlayerTwoActive(true);
+		socket.on('p2Choice', ({ choice }) => {
 			playerOneActive && setOpponent(choice);
 		});
 
