@@ -9,7 +9,14 @@ import Button from '../../components/button/button.component';
 
 import './online.styles.scss';
 
-export const socket = io('http://localhost:3000', {
+const PORT =
+	process.env.NODE_ENV === 'production'
+		? 'https://game-rock-paper-scissorss.netlify.app/'
+		: 'http://localhost:3000';
+
+console.log(process.env.NODE_ENV);
+
+export const socket = io(PORT, {
 	transports: ['websocket', 'polling', 'flashsocket'],
 });
 
