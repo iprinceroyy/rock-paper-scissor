@@ -9,7 +9,9 @@ import Button from '../../components/button/button.component';
 
 import './online.styles.scss';
 
-export const socket = io(process.env.PORT || 'http://localhost:3000');
+export const socket = io('http://localhost:3000', {
+	transports: ['websocket', 'polling', 'flashsocket'],
+});
 
 const Online = (): JSX.Element => {
 	const { room, setRoom, sockets, setSocket, isPlaying, setIsPlaying, setPlayerOneActive } =
