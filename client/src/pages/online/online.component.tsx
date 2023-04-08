@@ -14,7 +14,7 @@ const PORT =
 		? 'https://game-rock-paper-scissorss.netlify.app/'
 		: 'http://localhost:3000';
 
-export const socket = io(PORT, {
+export const socket = io(`${PORT}`, {
 	transports: ['websocket', 'polling', 'flashsocket'],
 });
 
