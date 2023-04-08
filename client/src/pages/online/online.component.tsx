@@ -9,14 +9,7 @@ import Button from '../../components/button/button.component';
 
 import './online.styles.scss';
 
-const PORT =
-	process.env.NODE_ENV === 'production'
-		? 'https://game-rock-paper-scissorss.netlify.app/'
-		: 'http://localhost:3000';
-
-export const socket = io(PORT, {
-	transports: ['websocket', 'polling', 'flashsocket'],
-});
+export const socket = io('http://localhost:3000');
 
 const Online = (): JSX.Element => {
 	const { room, setRoom, sockets, setSocket, isPlaying, setIsPlaying, setPlayerOneActive } =
