@@ -9,7 +9,7 @@ import Button from '../../components/button/button.component';
 
 import './online.styles.scss';
 
-export const socket = io('http://localhost:3000');
+export const socket = io('https://rps-backend-i8oe.onrender.com/');
 
 const Online = (): JSX.Element => {
 	const { room, setRoom, sockets, setSocket, isPlaying, setIsPlaying, setPlayerOneActive } =

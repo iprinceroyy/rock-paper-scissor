@@ -7,7 +7,7 @@ const cors = require('cors');
 const app = express();
 const server = http.createServer(app);
 
-app.use(cors());
+//app.use(cors());
 
 app.options('*', (req, res) => {
 	req.set('Access-Control-Allow-Origin', '*');
@@ -20,7 +20,11 @@ app.use((req, res) => {
 
 const io = socketIo(server, {
 	cors: {
-		origin: '*',
+		// origin: '*',
+		origin: ['http://localhost:3001', 'https://game-rock-paper-scissorss.netlify.app/'],
+		// methods: ['GET', 'POST'],
+		// allowHeaders: ['my-custom-header'],
+		// credentials: true,
 	},
 });
 
