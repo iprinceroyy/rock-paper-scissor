@@ -1,7 +1,6 @@
-import { FormEvent, SyntheticEvent, UIEvent, useContext } from 'react';
+import { useContext } from 'react';
 import icons from '../../data';
 
-import bgTriangle from '../../assets/images/bg-triangle.svg';
 import GamePlay from '../game-play/game-play.component';
 import Icon from '../icon/icon.component';
 
@@ -29,7 +28,7 @@ const GameBody = (): JSX.Element => {
 	return firstPlayerChose && isNewGameStart ? (
 		<GamePlay />
 	) : (
-		<GameBodyContainer imageUrl={bgTriangle}>
+		<GameBodyContainer>
 			{icons.map(({ id, title, image }) => (
 				<Icon key={id} title={title} image={image} handler={iconClickHandler} />
 			))}

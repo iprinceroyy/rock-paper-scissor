@@ -10,6 +10,15 @@ export const PlayerContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+
+	p {
+		font-size: 0.85rem;
+		color: white;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		margin-block-start: 1rem;
+	}
 `;
 
 export const SecondPlayer = styled.div`

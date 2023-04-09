@@ -13,8 +13,14 @@ span {
 }
 
 .Game__Container {
+	min-height: 100vh;
 	width: min(100%, 560px);
 	display: grid;
-	gap: 5rem;
+	align-content: space-between;
 	padding: 2rem;
+
+	@media (min-width: 720px) {
+		align-content: baseline;
+		gap: 4rem;
+	}
 }

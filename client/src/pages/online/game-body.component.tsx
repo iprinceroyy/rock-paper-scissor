@@ -3,7 +3,6 @@ import { useEffect, useContext } from 'react';
 import icons from '../../data';
 
 import { GameBodyContainer } from '../../components/game-body/game-body.styles';
-import bgTriangle from '../../assets/images/bg-triangle.svg';
 import Icon from '../../components/icon/icon.component';
 import { SocketContext } from '../../contexts/socket.context';
 
@@ -79,7 +78,7 @@ const OnlineGameBody = (): JSX.Element => {
 		<OnlineGamePlay handler={startNewGame} />
 	) : (
 		<div>
-			<GameBodyContainer imageUrl={bgTriangle}>
+			<GameBodyContainer>
 				{icons.map(({ id, title, image }) => (
 					<Icon key={id} title={title} image={image} handler={iconClickHandler} />
 				))}

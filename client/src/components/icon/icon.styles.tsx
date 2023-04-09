@@ -55,8 +55,8 @@ const selectBoxShadow = (color: string): string => {
 };
 
 export const IconContainer = styled.div<BorderColorProps>`
-	width: 7.5rem;
-	height: 7.5rem;
+	width: 8rem;
+	height: 8rem;
 	justify-self: ${({ title }) => title === 'scissors' && 'flex-end'};
 	display: grid;
 	place-items: center center;
@@ -66,6 +66,11 @@ export const IconContainer = styled.div<BorderColorProps>`
 	box-shadow: 0 7px 0 -1px ${({ title }) => selectBoxShadow(title)};
 	grid-area: ${({ title }) => title === 'rock' && `2 / 1 / span 2 / span 2`};
 	justify-self: ${({ title }) => title === 'rock' && 'center'};
+
+	:hover {
+		box-shadow: 0 0 0 50px rgba(255, 255, 255, 0.03), 0 0 0 100px rgba(255, 255, 255, 0.01),
+			0 0 0 150px rgba(255, 255, 255, 0.01), 0 7px 0 -1px ${({ title }) => selectBoxShadow(title)};
+	}
 `;
 
 export const IconWrapper = styled.button`
@@ -76,6 +81,10 @@ export const IconWrapper = styled.button`
 	outline: 3px solid transparent;
 	border: none;
 	border-radius: 50%;
-	background-color: white;
-	box-shadow: inset 0 6px rgba(199, 199, 199, 0.7);
+	background-image: linear-gradient(hsl(0, 0%, 83.92156862745098%), hsl(0, 0%, 93.33333333333333%));
+	box-shadow: inset 0 6px rgba(184, 184, 184, 0.7);
+
+	img {
+		width: 50%;
+	}
 `;
