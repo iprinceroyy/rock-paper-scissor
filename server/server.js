@@ -1,4 +1,14 @@
-const io = require('socket.io')(3000, {
+const express = require('express');
+const socketIo = require('socket.io');
+const http = require('http');
+const PORT = process.env.PORT || 3000;
+const cors = require('cors');
+
+const app = express();
+const server = http.createServer(app);
+
+app.use(cors());
+const io = socketIo(server, {
 	cors: {
 		origin: '*',
 	},
@@ -66,4 +76,10 @@ io.on('connection', socket => {
 
 		io.to(room).emit('result', { winner: winner });
 	}
+});
+
+server.listen(PORT, err => {
+	if (err) console.log(err);
+
+	console.log(`Server running on Port ${PORT}`);
 });
