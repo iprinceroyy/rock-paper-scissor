@@ -19,6 +19,10 @@ export const PlayerContainer = styled.div`
 		letter-spacing: 2px;
 		margin-block-start: 1rem;
 	}
+
+	@media (min-width: 720px) {
+		flex-direction: column-reverse;
+	}
 `;
 
 export const SecondPlayer = styled.div`
