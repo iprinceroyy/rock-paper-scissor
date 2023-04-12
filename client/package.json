@@ -57,6 +57,7 @@
 		]
 	},
 	"devDependencies": {
+		"@styled/typescript-styled-plugin": "^1.0.0",
 		"@types/styled-components": "^5.1.26"
 	}
 }

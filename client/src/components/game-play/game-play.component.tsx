@@ -8,10 +8,11 @@ import GameResult from '../game-result/game-result.component';
 import { GameContext } from '../../contexts/game.context';
 
 import { GamePlayContainer, PlayerContainer, SecondPlayer } from './game-play.styles';
+import { ScoreContext } from '../../contexts/score.context';
 
 const GamePlay = (): JSX.Element => {
 	const [compChoice, setCompChoice] = useState<number>(1);
-
+	const { didWin } = useContext(ScoreContext);
 	const { firstPlayerTitle, compChose, setCompChose } = useContext(GameContext);
 
 	useEffect(() => {
@@ -36,17 +37,23 @@ const GamePlay = (): JSX.Element => {
 
 	return (
 		<>
-			<GamePlayContainer>
+			<GamePlayContainer spaceBetween={compChose}>
 				<PlayerContainer>
-					<Icon key={1} title={firstPlayerTitle} image={firstPlayerIcon} />
+					<Icon
+						key={1}
+						title={firstPlayerTitle}
+						image={firstPlayerIcon}
+						bigSize={true}
+						won={didWin}
+					/>
 					<p>you picked</p>
 				</PlayerContainer>
 
 				<PlayerContainer>
 					{compChose ? (
-						<Icon key={2} title={compChoiceTitle} image={compChoiceIcon} />
+						<Icon key={2} title={compChoiceTitle} image={compChoiceIcon} bigSize={true} />
 					) : (
-						<SecondPlayer></SecondPlayer>
+						<SecondPlayer bigSize={true}></SecondPlayer>
 					)}
 					<p>the house picked</p>
 				</PlayerContainer>

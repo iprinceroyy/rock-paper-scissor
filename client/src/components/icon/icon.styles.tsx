@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 type BorderColorProps = {
 	title: string;
+	bigSize?: boolean;
 };
 
 const selectColor = (color: string): string => {
@@ -67,10 +68,21 @@ export const IconContainer = styled.div<BorderColorProps>`
 	grid-area: ${({ title }) => title === 'rock' && `2 / 1 / span 2 / span 2`};
 	justify-self: ${({ title }) => title === 'rock' && 'center'};
 
-	:hover {
-		box-shadow: 0 0 0 50px rgba(255, 255, 255, 0.03), 0 0 0 100px rgba(255, 255, 255, 0.01),
-			0 0 0 150px rgba(255, 255, 255, 0.01), 0 7px 0 -1px ${({ title }) => selectBoxShadow(title)};
+	@media (min-width: 720px) {
+		width: ${({ bigSize }) => bigSize && `10rem`};
+		height: ${({ bigSize }) => bigSize && `10rem`};
 	}
+
+	.extra {
+		box-shadow: 0 0 0 50px rgba(255, 255, 255, 0.03), 0 0 0 100px rgba(255, 255, 255, 0.01),
+			0 0 0 150px rgba(255, 255, 255, 0.01), 0 7px 0 - 1px ${({ title }) => selectBoxShadow(title)};
+	}
+`;
+
+export const WinnerIconContainer = styled(IconContainer)`
+	background-color: red;
+	box-shadow: 0 0 0 50px rgba(255, 255, 255, 0.03), 0 0 0 100px rgba(255, 255, 255, 0.01),
+		0 0 0 150px rgba(255, 255, 255, 0.01), 0 7px 0 - 1px ${({ title }) => selectBoxShadow(title)};
 `;
 
 export const IconWrapper = styled.button`

@@ -1,19 +1,31 @@
 import { MouseEventHandler } from 'react';
-import { IconContainer, IconWrapper } from './icon.styles';
+import { IconContainer, WinnerIconContainer, IconWrapper } from './icon.styles';
 
 type IconProps = {
 	title: string;
 	image: string;
+	bigSize?: boolean;
+	won?: boolean;
 	handler?: MouseEventHandler<HTMLButtonElement>;
 };
 
-const Icon = ({ title, image, handler }: IconProps): JSX.Element => {
+const Icon = ({ title, image, bigSize, won, handler }: IconProps): JSX.Element => {
 	return (
-		<IconContainer title={title}>
-			<IconWrapper type='button' id='icon-wrapper' value={title} onClick={handler}>
-				<img src={image} alt={title} />
-			</IconWrapper>
-		</IconContainer>
+		<>
+			{won ? (
+				<WinnerIconContainer title={title} bigSize={bigSize}>
+					<IconWrapper type='button' id='icon-wrapper' value={title} onClick={handler}>
+						<img src={image} alt={title} />
+					</IconWrapper>
+				</WinnerIconContainer>
+			) : (
+				<IconContainer title={title} bigSize={bigSize}>
+					<IconWrapper type='button' id='icon-wrapper' value={title} onClick={handler}>
+						<img src={image} alt={title} />
+					</IconWrapper>
+				</IconContainer>
+			)}
+		</>
 	);
 };
 
