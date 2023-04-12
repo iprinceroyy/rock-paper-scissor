@@ -3,6 +3,7 @@ import styled from 'styled-components';
 type BorderColorProps = {
 	title: string;
 	bigSize?: boolean;
+	won?: boolean;
 };
 
 const selectColor = (color: string): string => {
@@ -56,33 +57,27 @@ const selectBoxShadow = (color: string): string => {
 };
 
 export const IconContainer = styled.div<BorderColorProps>`
-	width: 8rem;
-	height: 8rem;
-	justify-self: ${({ title }) => title === 'scissors' && 'flex-end'};
+	width: 7.5rem;
+	height: 7.5rem;
+	justify-self: ${({ title }) =>
+		title === 'scissors' ? 'flex-end' : title === 'rock' && 'center'};
 	display: grid;
 	place-items: center center;
 	border: none;
 	border-radius: 50%;
 	background-image: linear-gradient(${({ title }) => selectColor(title)});
-	box-shadow: 0 7px 0 -1px ${({ title }) => selectBoxShadow(title)};
+	box-shadow: ${({ won, title }) =>
+		won
+			? `0 0 0 50px rgba(255, 255, 255, 0.03), 0 0 0 100px rgba(255, 255, 255, 0.01),
+		0 0 0 150px rgba(255, 255, 255, 0.01), 0 7px 0 -1px ${selectBoxShadow(title)}`
+			: `
+		0 7px 0 -1px ${selectBoxShadow(title)}`};
 	grid-area: ${({ title }) => title === 'rock' && `2 / 1 / span 2 / span 2`};
-	justify-self: ${({ title }) => title === 'rock' && 'center'};
 
 	@media (min-width: 720px) {
 		width: ${({ bigSize }) => bigSize && `10rem`};
 		height: ${({ bigSize }) => bigSize && `10rem`};
 	}
-
-	.extra {
-		box-shadow: 0 0 0 50px rgba(255, 255, 255, 0.03), 0 0 0 100px rgba(255, 255, 255, 0.01),
-			0 0 0 150px rgba(255, 255, 255, 0.01), 0 7px 0 - 1px ${({ title }) => selectBoxShadow(title)};
-	}
-`;
-
-export const WinnerIconContainer = styled(IconContainer)`
-	background-color: red;
-	box-shadow: 0 0 0 50px rgba(255, 255, 255, 0.03), 0 0 0 100px rgba(255, 255, 255, 0.01),
-		0 0 0 150px rgba(255, 255, 255, 0.01), 0 7px 0 - 1px ${({ title }) => selectBoxShadow(title)};
 `;
 
 export const IconWrapper = styled.button`

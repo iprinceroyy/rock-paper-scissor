@@ -1,5 +1,5 @@
 import { MouseEventHandler } from 'react';
-import { IconContainer, WinnerIconContainer, IconWrapper } from './icon.styles';
+import { IconContainer, IconWrapper } from './icon.styles';
 
 type IconProps = {
 	title: string;
@@ -11,21 +11,11 @@ type IconProps = {
 
 const Icon = ({ title, image, bigSize, won, handler }: IconProps): JSX.Element => {
 	return (
-		<>
-			{won ? (
-				<WinnerIconContainer title={title} bigSize={bigSize}>
-					<IconWrapper type='button' id='icon-wrapper' value={title} onClick={handler}>
-						<img src={image} alt={title} />
-					</IconWrapper>
-				</WinnerIconContainer>
-			) : (
-				<IconContainer title={title} bigSize={bigSize}>
-					<IconWrapper type='button' id='icon-wrapper' value={title} onClick={handler}>
-						<img src={image} alt={title} />
-					</IconWrapper>
-				</IconContainer>
-			)}
-		</>
+		<IconContainer title={title} bigSize={bigSize} won={won}>
+			<IconWrapper type='button' id='icon-wrapper' value={title} onClick={handler}>
+				<img src={image} alt={title} />
+			</IconWrapper>
+		</IconContainer>
 	);
 };
 
