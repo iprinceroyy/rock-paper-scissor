@@ -11,7 +11,7 @@
 	.Game__Logo {
 		display: grid;
 		img {
-			width: 50%;
+			width: min(22vw, 120px);
 		}
 	}
 }
@@ -23,6 +23,11 @@
 	background-color: white;
 	border-radius: 4px;
 
+	@media (max-width: 281px) {
+		padding-block: 0.2rem;
+		padding-inline: 0.7rem;
+	}
+
 	:first-child {
 		font-size: 0.7rem;
 		color: hsl(230, 89%, 62%);
@@ -33,5 +38,9 @@
 	:last-child {
 		font-size: 2.5rem;
 		font-weight: 700;
+
+		@media (max-width: 281px) {
+			font-size: 1.5rem;
+		}
 	}
 }
