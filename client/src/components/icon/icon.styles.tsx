@@ -58,8 +58,8 @@ type BorderColorProps = {
 };
 
 export const IconContainer = styled.div<BorderColorProps>`
-	width: 7.5rem;
-	height: 7.5rem;
+	width: min(34vw, 400px);
+	height: min(34vw, 400px);
 	justify-self: ${({ iconId }) => (iconId === 2 ? 'flex-end' : iconId === 3 && 'center')};
 	display: grid;
 	place-items: center center;
@@ -68,8 +68,8 @@ export const IconContainer = styled.div<BorderColorProps>`
 	background-image: linear-gradient(${({ title }) => selectColor(title)});
 	box-shadow: ${({ won, title }) =>
 		won
-			? `0 0 0 20px rgba(255, 255, 255, 0.03), 0 0 0 50px rgba(255, 255, 255, 0.02),
-		0 0 0 85px rgba(255, 255, 255, 0.015), 0 7px 0 -1px ${selectBoxShadow(title)}`
+			? `0 0 0 1.2rem rgba(255, 255, 255, 0.03), 0 0 0 3rem rgba(255, 255, 255, 0.02),
+		0 0 0 5.3rem rgba(255, 255, 255, 0.015), 0 7px 0 -1px ${selectBoxShadow(title)}`
 			: `
 		0 7px 0 -1px ${selectBoxShadow(title)}`};
 	grid-area: ${({ title }) => title === 'rock' && `2 / 1 / span 2 / span 2`};
