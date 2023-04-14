@@ -42,20 +42,20 @@ const GamePlay = (): JSX.Element => {
 
 	return (
 		<>
-			<GamePlayContainer spaceBetween={compChose}>
-				<PlayerContainer>
+			<GamePlayContainer>
+				<PlayerContainer spaceBetween={compChose}>
 					<Icon
 						key={11}
 						title={firstPlayerTitle}
 						image={firstPlayerIcon}
-						bigSize={true}
+						large={true}
 						won={didWin}
 					/>
 
 					{compChose ? (
-						<Icon key={22} title={compChoiceTitle} image={compChoiceIcon} bigSize={true} />
+						<Icon key={22} title={compChoiceTitle} image={compChoiceIcon} large={true} />
 					) : (
-						<SecondPlayer bigSize={true}></SecondPlayer>
+						<SecondPlayer large={true}></SecondPlayer>
 					)}
 				</PlayerContainer>
 
@@ -63,9 +63,9 @@ const GamePlay = (): JSX.Element => {
 					<p>you picked</p>
 					<p>the house picked</p>
 				</PlayerIdentity>
-			</GamePlayContainer>
 
-			{compChose && <GameResult player1={firstPlayerTitle} player2={compChoiceTitle} />}
+				{compChose && <GameResult player1={firstPlayerTitle} player2={compChoiceTitle} />}
+			</GamePlayContainer>
 		</>
 	);
 };

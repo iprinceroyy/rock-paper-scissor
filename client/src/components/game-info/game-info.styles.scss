@@ -1,12 +1,15 @@
 .Game__Info {
 	display: flex;
 	justify-content: space-between;
-	gap: 3rem;
 	padding-block: 0.7rem;
 	padding-inline: 1rem 0.7rem;
 	border: 3px solid hsl(217, 16%, 45%);
 	border-radius: 5px;
 	align-items: center;
+
+	@media (min-width: 720px) {
+		margin-inline: 4rem;
+	}
 
 	.Game__Logo {
 		display: grid;
@@ -26,6 +29,12 @@
 	@media (max-width: 281px) {
 		padding-block: 0.2rem;
 		padding-inline: 0.7rem;
+	}
+
+	@media (min-width: 720px) {
+		padding-block: 0.5rem;
+		padding-inline: 2rem;
+		border-radius: 7px;
 	}
 
 	:first-child {

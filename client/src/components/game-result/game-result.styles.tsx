@@ -11,4 +11,10 @@ export const GameResultContainer = styled.div`
 		color: white;
 		text-transform: uppercase;
 	}
+
+	@media (min-width: 720px) {
+		position: absolute;
+		top: 4rem;
+		left: 14rem;
+	}
 `;

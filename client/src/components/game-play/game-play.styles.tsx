@@ -1,34 +1,32 @@
 import styled from 'styled-components';
 
-type GamePlayContainerProps = {
+type PlayerContainerProps = {
 	spaceBetween: boolean;
 };
 
-export const GamePlayContainer = styled.div<GamePlayContainerProps>`
+export const GamePlayContainer = styled.div`
+	position: relative;
 	display: flex;
 	flex-direction: column;
-	gap: 1rem;
+	gap: 2rem;
 
 	@media (min-width: 720px) {
 		flex-direction: column-reverse;
 	}
 `;
 
-export const PlayerContainer = styled.div`
+export const PlayerContainer = styled.div<PlayerContainerProps>`
 	width: 100%;
 	display: flex;
-	justify-content: space-between;
+	justify-content: ${({ spaceBetween }) => (spaceBetween ? 'space-between' : 'space-around')};
 	align-items: center;
-
-	@media (min-width: 720px) {
-	}
 `;
 
 export const PlayerIdentity = styled.div`
-	width: 102%;
+	width: 100%;
 	display: flex;
 	justify-content: space-between;
-	padding-inline-start: 1.25rem;
+	padding-inline-start: 1.6rem;
 
 	@media (min-width: 720px) {
 		padding-inline-start: 2.2rem;
@@ -45,7 +43,7 @@ export const PlayerIdentity = styled.div`
 `;
 
 type SecondPlayerProps = {
-	bigSize: boolean;
+	large: boolean;
 };
 
 export const SecondPlayer = styled.div<SecondPlayerProps>`
@@ -57,7 +55,7 @@ export const SecondPlayer = styled.div<SecondPlayerProps>`
 	background-color: hsl(220, 50%, 15%);
 
 	@media (min-width: 720px) {
-		width: ${({ bigSize }) => bigSize && `8rem`};
-		height: ${({ bigSize }) => bigSize && `8rem`};
+		width: ${({ large }) => large && `8rem`};
+		height: ${({ large }) => large && `8rem`};
 	}
 `;

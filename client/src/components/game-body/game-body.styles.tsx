@@ -11,7 +11,7 @@ export const GameBodyContainer = styled.div`
 	background-position: center;
 
 	@media (min-width: 720px) {
-		padding-inline: 5rem;
+		padding-inline: 7.5rem;
 		background-size: 50% 60%;
 	}
 `;

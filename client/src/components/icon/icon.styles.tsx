@@ -75,8 +75,8 @@ export const IconContainer = styled.div<BorderColorProps>`
 	grid-area: ${({ title }) => title === 'rock' && `2 / 1 / span 2 / span 2`};
 
 	@media (min-width: 720px) {
-		width: ${({ bigSize }) => bigSize && `10rem`};
-		height: ${({ bigSize }) => bigSize && `10rem`};
+		width: 9rem;
+		height: 9rem;
 
 		box-shadow: ${({ won, title }) =>
 			won
@@ -84,6 +84,13 @@ export const IconContainer = styled.div<BorderColorProps>`
 		0 0 0 150px rgba(255, 255, 255, 0.01), 0 7px 0 -1px ${selectBoxShadow(title)}`
 				: `
 		0 7px 0 -1px ${selectBoxShadow(title)}`};
+	}
+`;
+
+export const LargeIconContainer = styled(IconContainer)`
+	@media (min-width: 720px) {
+		width: 11rem;
+		height: 11rem;
 	}
 `;
 

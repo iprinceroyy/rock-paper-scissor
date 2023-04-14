@@ -29,15 +29,13 @@ const OnlineGamePlay = ({ handler }: OnlineGamePlayProps): JSX.Element => {
 	console.log('result out', resultOut);
 	return (
 		<>
-			<GamePlayContainer spaceBetween={!resultOut}>
-				<PlayerContainer>
+			<GamePlayContainer>
+				<PlayerContainer spaceBetween={!resultOut}>
 					<Icon key={1} title={playerChoice} image={image} />
 					<p>You picked</p>
-				</PlayerContainer>
 
-				<PlayerContainer>
 					{resultOut ? (
-						<SecondPlayer bigSize={true}></SecondPlayer>
+						<SecondPlayer large={true}></SecondPlayer>
 					) : (
 						<Icon key={2} title={oppTitle} image={oppImage} />
 					)}
