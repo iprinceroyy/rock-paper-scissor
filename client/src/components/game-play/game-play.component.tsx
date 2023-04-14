@@ -7,7 +7,12 @@ import GameResult from '../game-result/game-result.component';
 
 import { GameContext } from '../../contexts/game.context';
 
-import { GamePlayContainer, PlayerContainer, SecondPlayer } from './game-play.styles';
+import {
+	GamePlayContainer,
+	PlayerContainer,
+	PlayerIdentity,
+	SecondPlayer,
+} from './game-play.styles';
 import { ScoreContext } from '../../contexts/score.context';
 
 const GamePlay = (): JSX.Element => {
@@ -40,24 +45,26 @@ const GamePlay = (): JSX.Element => {
 			<GamePlayContainer spaceBetween={compChose}>
 				<PlayerContainer>
 					<Icon
-						key={1}
+						key={11}
 						title={firstPlayerTitle}
 						image={firstPlayerIcon}
 						bigSize={true}
 						won={didWin}
 					/>
-					<p>you picked</p>
-				</PlayerContainer>
 
-				<PlayerContainer>
 					{compChose ? (
-						<Icon key={2} title={compChoiceTitle} image={compChoiceIcon} bigSize={true} />
+						<Icon key={22} title={compChoiceTitle} image={compChoiceIcon} bigSize={true} />
 					) : (
 						<SecondPlayer bigSize={true}></SecondPlayer>
 					)}
-					<p>the house picked</p>
 				</PlayerContainer>
+
+				<PlayerIdentity>
+					<p>you picked</p>
+					<p>the house picked</p>
+				</PlayerIdentity>
 			</GamePlayContainer>
+
 			{compChose && <GameResult player1={firstPlayerTitle} player2={compChoiceTitle} />}
 		</>
 	);

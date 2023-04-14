@@ -30,7 +30,7 @@ const GameBody = (): JSX.Element => {
 	) : (
 		<GameBodyContainer>
 			{icons.map(({ id, title, image }) => (
-				<Icon key={id} title={title} image={image} handler={iconClickHandler} />
+				<Icon key={id} iconId={id} title={title} image={image} handler={iconClickHandler} />
 			))}
 		</GameBodyContainer>
 	);

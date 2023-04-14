@@ -2,6 +2,7 @@ import { MouseEventHandler } from 'react';
 import { IconContainer, IconWrapper } from './icon.styles';
 
 type IconProps = {
+	iconId?: number;
 	title: string;
 	image: string;
 	bigSize?: boolean;
@@ -9,9 +10,11 @@ type IconProps = {
 	handler?: MouseEventHandler<HTMLButtonElement>;
 };
 
-const Icon = ({ title, image, bigSize, won, handler }: IconProps): JSX.Element => {
+const Icon = (props: IconProps): JSX.Element => {
+	const { iconId, title, image, bigSize, won, handler } = props;
+
 	return (
-		<IconContainer title={title} bigSize={bigSize} won={won}>
+		<IconContainer iconId={iconId} title={title} bigSize={bigSize} won={won}>
 			<IconWrapper type='button' id='icon-wrapper' value={title} onClick={handler}>
 				<img src={image} alt={title} />
 			</IconWrapper>

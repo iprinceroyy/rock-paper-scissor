@@ -1,11 +1,5 @@
 import styled from 'styled-components';
 
-type BorderColorProps = {
-	title: string;
-	bigSize?: boolean;
-	won?: boolean;
-};
-
 const selectColor = (color: string): string => {
 	let hsl1: string = '';
 	let hsl2: string = '';
@@ -56,11 +50,17 @@ const selectBoxShadow = (color: string): string => {
 	return `hsl(${hsl})`;
 };
 
+type BorderColorProps = {
+	iconId?: number;
+	title: string;
+	bigSize?: boolean;
+	won?: boolean;
+};
+
 export const IconContainer = styled.div<BorderColorProps>`
 	width: 7.5rem;
 	height: 7.5rem;
-	justify-self: ${({ title }) =>
-		title === 'scissors' ? 'flex-end' : title === 'rock' && 'center'};
+	justify-self: ${({ iconId }) => (iconId === 2 ? 'flex-end' : iconId === 3 && 'center')};
 	display: grid;
 	place-items: center center;
 	border: none;
