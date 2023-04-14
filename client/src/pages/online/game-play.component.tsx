@@ -5,6 +5,7 @@ import icons from '../../data';
 import {
 	GamePlayContainer,
 	PlayerContainer,
+	PlayerIdentity,
 	SecondPlayer,
 } from '../../components/game-play/game-play.styles';
 import Icon from '../../components/icon/icon.component';
@@ -31,17 +32,20 @@ const OnlineGamePlay = ({ handler }: OnlineGamePlayProps): JSX.Element => {
 		<>
 			<GamePlayContainer>
 				<PlayerContainer spaceBetween={!resultOut}>
-					<Icon key={1} title={playerChoice} image={image} />
-					<p>You picked</p>
+					<Icon key={11} title={playerChoice} image={image} />
 
 					{resultOut ? (
 						<SecondPlayer large={true}></SecondPlayer>
 					) : (
-						<Icon key={2} title={oppTitle} image={oppImage} />
+						<Icon key={22} title={oppTitle} image={oppImage} />
 					)}
 				</PlayerContainer>
-			</GamePlayContainer>
-			<>
+
+				<PlayerIdentity>
+					<p>you picked</p>
+					<p>the house picked</p>
+				</PlayerIdentity>
+
 				{!resultOut && (
 					<GameResultContainer>
 						<p>{winnerText}</p>
@@ -54,7 +58,7 @@ const OnlineGamePlay = ({ handler }: OnlineGamePlayProps): JSX.Element => {
 						/>
 					</GameResultContainer>
 				)}
-			</>
+			</GamePlayContainer>
 		</>
 	);
 };
