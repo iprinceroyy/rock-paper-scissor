@@ -22,6 +22,7 @@ const OnlineGameBody = (): JSX.Element => {
 		setWinnerText,
 		score,
 		setScore,
+		setDidWin,
 	} = useContext(SocketContext);
 
 	useEffect(() => {
@@ -50,6 +51,7 @@ const OnlineGameBody = (): JSX.Element => {
 
 	const startNewGame = () => {
 		setGamePlay(false);
+		setDidWin(false);
 		socket.emit('restart-game');
 	};
 
@@ -59,10 +61,11 @@ const OnlineGameBody = (): JSX.Element => {
 			const { winner } = data;
 
 			if ((winner === 'p1' && playerOneActive) || (winner === 'p2' && !playerOneActive)) {
-				setWinnerText(`You win`);
+				setWinnerText(`you win`);
 				setScore(score + 1);
+				setDidWin(true);
 			} else if (winner === 'p1' || winner === 'p2') {
-				setWinnerText(`You lose`);
+				setWinnerText(`you lose`);
 				score > 0 && setScore(score - 1);
 			} else {
 				setWinnerText(`It's a draw`);

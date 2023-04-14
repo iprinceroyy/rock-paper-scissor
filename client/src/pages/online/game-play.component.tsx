@@ -18,7 +18,7 @@ type OnlineGamePlayProps = {
 };
 
 const OnlineGamePlay = ({ handler }: OnlineGamePlayProps): JSX.Element => {
-	const { opponent, playerChoice, resultOut, winnerText } = useContext(SocketContext);
+	const { opponent, playerChoice, resultOut, winnerText, didWin } = useContext(SocketContext);
 
 	const [firstPlayerData] = icons.filter(({ title }) => title === playerChoice);
 	const image = firstPlayerData?.image;
@@ -27,23 +27,22 @@ const OnlineGamePlay = ({ handler }: OnlineGamePlayProps): JSX.Element => {
 	const oppImage = secondPlayerData?.image;
 	const oppTitle = secondPlayerData?.title;
 
-	console.log('result out', resultOut);
 	return (
 		<>
 			<GamePlayContainer>
 				<PlayerContainer spaceBetween={!resultOut}>
-					<Icon key={11} title={playerChoice} image={image} />
+					<Icon key={11} title={playerChoice} image={image} large={true} won={didWin} />
 
 					{resultOut ? (
 						<SecondPlayer large={true}></SecondPlayer>
 					) : (
-						<Icon key={22} title={oppTitle} image={oppImage} />
+						<Icon key={22} title={oppTitle} image={oppImage} large={true} />
 					)}
 				</PlayerContainer>
 
 				<PlayerIdentity>
 					<p>you picked</p>
-					<p>the house picked</p>
+					<p>the opponent picked</p>
 				</PlayerIdentity>
 
 				{!resultOut && (
