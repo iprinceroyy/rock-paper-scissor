@@ -28,7 +28,8 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![](./client/src/assets/design/original/desktop-step-4-win.jpg)
+![](./client/src/assets/design/original/desktop-step-4-lose.jpg)
 
 ### Links
 
