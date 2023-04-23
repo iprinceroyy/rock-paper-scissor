@@ -4,8 +4,8 @@ import { GameContext } from '../../contexts/game.context';
 import { ScoreContext } from '../../contexts/score.context';
 import { winner } from '../../utils/winner';
 
-import Button from '../button/button.component';
-import { GameResultContainer } from './game-result.styles';
+import Button from '../../components/button/button.component';
+import { GameResultContainer } from '../../styles/game-result.styles';
 
 type GameResultProps = {
 	readonly player1: string;

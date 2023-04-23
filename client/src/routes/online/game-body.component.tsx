@@ -2,11 +2,11 @@ import { useEffect, useContext } from 'react';
 
 import icons from '../../data';
 
-import { GameBodyContainer } from '../../components/game-body/game-body.styles';
+import { GameBodyContainer } from '../../styles/game-body.styles';
 import Icon from '../../components/icon/icon.component';
 import { SocketContext } from '../../contexts/socket.context';
 
-import { socket } from '../online/online.component';
+import { socket } from './online.component';
 import OnlineGamePlay from './game-play.component';
 
 const OnlineGameBody = (): JSX.Element => {

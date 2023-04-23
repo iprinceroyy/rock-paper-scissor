@@ -7,11 +7,11 @@ import {
 	PlayerContainer,
 	PlayerIdentity,
 	SecondPlayer,
-} from '../../components/game-play/game-play.styles';
+} from '../../styles/game-play.styles';
 import Icon from '../../components/icon/icon.component';
 import Button from '../../components/button/button.component';
 import { SocketContext } from '../../contexts/socket.context';
-import { GameResultContainer } from '../../components/game-result/game-result.styles';
+import { GameResultContainer } from '../../styles/game-result.styles';
 
 type OnlineGamePlayProps = {
 	handler: MouseEventHandler<HTMLButtonElement>;

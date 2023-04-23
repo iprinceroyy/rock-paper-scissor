@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import bgTriangle from '../../assets/images/bg-triangle.svg';
+import bgTriangle from '../assets/images/bg-triangle.svg';
 
 export const GameBodyContainer = styled.div`
 	display: grid;

@@ -1,12 +1,12 @@
 import { useContext } from 'react';
 import icons from '../../data';
 
-import GamePlay from '../game-play/game-play.component';
-import Icon from '../icon/icon.component';
+import GamePlay from './game-play.component';
+import Icon from '../../components/icon/icon.component';
 
 import { GameContext } from '../../contexts/game.context';
 
-import { GameBodyContainer } from './game-body.styles';
+import { GameBodyContainer } from '../../styles/game-body.styles';
 
 const GameBody = (): JSX.Element => {
 	const {
@@ -24,9 +24,6 @@ const GameBody = (): JSX.Element => {
 		setIsNewGameStart(!isNewGameStart);
 		setCompChose(false);
 	};
-
-	console.log('player', firstPlayerChose);
-	console.log('game start', isNewGameStart);
 
 	return firstPlayerChose && isNewGameStart ? (
 		<GamePlay />

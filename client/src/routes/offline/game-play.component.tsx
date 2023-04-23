@@ -2,8 +2,8 @@ import { useEffect, useContext, useState } from 'react';
 
 import icons from '../../data';
 
-import Icon from '../icon/icon.component';
-import GameResult from '../game-result/game-result.component';
+import Icon from '../../components/icon/icon.component';
+import GameResult from './game-result.component';
 
 import { GameContext } from '../../contexts/game.context';
 
@@ -12,7 +12,7 @@ import {
 	PlayerContainer,
 	PlayerIdentity,
 	SecondPlayer,
-} from './game-play.styles';
+} from '../../styles/game-play.styles';
 import { ScoreContext } from '../../contexts/score.context';
 
 const GamePlay = (): JSX.Element => {
@@ -31,7 +31,7 @@ const GamePlay = (): JSX.Element => {
 		return () => {
 			clearTimeout(id);
 		};
-	}, [compChose]);
+	}, []);
 
 	const [{ title: compChoiceTitle = '', image: compChoiceIcon }] = icons.filter(
 		({ id }) => id === +compChoice
