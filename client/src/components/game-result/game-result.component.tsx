@@ -14,7 +14,14 @@ type GameResultProps = {
 
 const GameResult = ({ player1, player2 }: GameResultProps): JSX.Element => {
 	const { score, setScore, setDidWin } = useContext(ScoreContext);
-	const { isNewGameStart, setIsNewGameStart, compChose } = useContext(GameContext);
+	const {
+		isNewGameStart,
+		setIsNewGameStart,
+		compChose,
+		setCompChose,
+		setFirstPlayerChose,
+		firstPlayerChose,
+	} = useContext(GameContext);
 	const [winnerText, setWinnerText] = useState<string>('');
 
 	useEffect(() => {
@@ -34,6 +41,7 @@ const GameResult = ({ player1, player2 }: GameResultProps): JSX.Element => {
 	const startNewGameHandler = () => {
 		setIsNewGameStart(!isNewGameStart);
 		setDidWin(false);
+		setFirstPlayerChose(!firstPlayerChose);
 	};
 
 	return (

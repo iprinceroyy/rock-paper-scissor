@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { RulesContext } from '../../contexts/rules.context';
 
@@ -22,8 +23,12 @@ const GameRules = (): JSX.Element => {
 
 export const GameRulesImage = (): JSX.Element => {
 	const { isClicked, setIsClicked } = useContext(RulesContext);
+	const navigate = useNavigate();
 
-	const crossHandler = () => setIsClicked(!isClicked);
+	const crossHandler = () => {
+		setIsClicked(!isClicked);
+		navigate(-1);
+	};
 
 	return (
 		<div className='Rules__Image'>

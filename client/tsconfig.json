@@ -2,7 +2,8 @@
 	"compilerOptions": {
 		"plugins": [
 			{
-				"name": "@styled/typescript-styled-plugin"
+				"name": "@styled/typescript-styled-plugin",
+				"tags": ["styled", "css", "sty"]
 			}
 		],
 		"target": "es5",

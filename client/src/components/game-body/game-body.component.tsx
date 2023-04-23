@@ -19,11 +19,14 @@ const GameBody = (): JSX.Element => {
 	} = useContext(GameContext);
 
 	const iconClickHandler = (e: any) => {
-		setFirstPlayerChose(true);
+		setFirstPlayerChose(!firstPlayerChose);
 		setFirstPlayerTitle(e.target.closest('#icon-wrapper').value);
 		setIsNewGameStart(!isNewGameStart);
 		setCompChose(false);
 	};
+
+	console.log('player', firstPlayerChose);
+	console.log('game start', isNewGameStart);
 
 	return firstPlayerChose && isNewGameStart ? (
 		<GamePlay />

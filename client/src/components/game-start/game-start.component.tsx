@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { Routes, Route, Link, Outlet } from 'react-router-dom';
 
 import GameInfo from '../game-info/game-info.component';
 import GameBody from '../game-body/game-body.component';
@@ -12,17 +13,17 @@ const GameStart = (): JSX.Element => {
 	const { score } = useContext(ScoreContext);
 
 	return (
-		<>
-			{isClicked ? (
-				<GameRulesImage />
-			) : (
-				<div className='Game Game__Container'>
-					<GameInfo score={score} />
-					<GameBody />
+		<div className='Game Game__Container'>
+			<GameInfo score={score} />
+			<GameBody />
+			<div>
+				<Link to='rule'>
 					<GameRules />
-				</div>
-			)}
-		</>
+				</Link>
+
+				<Outlet />
+			</div>
+		</div>
 	);
 };
 

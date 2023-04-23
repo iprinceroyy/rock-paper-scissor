@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 import './index.scss';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
@@ -8,13 +9,12 @@ import reportWebVitals from './reportWebVitals';
 import { RulesProvider } from './contexts/rules.context';
 import { GameProvider } from './contexts/game.context';
 import { ScoreProvider } from './contexts/score.context';
-import { ChoiceProvider } from './contexts/choice.context';
 import { SocketProvider } from './contexts/socket.context';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
 	<React.StrictMode>
-		<ChoiceProvider>
+		<BrowserRouter>
 			<SocketProvider>
 				<RulesProvider>
 					<ScoreProvider>
@@ -24,7 +24,7 @@ root.render(
 					</ScoreProvider>
 				</RulesProvider>
 			</SocketProvider>
-		</ChoiceProvider>
+		</BrowserRouter>
 	</React.StrictMode>
 );
 

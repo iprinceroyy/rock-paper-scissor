@@ -1,20 +1,19 @@
-import { useContext } from 'react';
+import { Routes, Route } from 'react-router-dom';
 
-import { ChoiceContext } from './contexts/choice.context';
-import Online from './pages/online/online.component';
-import Offline from './pages/offline/offline.component';
-import Home from './pages/home/home.component';
+import Home from './routes/home/home.component';
+import Offline from './routes/offline/offline-component';
+import Online from './routes/online/online.component';
 
 import './App.scss';
 
 const App = (): JSX.Element => {
-	const { playOnline, playOffline } = useContext(ChoiceContext);
-
 	return (
 		<main className='App'>
-			{!playOffline && !playOnline && <Home />}
-			{playOffline && <Offline />}
-			{playOnline && <Online />}
+			<Routes>
+				<Route path='/' element={<Home />}></Route>
+				<Route path='online' element={<Online />}></Route>
+				<Route path='offline/*' element={<Offline />}></Route>
+			</Routes>
 		</main>
 	);
 };

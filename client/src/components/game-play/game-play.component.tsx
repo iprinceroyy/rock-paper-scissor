@@ -23,7 +23,6 @@ const GamePlay = (): JSX.Element => {
 	useEffect(() => {
 		const id = setTimeout(() => {
 			const randVal = 1 + Math.floor(Math.random() * 3);
-			console.log('random', randVal);
 
 			setCompChoice(randVal);
 			setCompChose(!compChose);
@@ -32,7 +31,7 @@ const GamePlay = (): JSX.Element => {
 		return () => {
 			clearTimeout(id);
 		};
-	}, []);
+	}, [compChose]);
 
 	const [{ title: compChoiceTitle = '', image: compChoiceIcon }] = icons.filter(
 		({ id }) => id === +compChoice
