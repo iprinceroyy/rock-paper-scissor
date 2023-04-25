@@ -13,6 +13,7 @@ span {
 }
 
 .Game__Container {
+	position: relative;
 	min-height: 100vh;
 	width: min(100%, 700px);
 	display: grid;

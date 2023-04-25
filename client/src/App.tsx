@@ -1,8 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
 
 import Home from './routes/home/home.component';
-import Offline from './routes/offline/offline-component';
-import Online from './routes/online/online.component';
+import Offline from './routes/offline/game-start.component';
+import Online from './routes/online/room.component';
 
 import './App.scss';
 

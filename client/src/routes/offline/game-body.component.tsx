@@ -19,7 +19,7 @@ const GameBody = (): JSX.Element => {
 	} = useContext(GameContext);
 
 	const iconClickHandler = (e: any) => {
-		setFirstPlayerChose(!firstPlayerChose);
+		setFirstPlayerChose(true);
 		setFirstPlayerTitle(e.target.closest('#icon-wrapper').value);
 		setIsNewGameStart(!isNewGameStart);
 		setCompChose(false);

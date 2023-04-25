@@ -7,11 +7,11 @@ import { SocketContext } from '../../contexts/socket.context';
 import OnlineGameStart from './game-start.component';
 import Button from '../../components/button/button.component';
 
-import './online.styles.scss';
+import './room.styles.scss';
 
 export const socket = io('http://localhost:3000');
 
-const Online = (): JSX.Element => {
+const Room = (): JSX.Element => {
 	const { room, setRoom, sockets, setSocket, isPlaying, setIsPlaying, setPlayerOneActive } =
 		useContext(SocketContext);
 	const [successMessage, setSuccessMessage] = useState('');
@@ -79,4 +79,4 @@ const Online = (): JSX.Element => {
 	);
 };
 
-export default Online;
+export default Room;

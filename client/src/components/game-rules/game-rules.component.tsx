@@ -1,43 +1,26 @@
-import { useContext } from 'react';
-
-import { RulesContext } from '../../contexts/rules.context';
+import { MouseEventHandler } from 'react';
 
 import imageRules from '../../assets/images/image-rules.svg';
 import closeIcon from '../../assets/images/icon-close.svg';
-import Button from '../button/button.component';
 
 import './game-rules.styles.scss';
 
-const GameRules = (): JSX.Element => {
-	const { isClicked, setIsClicked } = useContext(RulesContext);
-
-	const rulesHandler = () => setIsClicked(!isClicked);
-
-	return (
-		<>
-			<Button type='button' children={'rules'} handler={rulesHandler} btnStyle={'secondary'} />
-		</>
-	);
+type GameRulesImageProps = {
+	closeHandler: MouseEventHandler<HTMLImageElement>;
 };
 
-export const GameRulesImage = (): JSX.Element => {
-	const { isClicked, setIsClicked } = useContext(RulesContext);
-
-	const crossHandler = () => {
-		setIsClicked(!isClicked);
-	};
-
+const GameRulesImage = ({ closeHandler }: GameRulesImageProps): JSX.Element => {
 	return (
-		<div className='Rules__Image'>
+		<div className='Rules Rules__Container'>
 			<p>rules</p>
-			<div>
+			<div className='Rules__Image__Container'>
 				<img src={imageRules} alt='' />
 			</div>
-			<div>
-				<img src={closeIcon} onClick={crossHandler} alt='close the rules' />
+			<div className='Rules__Close'>
+				<img src={closeIcon} onClick={closeHandler} alt='close the rules' />
 			</div>
 		</div>
 	);
 };
 
-export default GameRules;
+export default GameRulesImage;

@@ -12,6 +12,7 @@ import Icon from '../../components/icon/icon.component';
 import Button from '../../components/button/button.component';
 import { SocketContext } from '../../contexts/socket.context';
 import { GameResultContainer } from '../../styles/game-result.styles';
+import { RulesContext } from '../../contexts/rules.context';
 
 type OnlineGamePlayProps = {
 	handler: MouseEventHandler<HTMLButtonElement>;
@@ -19,6 +20,7 @@ type OnlineGamePlayProps = {
 
 const OnlineGamePlay = ({ handler }: OnlineGamePlayProps): JSX.Element => {
 	const { opponent, playerChoice, resultOut, winnerText, didWin } = useContext(SocketContext);
+	const { isClicked } = useContext(RulesContext);
 
 	const [firstPlayerData] = icons.filter(({ title }) => title === playerChoice);
 	const image = firstPlayerData?.image;
@@ -28,37 +30,30 @@ const OnlineGamePlay = ({ handler }: OnlineGamePlayProps): JSX.Element => {
 	const oppTitle = secondPlayerData?.title;
 
 	return (
-		<>
-			<GamePlayContainer>
-				<PlayerContainer spaceBetween={!resultOut}>
-					<Icon key={11} title={playerChoice} image={image} large={true} won={didWin} />
+		<GamePlayContainer>
+			<PlayerContainer spaceBetween={!resultOut}>
+				<Icon key={11} title={playerChoice} image={image} large={true} won={didWin} />
 
-					{resultOut ? (
-						<SecondPlayer large={true}></SecondPlayer>
-					) : (
-						<Icon key={22} title={oppTitle} image={oppImage} large={true} />
-					)}
-				</PlayerContainer>
-
-				<PlayerIdentity>
-					<p>you picked</p>
-					<p>the opponent picked</p>
-				</PlayerIdentity>
-
-				{!resultOut && (
-					<GameResultContainer>
-						<p>{winnerText}</p>
-
-						<Button
-							type={'button'}
-							btnStyle={'primary'}
-							children={'play again'}
-							handler={handler}
-						/>
-					</GameResultContainer>
+				{resultOut ? (
+					<SecondPlayer large={true}></SecondPlayer>
+				) : (
+					<Icon key={22} title={oppTitle} image={oppImage} large={true} />
 				)}
-			</GamePlayContainer>
-		</>
+			</PlayerContainer>
+
+			<PlayerIdentity>
+				<p>you picked</p>
+				<p>the opponent picked</p>
+			</PlayerIdentity>
+
+			{!resultOut && (
+				<GameResultContainer>
+					<p>{winnerText}</p>
+
+					<Button type={'button'} btnStyle={'primary'} children={'play again'} handler={handler} />
+				</GameResultContainer>
+			)}
+		</GamePlayContainer>
 	);
 };
 

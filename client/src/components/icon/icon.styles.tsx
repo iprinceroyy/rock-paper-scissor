@@ -51,39 +51,39 @@ const selectBoxShadow = (color: string): string => {
 };
 
 type BorderColorProps = {
-	iconId?: number;
-	title: string;
-	bigSize?: boolean;
-	won?: boolean;
+	$iconId?: number;
+	$title: string;
+	$bigSize?: boolean;
+	$won?: boolean;
 };
 
 export const IconContainer = styled.div<BorderColorProps>`
 	width: min(34vw, 400px);
 	height: min(34vw, 400px);
-	justify-self: ${({ iconId }) => (iconId === 2 ? 'flex-end' : iconId === 3 && 'center')};
+	justify-self: ${({ $iconId }) => ($iconId === 2 ? 'flex-end' : $iconId === 3 && 'center')};
 	display: grid;
 	place-items: center center;
 	border: none;
 	border-radius: 50%;
-	background-image: linear-gradient(${({ title }) => selectColor(title)});
-	box-shadow: ${({ won, title }) =>
-		won
+	background-image: linear-gradient(${({ $title }) => selectColor($title)});
+	box-shadow: ${({ $won, $title }) =>
+		$won
 			? `0 0 0 1.2rem rgba(255, 255, 255, 0.03), 0 0 0 3rem rgba(255, 255, 255, 0.02),
-		0 0 0 5.3rem rgba(255, 255, 255, 0.015), 0 7px 0 -1px ${selectBoxShadow(title)}`
+		0 0 0 5.3rem rgba(255, 255, 255, 0.015), 0 7px 0 -1px ${selectBoxShadow($title)}`
 			: `
-		0 7px 0 -1px ${selectBoxShadow(title)}`};
-	grid-area: ${({ title }) => title === 'rock' && `2 / 1 / span 2 / span 2`};
+		0 7px 0 -1px ${selectBoxShadow($title)}`};
+	grid-area: ${({ $title }) => $title === 'rock' && `2 / 1 / span 2 / span 2`};
 
 	@media (min-width: 720px) {
 		width: 9rem;
 		height: 9rem;
 
-		box-shadow: ${({ won, title }) =>
-			won
+		box-shadow: ${({ $won, $title }) =>
+			$won
 				? `0 0 0 50px rgba(255, 255, 255, 0.03), 0 0 0 100px rgba(255, 255, 255, 0.01),
-		0 0 0 150px rgba(255, 255, 255, 0.01), 0 7px 0 -1px ${selectBoxShadow(title)}`
+		0 0 0 150px rgba(255, 255, 255, 0.01), 0 7px 0 -1px ${selectBoxShadow($title)}`
 				: `
-		0 7px 0 -1px ${selectBoxShadow(title)}`};
+		0 7px 0 -1px ${selectBoxShadow($title)}`};
 	}
 `;
 
@@ -100,6 +100,7 @@ export const IconWrapper = styled.button`
 	display: grid;
 	place-items: center center;
 	outline: 3px solid transparent;
+	cursor: pointer;
 	border: none;
 	border-radius: 50%;
 	background-image: linear-gradient(hsl(0, 0%, 83.92156862745098%), hsl(0, 0%, 93.33333333333333%));

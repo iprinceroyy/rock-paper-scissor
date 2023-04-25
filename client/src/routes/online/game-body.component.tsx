@@ -6,7 +6,7 @@ import { GameBodyContainer } from '../../styles/game-body.styles';
 import Icon from '../../components/icon/icon.component';
 import { SocketContext } from '../../contexts/socket.context';
 
-import { socket } from './online.component';
+import { socket } from './room.component';
 import OnlineGamePlay from './game-play.component';
 
 const OnlineGameBody = (): JSX.Element => {

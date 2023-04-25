@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const BaseButton = styled.button`
+	cursor: pointer;
 	outline: 3px solid transparent;
 	border: 2px solid hsl(0, 0%, 100%);
 	border-radius: 8px;

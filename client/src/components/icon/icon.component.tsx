@@ -16,13 +16,13 @@ const Icon = (props: IconProps): JSX.Element => {
 	return (
 		<>
 			{large ? (
-				<LargeIconContainer iconId={iconId} title={title} won={won}>
+				<LargeIconContainer $iconId={iconId} $title={title} $won={won}>
 					<IconWrapper type='button' id='icon-wrapper' value={title} onClick={handler}>
 						<img src={image} alt={title} />
 					</IconWrapper>
 				</LargeIconContainer>
 			) : (
-				<IconContainer iconId={iconId} title={title} won={won}>
+				<IconContainer $iconId={iconId} $title={title} $won={won}>
 					<IconWrapper type='button' id='icon-wrapper' value={title} onClick={handler}>
 						<img src={image} alt={title} />
 					</IconWrapper>
