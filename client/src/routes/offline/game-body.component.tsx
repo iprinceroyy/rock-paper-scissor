@@ -1,5 +1,8 @@
 import { useContext } from 'react';
+import useSound from 'use-sound';
+
 import icons from '../../data';
+import iconClick from '../../sounds/game-click.mp3';
 
 import GamePlay from './game-play.component';
 import Icon from '../../components/icon/icon.component';
@@ -9,6 +12,7 @@ import { GameContext } from '../../contexts/game.context';
 import { GameBodyContainer } from '../../styles/game-body.styles';
 
 const GameBody = (): JSX.Element => {
+	const [play] = useSound(iconClick, { volume: 0.25 });
 	const {
 		firstPlayerChose,
 		setFirstPlayerChose,
@@ -23,6 +27,7 @@ const GameBody = (): JSX.Element => {
 		setFirstPlayerTitle(e.target.closest('#icon-wrapper').value);
 		setIsNewGameStart(!isNewGameStart);
 		setCompChose(false);
+		play();
 	};
 
 	return firstPlayerChose && isNewGameStart ? (

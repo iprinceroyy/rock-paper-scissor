@@ -12,7 +12,7 @@ const App = (): JSX.Element => {
 			<Routes>
 				<Route path='/' element={<Home />}></Route>
 				<Route path='online' element={<Online />}></Route>
-				<Route path='offline/*' element={<Offline />}></Route>
+				<Route path='offline' element={<Offline />}></Route>
 			</Routes>
 		</main>
 	);
