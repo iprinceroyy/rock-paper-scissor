@@ -7,14 +7,13 @@ const app = express();
 app.use(cors());
 
 const server = http.createServer(app);
-
+const env = process.env.NODE_ENV;
 const io = new Server(server, {
 	cors: {
-		origin: [
-			'http://localhost:3001',
-			'http://localhost:3000',
-			'https://game-rock-paper-scissorss.netlify.app/',
-		],
+		origin:
+			env === 'production'
+				? 'https://game-rock-paper-scissorss.netlify.app/online'
+				: 'http://localhost:3001',
 		methods: ['GET', 'POST'],
 	},
 });
