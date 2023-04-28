@@ -12,8 +12,8 @@ const io = new Server(server, {
 	cors: {
 		origin:
 			env === 'production'
-				? 'https://game-rock-paper-scissorss.netlify.app/online'
-				: 'http://localhost:3001',
+				? 'https://game-rock-paper-scissorss.netlify.app'
+				: 'http://localhost:3000',
 		methods: ['GET', 'POST'],
 	},
 });
@@ -87,7 +87,7 @@ io.on('connection', socket => {
 	}
 });
 
-server.listen(3000, err => {
+server.listen(4000, err => {
 	if (err) console.log(err);
 	console.log(`Server running on Port 4000`);
 });

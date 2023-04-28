@@ -12,7 +12,7 @@ import './room.styles.scss';
 export const socket = io(
 	process.env.NODE_ENV === 'production'
 		? 'https://rps-backend-i8oe.onrender.com'
-		: 'http://localhost:3000'
+		: 'http://localhost:4000'
 );
 
 const Room = (): JSX.Element => {
