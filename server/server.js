@@ -1,22 +1,21 @@
 const express = require('express');
-const socketIo = require('socket.io');
+const { Server } = require('socket.io');
 const http = require('http');
-const bodyParser = require('body-parser');
-const path = require('path');
-const PORT = process.env.PORT || 3000;
+const cors = require('cors');
 
 const app = express();
+app.use(cors());
+
 const server = http.createServer(app);
 
-// app.use(express.static('../client/build'));
-
-// app.get('*', (_, res) => {
-// 	res.sendFile(path.resolve(path.resolve(), '../client', 'build', 'index.html'));
-// });
-
-const io = socketIo(server, {
+const io = new Server(server, {
 	cors: {
-		origin: '*',
+		origin: [
+			'http://localhost:3001',
+			'http://localhost:3000',
+			'https://game-rock-paper-scissorss.netlify.app/',
+		],
+		methods: ['GET', 'POST'],
 	},
 });
 
@@ -89,8 +88,7 @@ io.on('connection', socket => {
 	}
 });
 
-server.listen(PORT, err => {
+server.listen(3000, err => {
 	if (err) console.log(err);
-
-	console.log(`Server running on Port ${PORT}`);
+	console.log(`Server running on Port 4000`);
 });
