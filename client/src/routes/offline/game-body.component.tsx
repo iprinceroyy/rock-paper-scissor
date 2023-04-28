@@ -27,7 +27,7 @@ const GameBody = (): JSX.Element => {
 		setFirstPlayerTitle(e.target.closest('#icon-wrapper').value);
 		setIsNewGameStart(!isNewGameStart);
 		setCompChose(false);
-		// play();
+		play();
 	};
 
 	return firstPlayerChose && isNewGameStart ? (
