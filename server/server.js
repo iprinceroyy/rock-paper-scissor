@@ -1,11 +1,18 @@
 const express = require('express');
 const socketIo = require('socket.io');
 const http = require('http');
+const bodyParser = require('body-parser');
+const path = require('path');
 const PORT = process.env.PORT || 3000;
-const cors = require('cors');
 
 const app = express();
 const server = http.createServer(app);
+
+// app.use(express.static('../client/build'));
+
+// app.get('*', (_, res) => {
+// 	res.sendFile(path.resolve(path.resolve(), '../client', 'build', 'index.html'));
+// });
 
 const io = socketIo(server, {
 	cors: {
@@ -13,7 +20,7 @@ const io = socketIo(server, {
 	},
 });
 
-let rooms = {};
+let rooms = { p1Choice: null, p2Choice: null };
 io.on('connection', socket => {
 	console.log(socket.id);
 
@@ -21,7 +28,6 @@ io.on('connection', socket => {
 	socket.on('join-room', room => {
 		socket.join(room);
 		console.log(`You joined ${room}`);
-		//rooms[room] = {};
 
 		const roomSockets = io.sockets.adapter.rooms.get(room);
 		const users = roomSockets ? [...roomSockets.keys()] : [];
@@ -29,12 +35,13 @@ io.on('connection', socket => {
 
 		users.length === 2 && io.to(room).emit('start', `You started playing`);
 
+		console.log('before game start', rooms);
 		socket.on('p1Choice', data => {
 			const { choice, room } = data;
 			rooms['p1Choice'] = choice;
 			io.to(room).emit('p1Choice', { choice });
 
-			rooms['p2Choice'] !== null && declareWinner(room);
+			rooms.p2Choice !== null && declareWinner(room);
 			console.log(rooms);
 		});
 
@@ -43,21 +50,20 @@ io.on('connection', socket => {
 			rooms['p2Choice'] = choice;
 			io.to(room).emit('p2Choice', { choice });
 
-			rooms['p1Choice'] !== null && declareWinner(room);
+			rooms.p1Choice !== null && declareWinner(room);
 			console.log(rooms);
 		});
+	});
 
-		socket.on('restart-game', () => {
-			rooms = {};
-			console.log(rooms);
-		});
+	socket.on('restart-game', ({ room }) => {
+		console.log('game restarted on', room);
+		console.log('after restart', rooms);
 	});
 
 	function declareWinner(room) {
 		const player1 = rooms['p1Choice'];
 		const player2 = rooms['p2Choice'];
-
-		let winner = '';
+		let winner = null;
 
 		if (
 			(player1 === 'scissors' && player2 === 'paper') ||
@@ -71,9 +77,15 @@ io.on('connection', socket => {
 			(player2 === 'rock' && player1 === 'scissors')
 		)
 			winner = 'p2';
-		else winner = 'd';
+		else if (
+			(player1 === 'scissors' && player2 === 'scissors') ||
+			(player1 === 'paper' && player2 === 'paper') ||
+			(player1 === 'rock' && player2 === 'rock')
+		)
+			winner = 'd';
 
 		io.to(room).emit('result', { winner: winner });
+		rooms = { p1Choice: null, p2Choice: null };
 	}
 });
 

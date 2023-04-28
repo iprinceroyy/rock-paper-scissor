@@ -1,29 +1,17 @@
 import { useEffect, useContext } from 'react';
 
 import icons from '../../data';
-
-import { GameBodyContainer } from '../../styles/game-body.styles';
-import Icon from '../../components/icon/icon.component';
 import { SocketContext } from '../../contexts/socket.context';
-
 import { socket } from './room.component';
+
+import Icon from '../../components/icon/icon.component';
 import OnlineGamePlay from './game-play.component';
 
+import { GameBodyContainer } from '../../styles/game-body.styles';
+
 const OnlineGameBody = (): JSX.Element => {
-	const {
-		room,
-		resultOut,
-		setResultOut,
-		playerOneActive,
-		setPlayerChoice,
-		gamePlay,
-		setGamePlay,
-		setOpponent,
-		setWinnerText,
-		score,
-		setScore,
-		setDidWin,
-	} = useContext(SocketContext);
+	const { room, playerOneActive, setPlayerChoice, gamePlay, setGamePlay, setOpponent } =
+		useContext(SocketContext);
 
 	useEffect(() => {
 		socket.on('p1Choice', ({ choice }) => {
@@ -38,7 +26,7 @@ const OnlineGameBody = (): JSX.Element => {
 			socket.off('p1Choice');
 			socket.off('p2Choice');
 		};
-	}, [playerOneActive]);
+	}, []);
 
 	const iconClickHandler = (e: any) => {
 		setGamePlay(!gamePlay);
@@ -49,36 +37,8 @@ const OnlineGameBody = (): JSX.Element => {
 		socket.emit(choiceEvent, { choice, room: room });
 	};
 
-	const startNewGame = () => {
-		setGamePlay(false);
-		setDidWin(false);
-		socket.emit('restart-game');
-	};
-
-	useEffect(() => {
-		socket.on('result', data => {
-			setResultOut(!resultOut);
-			const { winner } = data;
-
-			if ((winner === 'p1' && playerOneActive) || (winner === 'p2' && !playerOneActive)) {
-				setWinnerText(`you win`);
-				setScore(score + 1);
-				setDidWin(true);
-			} else if (winner === 'p1' || winner === 'p2') {
-				setWinnerText(`you lose`);
-				score > 0 && setScore(score - 1);
-			} else {
-				setWinnerText(`It's a draw`);
-			}
-		});
-
-		return () => {
-			socket.off('result');
-		};
-	}, [resultOut]);
-
 	return gamePlay ? (
-		<OnlineGamePlay handler={startNewGame} />
+		<OnlineGamePlay />
 	) : (
 		<div>
 			<GameBodyContainer>

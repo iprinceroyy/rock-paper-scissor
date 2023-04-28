@@ -9,7 +9,11 @@ import Button from '../../components/button/button.component';
 
 import './room.styles.scss';
 
-export const socket = io('https://rps-backend-i8oe.onrender.com');
+export const socket = io(
+	process.env.NODE_ENV === 'production'
+		? 'https://rps-backend-i8oe.onrender.com'
+		: 'http://localhost:3000'
+);
 
 const Room = (): JSX.Element => {
 	const { room, setRoom, sockets, setSocket, isPlaying, setIsPlaying, setPlayerOneActive } =
