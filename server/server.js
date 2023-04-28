@@ -71,12 +71,7 @@ io.on('connection', socket => {
 			(player2 === 'rock' && player1 === 'scissors')
 		)
 			winner = 'p2';
-		else if (
-			(player1 === 'scissors' && player2 === 'scissors') ||
-			(player1 === 'paper' && player2 === 'paper') ||
-			(player1 === 'rock' && player2 === 'rock')
-		)
-			winner = 'd';
+		else winner = 'd';
 
 		io.to(room).emit('result', { winner: winner });
 		rooms = { p1Choice: null, p2Choice: null };
