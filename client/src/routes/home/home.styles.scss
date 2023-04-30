@@ -7,9 +7,8 @@
 		display: block;
 		margin-block-start: 2rem;
 		width: 100%;
-		opacity: 0;
 		animation-duration: 1s;
-		animation-fill-mode: forwards;
+		animation-fill-mode: backwards;
 	}
 
 	a {
@@ -52,10 +51,6 @@
 		to {
 			transform: translate3d(0, 0, 0);
 		}
-
-		100% {
-			opacity: 1;
-		}
 	}
 }
 
@@ -93,10 +88,6 @@
 
 		to {
 			transform: translate3d(0, 0, 0);
-		}
-
-		100% {
-			opacity: 1;
 		}
 	}
 }
