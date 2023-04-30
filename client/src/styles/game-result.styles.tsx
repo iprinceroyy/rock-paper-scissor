@@ -14,13 +14,14 @@ export const GameResultContainer = styled.div`
 		// Animation
 		animation-name: rubberBand;
 		animation-duration: 1s;
+		animation-delay: 0.7s;
 		animation-fill-mode: backwards;
 	}
 
 	button {
 		animation-name: fadeIn;
 		animation-duration: 1s;
-		animation-delay: 0.5s;
+		animation-delay: 1.3s;
 		animation-fill-mode: backwards;
 	}
 
@@ -52,6 +53,7 @@ export const GameResultContainer = styled.div`
 
 	@-webkit-keyframes rubberBand {
 		from {
+			opacity: 0;
 			transform: scale3d(1, 1, 1);
 		}
 
@@ -82,6 +84,7 @@ export const GameResultContainer = styled.div`
 
 	@keyframes rubberBand {
 		from {
+			opacity: 0;
 			transform: scale3d(1, 1, 1);
 		}
 
