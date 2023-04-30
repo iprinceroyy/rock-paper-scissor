@@ -2,11 +2,11 @@ import { useContext } from 'react';
 
 import GameInfo from '../../components/game-info/game-info.component';
 import GameBody from './game-body.component';
-import Button from '../../components/button/button.component';
 import GameRulesImage from '../../components/game-rules/game-rules.component';
 
 import { RulesContext } from '../../contexts/rules.context';
 import { ScoreContext } from '../../contexts/score.context';
+import GameRulesBtn from '../../components/game-rules-btn/game-rules-btn.component';
 
 const GameStart = (): JSX.Element => {
 	const { isClicked, setIsClicked } = useContext(RulesContext);
@@ -22,7 +22,7 @@ const GameStart = (): JSX.Element => {
 			{isClicked ? (
 				<GameRulesImage closeHandler={rulesHandler} />
 			) : (
-				<Button type='button' children={'rules'} handler={rulesHandler} btnStyle={'secondary'} />
+				<GameRulesBtn openHandler={rulesHandler} />
 			)}
 		</div>
 	);

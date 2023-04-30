@@ -2,11 +2,11 @@ import { useContext } from 'react';
 
 import GameInfo from '../../components/game-info/game-info.component';
 import OnlineGameBody from './game-body.component';
-import Button from '../../components/button/button.component';
 import GameRulesImage from '../../components/game-rules/game-rules.component';
 
 import { RulesContext } from '../../contexts/rules.context';
 import { SocketContext } from '../../contexts/socket.context';
+import GameRulesBtn from '../../components/game-rules-btn/game-rules-btn.component';
 
 const OnlineGameStart = (): JSX.Element => {
 	const { isClicked, setIsClicked } = useContext(RulesContext);
@@ -22,7 +22,7 @@ const OnlineGameStart = (): JSX.Element => {
 			{isClicked ? (
 				<GameRulesImage closeHandler={rulesHandler} />
 			) : (
-				<Button type='button' children={'rules'} handler={rulesHandler} btnStyle={'secondary'} />
+				<GameRulesBtn openHandler={rulesHandler} />
 			)}
 		</div>
 	);
