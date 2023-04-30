@@ -1,6 +1,6 @@
 import logo from '../../assets/images/logo.svg';
 
-import './game-info.styles.scss';
+import { GameInfoContainer, GameLogo, GameScore } from './game-info.styles';
 
 type GameInfoProps = {
 	readonly score: number;
@@ -8,15 +8,16 @@ type GameInfoProps = {
 
 const GameInfo = ({ score }: GameInfoProps): JSX.Element => {
 	return (
-		<div className='Game__Info'>
-			<div className='Game__Logo'>
+		<GameInfoContainer>
+			<GameLogo>
 				<img src={logo} alt='' />
-			</div>
-			<div className='Game__Score'>
+			</GameLogo>
+
+			<GameScore>
 				<span>score</span>
 				<span>{score}</span>
-			</div>
-		</div>
+			</GameScore>
+		</GameInfoContainer>
 	);
 };
 
