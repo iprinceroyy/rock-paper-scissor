@@ -20,6 +20,43 @@ export const PlayerContainer = styled.div<PlayerContainerProps>`
 	display: flex;
 	justify-content: ${({ spaceBetween }) => (spaceBetween ? 'space-between' : 'space-around')};
 	align-items: center;
+
+	// Animation
+	div:not(.empty) {
+		animation-name: puffIn;
+		animation-duration: 0.7s;
+		animation-fill-mode: backwards;
+	}
+
+	@-webkit-keyframes puffIn {
+		0% {
+			opacity: 0;
+			transform-origin: 50% 50%;
+			transform: scale(2, 2);
+			filter: blur(2px);
+		}
+		100% {
+			opacity: 1;
+			transform-origin: 50% 50%;
+			transform: scale(1, 1);
+			filter: blur(0px);
+		}
+	}
+
+	@keyframes puffIn {
+		0% {
+			opacity: 0;
+			transform-origin: 50% 50%;
+			transform: scale(2, 2);
+			filter: blur(2px);
+		}
+		100% {
+			opacity: 1;
+			transform-origin: 50% 50%;
+			transform: scale(1, 1);
+			filter: blur(0px);
+		}
+	}
 `;
 
 export const PlayerIdentity = styled.div`

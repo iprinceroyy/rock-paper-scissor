@@ -47,7 +47,7 @@ const GamePlay = (): JSX.Element => {
 				{compChose ? (
 					<Icon key={22} title={compChoiceTitle} image={compChoiceIcon} large={true} />
 				) : (
-					<SecondPlayer large={true}></SecondPlayer>
+					<SecondPlayer className='empty' large={true}></SecondPlayer>
 				)}
 			</PlayerContainer>
 
