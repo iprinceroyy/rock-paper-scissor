@@ -7,7 +7,9 @@ import { SocketContext } from '../../contexts/socket.context';
 import OnlineGameStart from './game-start.component';
 import Button from '../../components/button/button.component';
 
-import './room.styles.scss';
+import { FormInput, RoomContainer } from './room.styles';
+
+import './room.styles.tsx';
 
 export const socket = io(
 	process.env.NODE_ENV === 'production'
@@ -63,21 +65,21 @@ const Room = (): JSX.Element => {
 			{isPlaying ? (
 				<OnlineGameStart />
 			) : (
-				<div className='room-container'>
+				<RoomContainer>
 					<form onSubmit={handleCreateRoom}>
-						<input type='text' onChange={handleChangeRoom} aria-label='join-room' />
+						<FormInput type='text' onChange={handleChangeRoom} aria-label='join-room' />
 						<br />
 						<Button type='submit' btnStyle='primary' children='create room' />
 					</form>
 
 					<form onSubmit={handleJoinRoom}>
-						<input type='text' onChange={handleChangeRoom} aria-label='join-room' />
+						<FormInput type='text' onChange={handleChangeRoom} aria-label='join-room' />
 						<br />
 						<Button type='submit' btnStyle='primary' children='join room' />
 					</form>
 
 					<p>{successMessage}</p>
-				</div>
+				</RoomContainer>
 			)}
 		</>
 	);
