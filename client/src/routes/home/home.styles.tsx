@@ -1,4 +1,7 @@
-.choice {
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
+export const ChoiceContainer = styled.div`
 	width: min(80%, 560px);
 	position: absolute;
 	top: 30%;
@@ -10,13 +13,13 @@
 		animation-duration: 1s;
 		animation-fill-mode: backwards;
 	}
+`;
 
-	a {
-		text-decoration: none;
-	}
-}
+export const PlayLink = styled(Link)`
+	text-decoration: none;
+`;
 
-.play-online {
+export const PlayOnlineLink = styled(PlayLink)`
 	button {
 		animation-name: bounceInLeft;
 	}
@@ -52,9 +55,9 @@
 			transform: translate3d(0, 0, 0);
 		}
 	}
-}
+`;
 
-.play-offline {
+export const PlayOfflineLink = styled(PlayLink)`
 	button {
 		animation-name: bounceInRight;
 	}
@@ -90,4 +93,18 @@
 			transform: translate3d(0, 0, 0);
 		}
 	}
-}
+`;
+
+// .choice {
+
+// 	a {
+// 	}
+// }
+
+// .play-online {
+
+// }
+
+// .play-offline {
+
+// }

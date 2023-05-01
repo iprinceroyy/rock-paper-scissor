@@ -3,7 +3,7 @@ import { MouseEventHandler } from 'react';
 import imageRules from '../../assets/images/image-rules.svg';
 import closeIcon from '../../assets/images/icon-close.svg';
 
-import './game-rules.styles.scss';
+import { RulesContainer, RulesCloseContainer, RulesImageContainer } from './game-rules.styles';
 
 type GameRulesImageProps = {
 	closeHandler: MouseEventHandler<HTMLImageElement>;
@@ -11,15 +11,16 @@ type GameRulesImageProps = {
 
 const GameRulesImage = ({ closeHandler }: GameRulesImageProps): JSX.Element => {
 	return (
-		<div className='Rules Rules__Container'>
+		<RulesContainer>
 			<p>rules</p>
-			<div className='Rules__Image__Container'>
+			<RulesImageContainer>
 				<img src={imageRules} alt='' />
-			</div>
-			<div className='Rules__Close'>
+			</RulesImageContainer>
+
+			<RulesCloseContainer>
 				<img src={closeIcon} onClick={closeHandler} alt='close the rules' />
-			</div>
-		</div>
+			</RulesCloseContainer>
+		</RulesContainer>
 	);
 };
 

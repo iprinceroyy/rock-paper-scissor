@@ -1,4 +1,6 @@
-.Rules__Container {
+import styled from 'styled-components';
+
+export const RulesContainer = styled.div`
 	min-height: 100vh;
 	width: 100%;
 	position: absolute;
@@ -21,21 +23,6 @@
 		border-radius: 8px;
 		padding-block: 1.5rem;
 		padding-inline: 1.5rem;
-
-		.Rules__Image__Container {
-			width: 90%;
-			justify-self: center;
-			grid-area: 2 / 1 / span 1 / span 2;
-
-			img {
-				width: 100%;
-			}
-		}
-
-		.Rules__Close {
-			grid-area: 1 / 2 / span 1 / span 1;
-			justify-self: flex-end;
-		}
 	}
 
 	p {
@@ -49,4 +36,19 @@
 			justify-self: flex-start;
 		}
 	}
-}
+`;
+
+export const RulesImageContainer = styled.div`
+	width: 90%;
+	justify-self: center;
+	grid-area: 2 / 1 / span 1 / span 2;
+
+	img {
+		width: 100%;
+	}
+`;
+
+export const RulesCloseContainer = styled.div`
+	grid-area: 1 / 2 / span 1 / span 1;
+	justify-self: flex-end;
+`;
