@@ -39,16 +39,20 @@ export const RulesContainer = styled.div`
 `;
 
 export const RulesImageContainer = styled.div`
-	width: 90%;
-	justify-self: center;
-	grid-area: 2 / 1 / span 1 / span 2;
+	@media (min-width: 720px) {
+		width: 90%;
+		justify-self: center;
+		grid-area: 2 / 1 / span 1 / span 2;
 
-	img {
-		width: 100%;
+		img {
+			width: 100%;
+		}
 	}
 `;
 
 export const RulesCloseContainer = styled.div`
-	grid-area: 1 / 2 / span 1 / span 1;
-	justify-self: flex-end;
+	@media (min-width: 720px) {
+		grid-area: 1 / 2 / span 1 / span 1;
+		justify-self: flex-end;
+	}
 `;
