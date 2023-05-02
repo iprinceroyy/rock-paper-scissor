@@ -5,18 +5,16 @@ import GameBody from './game-body.component';
 import GameRulesImage from '../../components/game-rules/game-rules.component';
 
 import { RulesContext } from '../../contexts/rules.context';
-import { ScoreContext } from '../../contexts/score.context';
 import GameRulesBtn from '../../components/game-rules-btn/game-rules-btn.component';
 
 const GameStart = (): JSX.Element => {
 	const { isClicked, setIsClicked } = useContext(RulesContext);
-	const { score } = useContext(ScoreContext);
 
 	const rulesHandler = () => setIsClicked(!isClicked);
 
 	return (
 		<div className='Game Game__Container'>
-			<GameInfo score={score} />
+			<GameInfo />
 			<GameBody />
 
 			{isClicked ? (

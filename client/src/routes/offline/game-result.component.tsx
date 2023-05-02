@@ -1,10 +1,12 @@
 import { useContext, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { increment, decrement, updateWinner } from '../../redux/score/scorer.slice';
 
 import { GameContext } from '../../contexts/game.context';
-import { ScoreContext } from '../../contexts/score.context';
 import { winner } from '../../utils/winner';
-
 import Button from '../../components/button/button.component';
+
 import { GameResultContainer } from '../../styles/game-result.styles';
 
 type GameResultProps = {
@@ -13,9 +15,10 @@ type GameResultProps = {
 };
 
 const GameResult = ({ player1, player2 }: GameResultProps): JSX.Element => {
-	const { score, setScore, setDidWin } = useContext(ScoreContext);
-	const { isNewGameStart, setIsNewGameStart, compChose, setFirstPlayerChose, firstPlayerChose } =
-		useContext(GameContext);
+	const { isNewGameStart, setIsNewGameStart, compChose } = useContext(GameContext);
+
+	const dispatch = useDispatch();
+
 	const [winnerText, setWinnerText] = useState<string>('');
 
 	useEffect(() => {
@@ -26,15 +29,18 @@ const GameResult = ({ player1, player2 }: GameResultProps): JSX.Element => {
 	}, [compChose]);
 
 	useEffect(() => {
-		winnerText === 'you win' && setDidWin(true);
-		winnerText === 'you win' && setScore(score + 1);
-		winnerText === 'you loss' && score > 0 && setScore(score - 1);
-		winnerText === 'draw' && setScore(score + 0);
+		winnerText === 'you win'
+			? dispatch(updateWinner('you'))
+			: winnerText === 'you loss'
+			? dispatch(updateWinner('opponent'))
+			: dispatch(updateWinner('draw'));
+
+		winnerText === 'you win' && dispatch(increment());
+		winnerText === 'you loss' && dispatch(decrement());
 	}, [winnerText]);
 
 	const startNewGameHandler = () => {
 		setIsNewGameStart(!isNewGameStart);
-		setDidWin(false);
 	};
 
 	return (

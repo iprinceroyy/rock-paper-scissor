@@ -16,7 +16,8 @@ const OnlineGameStart = (): JSX.Element => {
 
 	return (
 		<div className='Game Game__Container'>
-			<GameInfo score={score} />
+			{/* <GameInfo score={score} /> */}
+			<GameInfo />
 			<OnlineGameBody />
 
 			{isClicked ? (

@@ -1,12 +1,13 @@
+import { useSelector } from 'react-redux';
+import type { RootState } from '../../redux/store';
+
 import logo from '../../assets/images/logo.svg';
 
 import { GameInfoContainer, GameLogo, GameScore } from './game-info.styles';
 
-type GameInfoProps = {
-	readonly score: number;
-};
+const GameInfo = (): JSX.Element => {
+	const { score } = useSelector((state: RootState) => state.score);
 
-const GameInfo = ({ score }: GameInfoProps): JSX.Element => {
 	return (
 		<GameInfoContainer>
 			<GameLogo>

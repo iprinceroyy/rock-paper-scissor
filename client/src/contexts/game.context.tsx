@@ -28,7 +28,7 @@ export const GameContext = createContext<GameContextType>({
 	setCompChoice: val => {},
 	isNewGameStart: false,
 	setIsNewGameStart: val => {},
-});
+} as GameContextType);
 
 export const GameProvider = ({ children }: GameProviderPropsType) => {
 	const [firstPlayerChose, setFirstPlayerChose] = useState(false);

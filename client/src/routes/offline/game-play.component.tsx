@@ -1,4 +1,7 @@
 import { useEffect, useContext, useState } from 'react';
+import { useSelector } from 'react-redux';
+
+import type { RootState } from '../../redux/store';
 
 import icons from '../../data';
 
@@ -6,7 +9,6 @@ import Icon from '../../components/icon/icon.component';
 import GameResult from './game-result.component';
 
 import { GameContext } from '../../contexts/game.context';
-import { ScoreContext } from '../../contexts/score.context';
 
 import {
 	GamePlayContainer,
@@ -17,7 +19,7 @@ import {
 
 const GamePlay = (): JSX.Element => {
 	const [compChoice, setCompChoice] = useState<number>(1);
-	const { didWin } = useContext(ScoreContext);
+	const { winner } = useSelector((state: RootState) => state.score);
 	const { firstPlayerTitle, compChose, setCompChose } = useContext(GameContext);
 
 	useEffect(() => {
@@ -42,10 +44,22 @@ const GamePlay = (): JSX.Element => {
 	return (
 		<GamePlayContainer>
 			<PlayerContainer spaceBetween={compChose}>
-				<Icon key={11} title={firstPlayerTitle} image={firstPlayerIcon} large={true} won={didWin} />
+				<Icon
+					key={11}
+					title={firstPlayerTitle}
+					image={firstPlayerIcon}
+					large={true}
+					won={winner === 'you'}
+				/>
 
 				{compChose ? (
-					<Icon key={22} title={compChoiceTitle} image={compChoiceIcon} large={true} />
+					<Icon
+						key={22}
+						title={compChoiceTitle}
+						image={compChoiceIcon}
+						large={true}
+						won={winner === 'opponent'}
+					/>
 				) : (
 					<SecondPlayer className='empty' large={true}></SecondPlayer>
 				)}
