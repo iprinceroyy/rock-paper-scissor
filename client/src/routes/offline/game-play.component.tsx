@@ -1,12 +1,10 @@
-import { useEffect, useContext, useState } from 'react';
+import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 
 import icons from '../../data';
 
 import Icon from '../../components/icon/icon.component';
 import GameResult from './game-result.component';
-
-import { GameContext } from '../../contexts/game.context';
 
 import {
 	GamePlayContainer,
@@ -15,18 +13,21 @@ import {
 	SecondPlayer,
 } from '../../styles/game-play.styles';
 
+import { setCompChose, setCompChoiceTitle } from '../../redux/players/players.slice';
+
 const GamePlay = (): JSX.Element => {
-	const { firstPlayerTitle, compChose, setCompChose } = useContext(GameContext);
+	const { firstPlayerTitle, compChose, compChoiceTitle } = useAppSelector(state => state.players);
 	const { winner } = useAppSelector(state => state.scorer);
 
-	const [compChoice, setCompChoice] = useState<number>(1);
+	const dispatch = useAppDispatch();
 
 	useEffect(() => {
 		const id = setTimeout(() => {
 			const randVal = 1 + Math.floor(Math.random() * 3);
+			const [matchedData] = icons.filter(({ id }) => id === randVal);
 
-			setCompChoice(randVal);
-			setCompChose(!compChose);
+			dispatch(setCompChoiceTitle(matchedData.title));
+			dispatch(setCompChose(!compChose));
 		}, 1000);
 
 		return () => {
@@ -34,11 +35,11 @@ const GamePlay = (): JSX.Element => {
 		};
 	}, []);
 
-	const [{ title: compChoiceTitle = '', image: compChoiceIcon }] = icons.filter(
-		({ id }) => id === +compChoice
-	);
+	const [firstPlayerData] = icons.filter(({ title }) => title === firstPlayerTitle);
+	const firstPlayerIcon = firstPlayerData?.image;
 
-	const [{ image: firstPlayerIcon }] = icons.filter(({ title }) => title === firstPlayerTitle);
+	const [compData] = icons.filter(({ title }) => title === compChoiceTitle);
+	const compChoiceIcon = compData?.image;
 
 	return (
 		<GamePlayContainer>
@@ -69,7 +70,8 @@ const GamePlay = (): JSX.Element => {
 				<p>the house picked</p>
 			</PlayerIdentity>
 
-			{compChose && <GameResult player1={firstPlayerTitle} player2={compChoiceTitle} />}
+			{compChose && <GameResult />}
+			{/* {compChose && <GameResult player1={firstPlayerTitle} player2={compChoiceTitle} />} */}
 		</GamePlayContainer>
 	);
 };

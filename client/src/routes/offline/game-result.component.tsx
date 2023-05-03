@@ -9,22 +9,27 @@ import Button from '../../components/button/button.component';
 
 import { GameResultContainer } from '../../styles/game-result.styles';
 
+import { setIsNewGameStart } from '../../redux/players/players.slice';
+import { useAppSelector } from '../../redux/hooks';
+
 type GameResultProps = {
 	readonly player1: string;
 	readonly player2: string;
 };
 
-const GameResult = ({ player1, player2 }: GameResultProps): JSX.Element => {
-	const { isNewGameStart, setIsNewGameStart, compChose } = useContext(GameContext);
-
+const GameResult = (): JSX.Element => {
+	const { isNewGameStart, compChose, firstPlayerTitle, compChoiceTitle } = useAppSelector(
+		state => state.players
+	);
 	const dispatch = useDispatch();
 
 	const [winnerText, setWinnerText] = useState<string>('');
 
 	useEffect(() => {
-		const winnerRes = winner(player1, player2);
-		winnerRes === player1 && setWinnerText('you win');
-		winnerRes === player2 && setWinnerText('you loss');
+		const winnerRes = winner(firstPlayerTitle, compChoiceTitle);
+
+		winnerRes === firstPlayerTitle && setWinnerText('you win');
+		winnerRes === compChoiceTitle && setWinnerText('you loss');
 		winnerRes === 'draw' && setWinnerText('draw');
 	}, [compChose]);
 
@@ -40,7 +45,7 @@ const GameResult = ({ player1, player2 }: GameResultProps): JSX.Element => {
 	}, [winnerText]);
 
 	const startNewGameHandler = () => {
-		setIsNewGameStart(!isNewGameStart);
+		dispatch(setIsNewGameStart(!isNewGameStart));
 	};
 
 	return (

@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
@@ -6,18 +6,24 @@ import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
 
 import scorerReducer from './score/scorer.slice';
+import playersReducer from './players/players.slice';
 
 const persistConfig = {
 	key: 'root',
 	storage,
+	whitelist: ['scorer'],
 };
 
-const persistedReducer = persistReducer(persistConfig, scorerReducer);
+const rootReducer = combineReducers({
+	scorer: scorerReducer,
+	players: playersReducer,
+});
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
-	reducer: {
-		scorer: persistedReducer,
-	},
+	reducer: persistedReducer,
+	devTools: process.env.NODE_ENV !== 'production',
 	middleware: [thunk],
 });
 

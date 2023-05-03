@@ -11,22 +11,33 @@ import { GameContext } from '../../contexts/game.context';
 
 import { GameBodyContainer } from '../../styles/game-body.styles';
 
+import {
+	setFirstPlayerChose,
+	setFirstPlayerTitle,
+	setCompChose,
+	setIsNewGameStart,
+} from '../../redux/players/players.slice';
+
+import { useAppSelector, useAppDispatch } from '../../redux/hooks';
+
 const GameBody = (): JSX.Element => {
 	const [play] = useSound(iconClick, { volume: 0.25 });
-	const {
-		firstPlayerChose,
-		setFirstPlayerChose,
-		setFirstPlayerTitle,
-		isNewGameStart,
-		setIsNewGameStart,
-		setCompChose,
-	} = useContext(GameContext);
+	// const {
+	// 	firstPlayerChose,
+	// 	setFirstPlayerChose,
+	// 	setFirstPlayerTitle,
+	// 	isNewGameStart,
+	// 	setIsNewGameStart,
+	// 	setCompChose,
+	// } = useContext(GameContext);
+	const { firstPlayerChose, isNewGameStart } = useAppSelector(state => state.players);
+	const dispatch = useAppDispatch();
 
 	const iconClickHandler = (e: any) => {
-		setFirstPlayerChose(true);
-		setFirstPlayerTitle(e.target.closest('#icon-wrapper').value);
-		setIsNewGameStart(!isNewGameStart);
-		setCompChose(false);
+		dispatch(setFirstPlayerChose(true));
+		dispatch(setFirstPlayerTitle(e.target.closest('#icon-wrapper').value));
+		dispatch(setIsNewGameStart(!isNewGameStart));
+		dispatch(setCompChose(false));
 		play();
 	};
 
