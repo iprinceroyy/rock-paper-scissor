@@ -4,9 +4,11 @@ import logo from '../../assets/images/logo.svg';
 
 import { GameInfoContainer, GameLogo, GameScore } from './game-info.styles';
 
-const GameInfo = (): JSX.Element => {
-	const { score } = useAppSelector(state => state.scorer);
+type GameInfoProps = {
+	score: number;
+};
 
+const GameInfo = ({ score }: GameInfoProps): JSX.Element => {
 	return (
 		<GameInfoContainer>
 			<GameLogo>

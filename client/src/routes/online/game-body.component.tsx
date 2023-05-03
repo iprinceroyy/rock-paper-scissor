@@ -1,8 +1,8 @@
-import { useEffect, useContext } from 'react';
+import { useEffect } from 'react';
 import useSound from 'use-sound';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 
 import icons from '../../data';
-import { SocketContext } from '../../contexts/socket.context';
 import { socket } from './room.component';
 
 import iconClick from '../../sounds/game-click.mp3';
@@ -10,20 +10,28 @@ import iconClick from '../../sounds/game-click.mp3';
 import Icon from '../../components/icon/icon.component';
 import OnlineGamePlay from './game-play.component';
 
+import {
+	setOpponent,
+	setGamePlay,
+	setPlayerChoice,
+} from '../../redux/players/online-players.slice';
+
 import { GameBodyContainer } from '../../styles/game-body.styles';
 
 const OnlineGameBody = (): JSX.Element => {
-	const { room, playerOneActive, setPlayerChoice, gamePlay, setGamePlay, setOpponent } =
-		useContext(SocketContext);
 	const [play] = useSound(iconClick, { volume: 0.25 });
+	const { playerOneActive, gamePlay } = useAppSelector(state => state.onlinePlayers);
+	const { room } = useAppSelector(state => state.socket);
+
+	const dispatch = useAppDispatch();
 
 	useEffect(() => {
 		socket.on('p1Choice', ({ choice }) => {
-			!playerOneActive && setOpponent(choice);
+			!playerOneActive && dispatch(setOpponent(choice));
 		});
 
 		socket.on('p2Choice', ({ choice }) => {
-			playerOneActive && setOpponent(choice);
+			playerOneActive && dispatch(setOpponent(choice));
 		});
 
 		return () => {
@@ -33,9 +41,9 @@ const OnlineGameBody = (): JSX.Element => {
 	}, []);
 
 	const iconClickHandler = (e: any) => {
-		setGamePlay(!gamePlay);
+		dispatch(setGamePlay(!gamePlay));
 		const choice = e.target.closest('#icon-wrapper').value;
-		setPlayerChoice(choice);
+		dispatch(setPlayerChoice(choice));
 		play();
 
 		const choiceEvent = playerOneActive ? 'p1Choice' : 'p2Choice';

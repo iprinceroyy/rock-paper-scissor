@@ -6,7 +6,11 @@ import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
 
 import scorerReducer from './score/scorer.slice';
+import onlineScorerReducer from './score/online-score.slice';
 import playersReducer from './players/players.slice';
+import onlinePlayersReducer from './players/online-players.slice';
+import socketReducer from './socket/socket.slice';
+import rulesReducer from './rules/rules.slice';
 
 const persistConfig = {
 	key: 'root',
@@ -17,6 +21,10 @@ const persistConfig = {
 const rootReducer = combineReducers({
 	scorer: scorerReducer,
 	players: playersReducer,
+	onlineScorer: onlineScorerReducer,
+	onlinePlayers: onlinePlayersReducer,
+	socket: socketReducer,
+	rules: rulesReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

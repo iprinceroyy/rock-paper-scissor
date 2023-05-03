@@ -1,14 +1,24 @@
 import { useContext, useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 
 import icons from '../../data';
 import { socket } from './room.component';
 
-import { SocketContext } from '../../contexts/socket.context';
-
 import Icon from '../../components/icon/icon.component';
 import Button from '../../components/button/button.component';
 
+import {
+	increment,
+	decrement,
+	setResultOut,
+	setWinnerText,
+	setDidWin,
+} from '../../redux/score/online-score.slice';
+
+import { setGamePlay } from '../../redux/players/online-players.slice';
+
 import { GameResultContainer } from '../../styles/game-result.styles';
+
 import {
 	GamePlayContainer,
 	PlayerContainer,
@@ -17,20 +27,10 @@ import {
 } from '../../styles/game-play.styles';
 
 const OnlineGamePlay = (): JSX.Element => {
-	const {
-		opponent,
-		playerChoice,
-		playerOneActive,
-		setWinnerText,
-		score,
-		setScore,
-		resultOut,
-		winnerText,
-		didWin,
-		setResultOut,
-		setDidWin,
-		setGamePlay,
-	} = useContext(SocketContext);
+	const { playerOneActive, playerChoice, opponent } = useAppSelector(state => state.onlinePlayers);
+	const { resultOut, winnerText, didWin } = useAppSelector(state => state.onlineScorer);
+
+	const dispatch = useAppDispatch();
 
 	const [firstPlayerData] = icons.filter(({ title }) => title === playerChoice);
 	const image = firstPlayerData?.image;
@@ -38,23 +38,22 @@ const OnlineGamePlay = (): JSX.Element => {
 	const [secondPlayerData] = icons.filter(({ title }) => title === opponent);
 	const oppImage = secondPlayerData?.image;
 	const oppTitle = secondPlayerData?.title;
-	console.log('result', resultOut);
 
 	useEffect(() => {
 		socket.on('result', data => {
-			setResultOut(true);
+			dispatch(setResultOut(true));
 
 			const { winner } = data;
 
 			if ((winner === 'p1' && playerOneActive) || (winner === 'p2' && !playerOneActive)) {
-				setWinnerText(`you win`);
-				setScore(score + 1);
-				setDidWin(true);
+				dispatch(setWinnerText(`you win`));
+				dispatch(increment());
+				dispatch(setDidWin(true));
 			} else if (winner === 'p1' || winner === 'p2') {
-				setWinnerText(`you lose`);
-				score > 0 && setScore(score - 1);
+				dispatch(setWinnerText(`you lose`));
+				dispatch(decrement());
 			} else {
-				setWinnerText(`It's a draw`);
+				dispatch(setWinnerText(`Draw`));
 			}
 		});
 
@@ -64,10 +63,11 @@ const OnlineGamePlay = (): JSX.Element => {
 	}, [resultOut]);
 
 	const startNewGame = () => {
-		setGamePlay(false);
-		setDidWin(false);
-		setResultOut(false);
+		dispatch(setGamePlay(false));
+		dispatch(setDidWin(false));
+		dispatch(setResultOut(false));
 	};
+	console.log('result out', resultOut);
 
 	return (
 		<GamePlayContainer>

@@ -16,8 +16,6 @@ const io = new Server(server, {
 
 let rooms = { p1Choice: null, p2Choice: null };
 io.on('connection', socket => {
-	console.log(socket.id);
-
 	//Join room
 	socket.on('join-room', room => {
 		socket.join(room);
@@ -29,14 +27,12 @@ io.on('connection', socket => {
 
 		users.length === 2 && io.to(room).emit('start', `You started playing`);
 
-		console.log('before game start', rooms);
 		socket.on('p1Choice', data => {
 			const { choice, room } = data;
 			rooms['p1Choice'] = choice;
 			io.to(room).emit('p1Choice', { choice });
 
 			rooms.p2Choice !== null && declareWinner(room);
-			console.log(rooms);
 		});
 
 		socket.on('p2Choice', data => {
@@ -45,13 +41,7 @@ io.on('connection', socket => {
 			io.to(room).emit('p2Choice', { choice });
 
 			rooms.p1Choice !== null && declareWinner(room);
-			console.log(rooms);
 		});
-	});
-
-	socket.on('restart-game', ({ room }) => {
-		console.log('game restarted on', room);
-		console.log('after restart', rooms);
 	});
 
 	function declareWinner(room) {

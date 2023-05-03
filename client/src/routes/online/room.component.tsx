@@ -1,15 +1,15 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 
 import { io } from 'socket.io-client';
-
-import { SocketContext } from '../../contexts/socket.context';
 
 import OnlineGameStart from './game-start.component';
 import Button from '../../components/button/button.component';
 
-import { FormInput, RoomContainer } from './room.styles';
+import { setSockets, setRoom } from '../../redux/socket/socket.slice';
+import { setPlayerOneActive, setIsPlaying } from '../../redux/players/online-players.slice';
 
-import './room.styles.tsx';
+import { FormInput, RoomContainer } from './room.styles';
 
 export const socket = io(
 	process.env.NODE_ENV === 'production'
@@ -18,9 +18,12 @@ export const socket = io(
 );
 
 const Room = (): JSX.Element => {
-	const { room, setRoom, sockets, setSocket, isPlaying, setIsPlaying, setPlayerOneActive } =
-		useContext(SocketContext);
+	const { room, sockets } = useAppSelector(state => state.socket);
+	const { isPlaying } = useAppSelector(state => state.onlinePlayers);
+
 	const [successMessage, setSuccessMessage] = useState('');
+
+	const dispatch = useAppDispatch();
 
 	useEffect(() => {
 		socket.on('connect', () => {
@@ -30,11 +33,11 @@ const Room = (): JSX.Element => {
 
 		socket.on('updated-users', users => {
 			console.log(users);
-			setSocket(users);
+			dispatch(setSockets(users));
 		});
 
 		socket.on('start', message => {
-			setIsPlaying(!isPlaying);
+			dispatch(setIsPlaying(!isPlaying));
 		});
 
 		return () => {
@@ -45,13 +48,13 @@ const Room = (): JSX.Element => {
 	}, [sockets]);
 
 	const handleChangeRoom = (e: any) => {
-		setRoom(e.target.value);
+		dispatch(setRoom(e.target.value));
 	};
 
 	const handleCreateRoom = (e: any) => {
 		e.preventDefault();
 		socket.emit('join-room', room);
-		setPlayerOneActive(true);
+		dispatch(setPlayerOneActive(true));
 		setSuccessMessage('You created a room & joined');
 	};
 
