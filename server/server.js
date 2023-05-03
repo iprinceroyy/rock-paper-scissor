@@ -18,11 +18,12 @@ let rooms = { p1Choice: null, p2Choice: null };
 io.on('connection', socket => {
 	//Join room
 	socket.on('join-room', room => {
-		socket.join(room);
-		console.log(`You joined ${room}`);
+		let roomSockets = io.sockets.adapter.rooms.get(room);
+		let users = roomSockets ? [...roomSockets.keys()] : [];
+		users.length <= 1 && socket.join(room);
 
-		const roomSockets = io.sockets.adapter.rooms.get(room);
-		const users = roomSockets ? [...roomSockets.keys()] : [];
+		roomSockets = io.sockets.adapter.rooms.get(room);
+		users = roomSockets ? [...roomSockets.keys()] : [];
 		io.to(room).emit('updated-users', users);
 
 		users.length === 2 && io.to(room).emit('start', `You started playing`);

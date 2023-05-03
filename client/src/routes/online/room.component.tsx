@@ -28,7 +28,6 @@ const Room = (): JSX.Element => {
 	useEffect(() => {
 		socket.on('connect', () => {
 			console.log('You connected to ', socket.id);
-			console.log(socket.connected);
 		});
 
 		socket.on('updated-users', users => {
@@ -37,7 +36,7 @@ const Room = (): JSX.Element => {
 		});
 
 		socket.on('start', message => {
-			dispatch(setIsPlaying(!isPlaying));
+			dispatch(setIsPlaying(true));
 		});
 
 		return () => {

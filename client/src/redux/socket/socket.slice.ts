@@ -20,7 +20,7 @@ export const socketSlice = createSlice({
 		},
 
 		setSockets: (state, action: PayloadAction<string[]>) => {
-			state.sockets = action.payload;
+			state.sockets = [...action.payload];
 		},
 	},
 });
