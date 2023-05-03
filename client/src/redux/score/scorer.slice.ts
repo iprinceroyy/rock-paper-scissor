@@ -6,10 +6,10 @@ export interface ScorerState {
 	winner: string;
 }
 
-const initialState: ScorerState = {
+const initialState = {
 	score: 0,
 	winner: '',
-};
+} as ScorerState;
 
 export const scorerSlice = createSlice({
 	name: 'scorer',

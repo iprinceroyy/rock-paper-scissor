@@ -16,7 +16,7 @@ const persistedReducer = persistReducer(persistConfig, scorerReducer);
 
 export const store = configureStore({
 	reducer: {
-		score: persistedReducer,
+		scorer: persistedReducer,
 	},
 	middleware: [thunk],
 });

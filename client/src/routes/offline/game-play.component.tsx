@@ -1,7 +1,5 @@
 import { useEffect, useContext, useState } from 'react';
-import { useSelector } from 'react-redux';
-
-import type { RootState } from '../../redux/store';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 
 import icons from '../../data';
 
@@ -18,9 +16,10 @@ import {
 } from '../../styles/game-play.styles';
 
 const GamePlay = (): JSX.Element => {
-	const [compChoice, setCompChoice] = useState<number>(1);
-	const { winner } = useSelector((state: RootState) => state.score);
 	const { firstPlayerTitle, compChose, setCompChose } = useContext(GameContext);
+	const { winner } = useAppSelector(state => state.scorer);
+
+	const [compChoice, setCompChoice] = useState<number>(1);
 
 	useEffect(() => {
 		const id = setTimeout(() => {
