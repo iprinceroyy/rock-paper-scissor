@@ -1,5 +1,3 @@
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-
 import logo from '../../assets/images/logo.svg';
 
 import { GameInfoContainer, GameLogo, GameScore } from './game-info.styles';

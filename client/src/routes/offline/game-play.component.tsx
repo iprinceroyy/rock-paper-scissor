@@ -6,14 +6,14 @@ import icons from '../../data';
 import Icon from '../../components/icon/icon.component';
 import GameResult from './game-result.component';
 
+import { setCompChose, setCompChoiceTitle } from '../../redux/players/players.slice';
+
 import {
 	GamePlayContainer,
 	PlayerContainer,
 	PlayerIdentity,
 	SecondPlayer,
 } from '../../styles/game-play.styles';
-
-import { setCompChose, setCompChoiceTitle } from '../../redux/players/players.slice';
 
 const GamePlay = (): JSX.Element => {
 	const { firstPlayerTitle, compChose, compChoiceTitle } = useAppSelector(state => state.players);

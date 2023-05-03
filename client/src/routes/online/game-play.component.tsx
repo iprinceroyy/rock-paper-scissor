@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 
 import icons from '../../data';
@@ -36,8 +36,7 @@ const OnlineGamePlay = (): JSX.Element => {
 	const image = firstPlayerData?.image;
 
 	const [secondPlayerData] = icons.filter(({ title }) => title === opponent);
-	const oppImage = secondPlayerData?.image;
-	const oppTitle = secondPlayerData?.title;
+	const opponentImage = secondPlayerData?.image;
 
 	useEffect(() => {
 		socket.on('result', data => {
@@ -67,7 +66,6 @@ const OnlineGamePlay = (): JSX.Element => {
 		dispatch(setDidWin(false));
 		dispatch(setResultOut(false));
 	};
-	console.log('result out', resultOut);
 
 	return (
 		<GamePlayContainer>
@@ -77,7 +75,7 @@ const OnlineGamePlay = (): JSX.Element => {
 				{!resultOut ? (
 					<SecondPlayer className='empty' large={true}></SecondPlayer>
 				) : (
-					<Icon key={22} title={oppTitle} image={oppImage} large={true} />
+					<Icon key={22} title={opponent} image={opponentImage} large={true} />
 				)}
 			</PlayerContainer>
 

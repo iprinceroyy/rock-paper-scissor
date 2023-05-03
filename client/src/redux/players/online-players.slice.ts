@@ -5,7 +5,6 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 export interface OnlinePlayersState {
 	isPlaying: boolean;
 	playerOneActive: boolean;
-	playerTwoActive: boolean;
 	playerChoice: string;
 	gamePlay: boolean;
 	opponent: string;
@@ -14,7 +13,6 @@ export interface OnlinePlayersState {
 const initialState = {
 	isPlaying: false,
 	playerOneActive: false,
-	playerTwoActive: false,
 	playerChoice: '',
 	gamePlay: false,
 	opponent: '',
@@ -32,10 +30,6 @@ export const onlinePlayersSlice = createSlice({
 			state.playerOneActive = action.payload;
 		},
 
-		setPlayerTwoActive: (state, action: PayloadAction<boolean>) => {
-			state.playerTwoActive = action.payload;
-		},
-
 		setPlayerChoice: (state, action: PayloadAction<string>) => {
 			state.playerChoice = action.payload;
 		},
@@ -50,13 +44,7 @@ export const onlinePlayersSlice = createSlice({
 	},
 });
 
-export const {
-	setIsPlaying,
-	setPlayerOneActive,
-	setPlayerTwoActive,
-	setPlayerChoice,
-	setGamePlay,
-	setOpponent,
-} = onlinePlayersSlice.actions;
+export const { setIsPlaying, setPlayerOneActive, setPlayerChoice, setGamePlay, setOpponent } =
+	onlinePlayersSlice.actions;
 
 export default onlinePlayersSlice.reducer;

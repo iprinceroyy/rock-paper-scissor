@@ -1,13 +1,11 @@
-import { useContext } from 'react';
 import useSound from 'use-sound';
+import { useAppSelector, useAppDispatch } from '../../redux/hooks';
 
 import icons from '../../data';
 import iconClick from '../../sounds/game-click.mp3';
 
 import GamePlay from './game-play.component';
 import Icon from '../../components/icon/icon.component';
-
-import { GameContext } from '../../contexts/game.context';
 
 import { GameBodyContainer } from '../../styles/game-body.styles';
 
@@ -18,18 +16,9 @@ import {
 	setIsNewGameStart,
 } from '../../redux/players/players.slice';
 
-import { useAppSelector, useAppDispatch } from '../../redux/hooks';
-
 const GameBody = (): JSX.Element => {
 	const [play] = useSound(iconClick, { volume: 0.25 });
-	// const {
-	// 	firstPlayerChose,
-	// 	setFirstPlayerChose,
-	// 	setFirstPlayerTitle,
-	// 	isNewGameStart,
-	// 	setIsNewGameStart,
-	// 	setCompChose,
-	// } = useContext(GameContext);
+
 	const { firstPlayerChose, isNewGameStart } = useAppSelector(state => state.players);
 	const dispatch = useAppDispatch();
 

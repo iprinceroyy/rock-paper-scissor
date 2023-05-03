@@ -1,29 +1,21 @@
-import { useContext, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 
 import { increment, decrement, updateWinner } from '../../redux/score/scorer.slice';
+import { setIsNewGameStart } from '../../redux/players/players.slice';
 
-import { GameContext } from '../../contexts/game.context';
 import { winner } from '../../utils/winner';
 import Button from '../../components/button/button.component';
 
 import { GameResultContainer } from '../../styles/game-result.styles';
 
-import { setIsNewGameStart } from '../../redux/players/players.slice';
-import { useAppSelector } from '../../redux/hooks';
-
-type GameResultProps = {
-	readonly player1: string;
-	readonly player2: string;
-};
-
 const GameResult = (): JSX.Element => {
 	const { isNewGameStart, compChose, firstPlayerTitle, compChoiceTitle } = useAppSelector(
 		state => state.players
 	);
-	const dispatch = useDispatch();
-
 	const [winnerText, setWinnerText] = useState<string>('');
+
+	const dispatch = useAppDispatch();
 
 	useEffect(() => {
 		const winnerRes = winner(firstPlayerTitle, compChoiceTitle);
