@@ -19,7 +19,7 @@ export const socket = io(
 
 const Room = (): JSX.Element => {
 	const { room, sockets } = useAppSelector(state => state.socket);
-	const { isPlaying } = useAppSelector(state => state.onlinePlayers);
+	const { isPlaying, playerOneActive } = useAppSelector(state => state.onlinePlayers);
 
 	const [successMessage, setSuccessMessage] = useState('');
 
@@ -35,9 +35,11 @@ const Room = (): JSX.Element => {
 			dispatch(setSockets(users));
 		});
 
-		socket.on('start', message => {
-			dispatch(setIsPlaying(true));
+		socket.on('full', message => {
+			setSuccessMessage(message);
 		});
+
+		sockets.length === 2 && dispatch(setIsPlaying(true));
 
 		return () => {
 			socket.off('connect');
