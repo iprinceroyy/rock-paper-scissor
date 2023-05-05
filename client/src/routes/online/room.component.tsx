@@ -19,7 +19,7 @@ export const socket = io(
 
 const Room = (): JSX.Element => {
 	const { room, sockets } = useAppSelector(state => state.socket);
-	const { isPlaying, playerOneActive } = useAppSelector(state => state.onlinePlayers);
+	const { isPlaying } = useAppSelector(state => state.onlinePlayers);
 
 	const [successMessage, setSuccessMessage] = useState('');
 
@@ -54,14 +54,13 @@ const Room = (): JSX.Element => {
 
 	const handleCreateRoom = (e: any) => {
 		e.preventDefault();
-		socket.emit('join-room', room);
 		dispatch(setPlayerOneActive(true));
-		setSuccessMessage('You created a room & joined');
+		room && socket.emit('join-room', room) && setSuccessMessage('You created a room & joined');
 	};
 
 	const handleJoinRoom = (e: any) => {
 		e.preventDefault();
-		socket.emit('join-room', room);
+		room && socket.emit('join-room', room);
 	};
 
 	return (
@@ -82,7 +81,7 @@ const Room = (): JSX.Element => {
 						<Button type='submit' btnStyle='primary' children='join room' />
 					</form>
 
-					<p>{successMessage}</p>
+					<p className={!room ? 'invalid-name' : ''}>{successMessage}</p>
 				</RoomContainer>
 			)}
 		</>
