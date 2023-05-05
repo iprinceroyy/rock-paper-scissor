@@ -14,12 +14,11 @@ import {
 	setWinnerText,
 	setDidWin,
 } from '../../redux/score/online-score.slice';
-
+import { setGamePlay } from '../../redux/players/online-players.slice';
 import {
-	setGamePlay,
-	setGameStatus,
-	setGameRestartMessage,
-} from '../../redux/players/online-players.slice';
+	setOpponentPickedMessage,
+	setOpponentRestartedMessage,
+} from '../../redux/status/opponent-status.slice';
 
 import { GameResultContainer } from '../../styles/game-result.styles';
 
@@ -60,10 +59,10 @@ const OnlineGamePlay = (): JSX.Element => {
 			}
 		});
 
-		dispatch(setGameRestartMessage(''));
+		dispatch(setOpponentRestartedMessage(''));
 
 		socket.on('restart-message', message => {
-			dispatch(setGameRestartMessage(message));
+			dispatch(setOpponentRestartedMessage(message));
 		});
 
 		return () => {
@@ -77,7 +76,7 @@ const OnlineGamePlay = (): JSX.Element => {
 		dispatch(setDidWin(false));
 		dispatch(setResultOut(false));
 		socket.emit('restart');
-		dispatch(setGameStatus(''));
+		dispatch(setOpponentPickedMessage(''));
 	};
 
 	return (

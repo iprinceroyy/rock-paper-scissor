@@ -8,21 +8,31 @@ import GameRulesImage from '../../components/game-rules/game-rules.component';
 import GameRulesBtn from '../../components/game-rules-btn/game-rules-btn.component';
 
 import { setShowRules } from '../../redux/rules/rules.slice';
-import { setGameRestartMessage, setGameStatus } from '../../redux/players/online-players.slice';
+import {
+	setOpponentPickedMessage,
+	setOpponentRestartedMessage,
+} from '../../redux/status/opponent-status.slice';
 
 const OnlineGameStart = (): JSX.Element => {
 	const { score, resultOut } = useAppSelector(state => state.onlineScorer);
 	const { showRules } = useAppSelector(state => state.rules);
-	const { gameStatus, gameRestartMessage, gamePlay } = useAppSelector(state => state.onlinePlayers);
+	const { gamePlay } = useAppSelector(state => state.onlinePlayers);
+	const { opponentPickedMessage, opponentRestartedMessage } = useAppSelector(
+		state => state.opponentStatus
+	);
 
 	const dispatch = useAppDispatch();
 
 	useEffect(() => {
 		socket.on('status', message => {
-			dispatch(setGameStatus(message));
+			dispatch(setOpponentPickedMessage(message));
 		});
 
-		dispatch(setGameRestartMessage(''));
+		dispatch(setOpponentRestartedMessage(''));
+
+		return () => {
+			socket.off('status');
+		};
 	}, []);
 
 	const rulesHandler = () => dispatch(setShowRules(!showRules));
@@ -32,8 +42,8 @@ const OnlineGameStart = (): JSX.Element => {
 			<GameInfo score={score} />
 			<OnlineGameBody />
 
-			<p>{!resultOut && gameStatus}</p>
-			<p>{gamePlay && gameRestartMessage}</p>
+			{!resultOut && <p>{opponentPickedMessage}</p>}
+			{gamePlay && <p>{opponentRestartedMessage}</p>}
 
 			{showRules ? (
 				<GameRulesImage closeHandler={rulesHandler} />

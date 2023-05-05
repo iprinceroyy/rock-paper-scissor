@@ -11,6 +11,7 @@ import playersReducer from './players/players.slice';
 import onlinePlayersReducer from './players/online-players.slice';
 import socketReducer from './socket/socket.slice';
 import rulesReducer from './rules/rules.slice';
+import opponentStatusReducer from './status/opponent-status.slice';
 
 const persistConfig = {
 	key: 'root',
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
 	onlinePlayers: onlinePlayersReducer,
 	socket: socketReducer,
 	rules: rulesReducer,
+	opponentStatus: opponentStatusReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
