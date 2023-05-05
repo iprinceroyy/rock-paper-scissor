@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import useSound from 'use-sound';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 
@@ -48,6 +48,7 @@ const OnlineGameBody = (): JSX.Element => {
 
 		const choiceEvent = playerOneActive ? 'p1Choice' : 'p2Choice';
 		socket.emit(choiceEvent, { choice, room: room });
+		socket.emit('game-play');
 	};
 
 	return gamePlay ? (

@@ -31,6 +31,14 @@ io.on('connection', socket => {
 		users = roomSockets ? [...roomSockets.keys()] : [];
 		io.to(room).emit('updated-users', users);
 
+		socket.on('game-play', () => {
+			socket.broadcast.emit('status', 'Opponent picked! Your turn.');
+		});
+
+		socket.on('restart', () => {
+			socket.broadcast.emit('restart-message', 'Opponent restarted the game.');
+		});
+
 		socket.on('p1Choice', data => {
 			const { choice, room } = data;
 			rooms['p1Choice'] = choice;

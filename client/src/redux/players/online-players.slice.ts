@@ -8,6 +8,8 @@ export interface OnlinePlayersState {
 	playerChoice: string;
 	gamePlay: boolean;
 	opponent: string;
+	gameStatus: string;
+	gameRestartMessage: string;
 }
 
 const initialState = {
@@ -16,6 +18,8 @@ const initialState = {
 	playerChoice: '',
 	gamePlay: false,
 	opponent: '',
+	gameStatus: '',
+	gameRestartMessage: '',
 } as OnlinePlayersState;
 
 export const onlinePlayersSlice = createSlice({
@@ -41,10 +45,25 @@ export const onlinePlayersSlice = createSlice({
 		setOpponent: (state, action: PayloadAction<string>) => {
 			state.opponent = action.payload;
 		},
+
+		setGameStatus: (state, action: PayloadAction<string>) => {
+			state.gameStatus = action.payload;
+		},
+
+		setGameRestartMessage: (state, action: PayloadAction<string>) => {
+			state.gameRestartMessage = action.payload;
+		},
 	},
 });
 
-export const { setIsPlaying, setPlayerOneActive, setPlayerChoice, setGamePlay, setOpponent } =
-	onlinePlayersSlice.actions;
+export const {
+	setIsPlaying,
+	setPlayerOneActive,
+	setPlayerChoice,
+	setGamePlay,
+	setOpponent,
+	setGameStatus,
+	setGameRestartMessage,
+} = onlinePlayersSlice.actions;
 
 export default onlinePlayersSlice.reducer;
