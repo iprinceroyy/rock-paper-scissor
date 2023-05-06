@@ -30,6 +30,8 @@ const OnlineGameStart = (): JSX.Element => {
 		});
 
 		socket.on('disconnected', message => {
+			console.log('disconnected');
+
 			setLeftMessage(message);
 		});
 
@@ -48,7 +50,7 @@ const OnlineGameStart = (): JSX.Element => {
 			<GameInfo score={score} />
 			<OnlineGameBody />
 
-			{!resultOut && <p>{opponentPickedMessage}</p>}
+			{!resultOut && !leftMessage && <p>{opponentPickedMessage}</p>}
 			{gamePlay && !leftMessage && <p>{opponentRestartedMessage}</p>}
 			{leftMessage && <p>{leftMessage}</p>}
 

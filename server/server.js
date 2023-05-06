@@ -40,6 +40,7 @@ io.on('connection', socket => {
 		});
 
 		socket.on('disconnect', () => {
+			console.log('disconnect');
 			socket.broadcast.emit('disconnected', 'Opponent left the game');
 		});
 
