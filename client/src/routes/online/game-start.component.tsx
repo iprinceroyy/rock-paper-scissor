@@ -30,8 +30,6 @@ const OnlineGameStart = (): JSX.Element => {
 		});
 
 		socket.on('disconnected', message => {
-			console.log('disconnected');
-
 			setLeftMessage(message);
 		});
 
