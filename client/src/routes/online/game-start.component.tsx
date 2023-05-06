@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 
 import { socket } from './room.component';
@@ -20,12 +20,17 @@ const OnlineGameStart = (): JSX.Element => {
 	const { opponentPickedMessage, opponentRestartedMessage } = useAppSelector(
 		state => state.opponentStatus
 	);
+	const [leftMessage, setLeftMessage] = useState('');
 
 	const dispatch = useAppDispatch();
 
 	useEffect(() => {
 		socket.on('status', message => {
 			dispatch(setOpponentPickedMessage(message));
+		});
+
+		socket.on('disconnected', message => {
+			setLeftMessage(message);
 		});
 
 		dispatch(setOpponentRestartedMessage(''));
@@ -43,7 +48,8 @@ const OnlineGameStart = (): JSX.Element => {
 			<OnlineGameBody />
 
 			{!resultOut && <p>{opponentPickedMessage}</p>}
-			{gamePlay && <p>{opponentRestartedMessage}</p>}
+			{gamePlay && !leftMessage && <p>{opponentRestartedMessage}</p>}
+			{leftMessage && <p>{leftMessage}</p>}
 
 			{showRules ? (
 				<GameRulesImage closeHandler={rulesHandler} />

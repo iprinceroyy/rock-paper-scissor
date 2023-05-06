@@ -39,6 +39,10 @@ io.on('connection', socket => {
 			socket.broadcast.emit('restart-message', 'Opponent restarted the game.');
 		});
 
+		socket.on('disconnect', () => {
+			socket.broadcast.emit('disconnected', 'Opponent left the game');
+		});
+
 		socket.on('p1Choice', data => {
 			const { choice, room } = data;
 			rooms['p1Choice'] = choice;
