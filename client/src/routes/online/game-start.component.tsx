@@ -37,6 +37,7 @@ const OnlineGameStart = (): JSX.Element => {
 
 		return () => {
 			socket.off('status');
+			socket.off('disconnected');
 		};
 	}, []);
 
