@@ -8,22 +8,23 @@ type IconProps = {
 	large?: boolean;
 	won?: boolean;
 	allow?: boolean;
+	customSize?: boolean;
 	handler?: MouseEventHandler<HTMLButtonElement>;
 };
 
 const Icon = (props: IconProps): JSX.Element => {
-	const { iconId, title, image, large, won, allow, handler } = props;
+	const { iconId, title, image, large, won, allow, customSize, handler } = props;
 
 	return (
 		<>
 			{large ? (
-				<LargeIconContainer $iconId={iconId} $title={title} $won={won}>
+				<LargeIconContainer $iconId={iconId} $title={title} $won={won} $size={customSize}>
 					<IconWrapper type='button' id='icon-wrapper' value={title} onClick={handler}>
 						<img src={image} alt={title} />
 					</IconWrapper>
 				</LargeIconContainer>
 			) : (
-				<IconContainer $iconId={iconId} $title={title} $won={won}>
+				<IconContainer $iconId={iconId} $title={title} $won={won} $size={customSize}>
 					<IconWrapper
 						type='button'
 						id='icon-wrapper'

@@ -119,35 +119,17 @@ const selectTranslateMobile = (id: number | undefined): string => {
 	return translate;
 };
 
-const selectTranslateDesktop = (id: number | undefined): string => {
-	let translate: string = '';
-
-	switch (id) {
-		case 2:
-			translate = `translate(-2rem, -1rem)`;
-			break;
-
-		case 3:
-			translate = `translate(2rem, -1rem)`;
-			break;
-
-		default:
-			break;
-	}
-
-	return translate;
-};
-
 type BorderColorProps = {
 	$iconId?: number;
 	$title: string;
 	$bigSize?: boolean;
 	$won?: boolean;
+	$size?: boolean;
 };
 
 export const IconContainer = styled.div<BorderColorProps>`
-	width: 7rem;
-	height: 7rem;
+	width: ${({ $size }) => ($size ? `8.5rem` : `7rem`)};
+	height: ${({ $size }) => ($size ? `8.5rem` : `7rem`)};
 	justify-self: ${({ $iconId }) => justifySelf($iconId)};
 	display: grid;
 	grid-area: ${({ $title }) => $title === 'scissors' && `1 / 1 / span 1 / span 2`};
@@ -162,6 +144,11 @@ export const IconContainer = styled.div<BorderColorProps>`
 		0 0 0 5.3rem rgba(255, 255, 255, 0.015), 0 7px 0 -1px ${selectBoxShadow($title)}`
 			: `
 		0 7px 0 -1px ${selectBoxShadow($title)}`};
+
+	@media (max-width: 280px) {
+		width: 5.8rem;
+		height: 5.8rem;
+	}
 
 	@media (min-width: 720px) {
 		box-shadow: ${({ $won, $title }) =>

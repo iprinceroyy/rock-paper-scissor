@@ -1,6 +1,6 @@
 import { MouseEventHandler } from 'react';
 
-import imageRules from '../../assets/images/image-rules.svg';
+import imageRules from '../../assets/images/image-rules-bonus.svg';
 import closeIcon from '../../assets/images/icon-close.svg';
 
 import { RulesContainer, RulesCloseContainer, RulesImageContainer } from './game-rules.styles';

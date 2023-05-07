@@ -4,7 +4,7 @@ import bgPentagon from '../assets/images/bg-pentagon.svg';
 export const GameBodyContainer = styled.div`
 	display: grid;
 	grid-template-rows: repeat(3, 1fr);
-	gap: 1.5rem 2.5rem;
+	gap: 1.3rem 2.2rem;
 	background-image: url(${bgPentagon});
 	background-repeat: no-repeat;
 	background-size: 70% 70%;

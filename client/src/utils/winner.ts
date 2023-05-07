@@ -1,16 +1,27 @@
 export const winner = (player1: string, player2: string): string | undefined => {
-	if (
-		(player1 === 'scissors' && player2 === 'paper') ||
-		(player1 === 'paper' && player2 === 'rock') ||
-		(player1 === 'rock' && player2 === 'scissors')
-	)
-		return player1;
-	else if (
-		(player2 === 'scissors' && player1 === 'paper') ||
-		(player2 === 'paper' && player1 === 'rock') ||
-		(player2 === 'rock' && player1 === 'scissors')
-	)
-		return player2;
+	let winner: string = '';
 
-	return 'draw';
+	if (player1 === 'scissors') {
+		if (player2 === 'scissors') winner = 'draw';
+		else if (player2 === 'paper' || player2 === 'lizard') winner = player1;
+		else winner = player2;
+	} else if (player1 === 'paper') {
+		if (player2 === 'paper') winner = 'draw';
+		else if (player2 === 'rock' || player2 === 'spock') winner = player1;
+		else winner = player2;
+	} else if (player1 === 'rock') {
+		if (player2 === 'rock') winner = 'draw';
+		else if (player2 === 'lizard' || player2 === 'scissors') winner = player1;
+		else winner = player2;
+	} else if (player1 === 'lizard') {
+		if (player2 === 'lizard') winner = 'draw';
+		else if (player2 === 'spock' || player2 === 'paper') winner = player1;
+		else winner = player2;
+	} else if (player1 === 'spock') {
+		if (player2 === 'spock') winner = 'draw';
+		else if (player2 === 'scissors' || player2 === 'rock') winner = player1;
+		else winner = player2;
+	} else winner = 'draw';
+
+	return winner;
 };

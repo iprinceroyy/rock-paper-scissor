@@ -23,7 +23,7 @@ const GamePlay = (): JSX.Element => {
 
 	useEffect(() => {
 		const id = setTimeout(() => {
-			const randVal = 1 + Math.floor(Math.random() * 3);
+			const randVal = 1 + Math.floor(Math.random() * 5);
 			const [matchedData] = icons.filter(({ id }) => id === randVal);
 
 			dispatch(setCompChoiceTitle(matchedData.title));
@@ -49,6 +49,7 @@ const GamePlay = (): JSX.Element => {
 					title={firstPlayerTitle}
 					image={firstPlayerIcon}
 					large={true}
+					customSize={true}
 					won={winner === 'you'}
 				/>
 
@@ -58,6 +59,7 @@ const GamePlay = (): JSX.Element => {
 						title={compChoiceTitle}
 						image={compChoiceIcon}
 						large={true}
+						customSize={true}
 						won={winner === 'opponent'}
 					/>
 				) : (
