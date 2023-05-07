@@ -85,7 +85,7 @@ const OnlineGamePlay = (): JSX.Element => {
 				<Icon key={11} title={playerChoice} image={image} large={true} won={didWin} customSize={true} />
 
 				{!resultOut ? (
-					<SecondPlayer className='empty' large={true} customSize={true} ></SecondPlayer>
+					<SecondPlayer className='empty' large={true} customSize={true}></SecondPlayer>
 				) : (
 					<Icon key={22} title={opponent} image={opponentImage} large={true} customSize={true} />
 				)}
