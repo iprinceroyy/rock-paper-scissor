@@ -20,6 +20,8 @@ io.on('connection', socket => {
 	socket.on('join-room', room => {
 		socket.join(room);
 
+		io.to(room).emit('connected');
+
 		let roomSockets = io.sockets.adapter.rooms.get(room);
 		let users = roomSockets ? [...roomSockets.keys()] : [];
 
@@ -29,18 +31,19 @@ io.on('connection', socket => {
 
 		roomSockets = io.sockets.adapter.rooms.get(room);
 		users = roomSockets ? [...roomSockets.keys()] : [];
+
 		io.to(room).emit('updated-users', users);
 
 		socket.on('game-play', () => {
-			socket.broadcast.emit('status', 'Opponent picked! Your turn.');
+			socket.broadcast.to(room).emit('status', 'Opponent picked! Your turn.');
 		});
 
 		socket.on('restart', () => {
-			socket.broadcast.emit('restart-message', 'Opponent restarted the game.');
+			socket.broadcast.to(room).emit('restart-message', 'Opponent restarted the game.');
 		});
 
 		socket.on('disconnect', () => {
-			socket.broadcast.emit('disconnected', 'Opponent left the game');
+			socket.broadcast.to(room).emit('disconnected', 'Opponent left the game');
 		});
 
 		socket.on('p1Choice', data => {
