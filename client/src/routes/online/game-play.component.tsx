@@ -47,15 +47,15 @@ const OnlineGamePlay = (): JSX.Element => {
 
 			const { winner } = data;
 
-			if ((winner === 'p1' && playerOneActive) || (winner === 'p2' && !playerOneActive)) {
+			if ((winner === 'player1' && playerOneActive) || (winner === 'player2' && !playerOneActive)) {
 				dispatch(setWinnerText(`you win`));
 				dispatch(increment());
 				dispatch(setDidWin(true));
-			} else if (winner === 'p1' || winner === 'p2') {
+			} else if (winner === 'player1' || winner === 'player2') {
 				dispatch(setWinnerText(`you lose`));
 				dispatch(decrement());
 			} else {
-				dispatch(setWinnerText(`Draw`));
+				dispatch(setWinnerText(`draw`));
 			}
 		});
 
