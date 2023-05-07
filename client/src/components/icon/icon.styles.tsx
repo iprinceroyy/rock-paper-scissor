@@ -20,6 +20,16 @@ const selectColor = (color: string): string => {
 			hsl2 = '349 70% 56%';
 			break;
 
+		case 'lizard':
+			hsl1 = '261, 73%, 60%';
+			hsl2 = '261, 72%, 63%';
+			break;
+
+		case 'spock':
+			hsl1 = '189, 59%, 53%';
+			hsl2 = '189, 58%, 57%';
+			break;
+
 		default:
 			break;
 	}
@@ -43,11 +53,89 @@ const selectBoxShadow = (color: string): string => {
 			hsl = '345 71% 35%';
 			break;
 
+		case 'lizard':
+			hsl = '267, 44%, 41%';
+			break;
+
+		case 'spock':
+			hsl = '189, 59%, 38%';
+			break;
+
 		default:
 			break;
 	}
 
 	return `hsl(${hsl})`;
+};
+
+const justifySelf = (id: number | undefined): string => {
+	let justify: string = '';
+
+	switch (id) {
+		case 1:
+			justify = `center`;
+			break;
+
+		case 2:
+			justify = `flex-start`;
+			break;
+
+		case 3:
+			justify = `flex-end`;
+			break;
+
+		case 4:
+			justify = `flex-end`;
+			break;
+
+		case 5:
+			justify = `flex-start`;
+			break;
+
+		default:
+			justify = `baseline`;
+			break;
+	}
+
+	return justify;
+};
+
+const selectTranslateMobile = (id: number | undefined): string => {
+	let translate: string = '';
+
+	switch (id) {
+		case 2:
+			translate = `translate(0, -1rem)`;
+			break;
+
+		case 3:
+			translate = `translate(0, -1rem)`;
+			break;
+
+		default:
+			break;
+	}
+
+	return translate;
+};
+
+const selectTranslateDesktop = (id: number | undefined): string => {
+	let translate: string = '';
+
+	switch (id) {
+		case 2:
+			translate = `translate(-2rem, -1rem)`;
+			break;
+
+		case 3:
+			translate = `translate(2rem, -1rem)`;
+			break;
+
+		default:
+			break;
+	}
+
+	return translate;
 };
 
 type BorderColorProps = {
@@ -58,11 +146,13 @@ type BorderColorProps = {
 };
 
 export const IconContainer = styled.div<BorderColorProps>`
-	width: min(34vw, 400px);
-	height: min(34vw, 400px);
-	justify-self: ${({ $iconId }) => ($iconId === 2 ? 'flex-end' : $iconId === 3 && 'center')};
+	width: 7rem;
+	height: 7rem;
+	justify-self: ${({ $iconId }) => justifySelf($iconId)};
 	display: grid;
+	grid-area: ${({ $title }) => $title === 'scissors' && `1 / 1 / span 1 / span 2`};
 	place-items: center center;
+	transform: ${({ $iconId }) => selectTranslateMobile($iconId)};
 	border: none;
 	border-radius: 50%;
 	background-image: linear-gradient(${({ $title }) => selectColor($title)});
@@ -72,12 +162,8 @@ export const IconContainer = styled.div<BorderColorProps>`
 		0 0 0 5.3rem rgba(255, 255, 255, 0.015), 0 7px 0 -1px ${selectBoxShadow($title)}`
 			: `
 		0 7px 0 -1px ${selectBoxShadow($title)}`};
-	grid-area: ${({ $title }) => $title === 'rock' && `2 / 1 / span 2 / span 2`};
 
 	@media (min-width: 720px) {
-		width: 9rem;
-		height: 9rem;
-
 		box-shadow: ${({ $won, $title }) =>
 			$won
 				? `0 0 0 50px rgba(255, 255, 255, 0.03), 0 0 0 100px rgba(255, 255, 255, 0.01),

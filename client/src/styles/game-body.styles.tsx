@@ -1,13 +1,13 @@
 import styled from 'styled-components';
-import bgTriangle from '../assets/images/bg-triangle.svg';
+import bgPentagon from '../assets/images/bg-pentagon.svg';
 
 export const GameBodyContainer = styled.div`
 	display: grid;
-	grid-template-rows: 1fr 1fr;
-	gap: 1rem 2rem;
-	background-image: url(${bgTriangle});
+	grid-template-rows: repeat(3, 1fr);
+	gap: 1.5rem 2.5rem;
+	background-image: url(${bgPentagon});
 	background-repeat: no-repeat;
-	background-size: 70% 60%;
+	background-size: 70% 70%;
 	background-position: center;
 
 	// Animation
@@ -17,7 +17,7 @@ export const GameBodyContainer = styled.div`
 
 	@media (min-width: 720px) {
 		padding-inline: 7.5rem;
-		background-size: 50% 60%;
+		background-size: 50%;
 	}
 
 	@keyframes zoomIn {
