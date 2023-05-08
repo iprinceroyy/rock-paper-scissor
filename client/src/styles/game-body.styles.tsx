@@ -7,8 +7,12 @@ export const GameBodyContainer = styled.div`
 	gap: 1.3rem 2.2rem;
 	background-image: url(${bgPentagon});
 	background-repeat: no-repeat;
-	background-size: 70% 70%;
+	background-size: 64vw;
 	background-position: center;
+
+	@media (min-width: 500px) and (max-width: 720px) {
+		background-size: 67% 65%;
+	}
 
 	// Animation
 	animation-name: zoomIn;
@@ -16,8 +20,9 @@ export const GameBodyContainer = styled.div`
 	animation-fill-mode: backwards;
 
 	@media (min-width: 720px) {
-		padding-inline: 7.5rem;
-		background-size: 50%;
+		padding-inline: 8.5rem;
+		background-size: 47%;
+		gap: 1.3rem 3.2rem;
 	}
 
 	@keyframes zoomIn {

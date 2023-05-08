@@ -9,6 +9,12 @@ export const ButtonContainer = styled.div`
 	animation-delay: 1.3s;
 	animation-fill-mode: backwards;
 
+	@media (min-width: 1024px) {
+		position: absolute;
+		bottom: 3rem;
+		right: 3rem;
+	}
+
 	@-webkit-keyframes slideInUp {
 		from {
 			transform: translate3d(0, 100%, 0);
