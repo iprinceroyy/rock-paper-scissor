@@ -1,4 +1,4 @@
-import logo from '../../assets/images/logo.svg';
+import logo from '../../assets/images/logo-bonus.svg';
 
 import { GameInfoContainer, GameLogo, GameScore } from './game-info.styles';
 
@@ -9,7 +9,7 @@ type GameInfoProps = {
 const GameInfo = ({ score }: GameInfoProps): JSX.Element => {
 	return (
 		<GameInfoContainer>
-			<GameLogo>
+			<GameLogo to='#'>
 				<img src={logo} alt='' />
 			</GameLogo>
 

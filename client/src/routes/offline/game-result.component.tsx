@@ -46,7 +46,7 @@ const GameResult = (): JSX.Element => {
 
 			<Button
 				type={'button'}
-				btnStyle='primary'
+				btnStyle='play again'
 				children={'Play Again'}
 				handler={startNewGameHandler}
 			/>

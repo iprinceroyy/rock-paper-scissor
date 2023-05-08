@@ -100,7 +100,7 @@ const OnlineGamePlay = (): JSX.Element => {
 
 			<PlayerIdentity>
 				<p>you picked</p>
-				<p>the opponent picked</p>
+				<p>an opposer picked</p>
 			</PlayerIdentity>
 
 			{resultOut && (
@@ -109,7 +109,7 @@ const OnlineGamePlay = (): JSX.Element => {
 
 					<Button
 						type={'button'}
-						btnStyle={'primary'}
+						btnStyle={'play again'}
 						children={'play again'}
 						handler={startNewGame}
 					/>

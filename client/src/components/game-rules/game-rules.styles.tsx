@@ -3,6 +3,9 @@ import styled from 'styled-components';
 export const RulesContainer = styled.div`
 	min-height: 100vh;
 	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
 	background-color: white;
 	display: grid;
 	gap: 3rem;
@@ -14,7 +17,6 @@ export const RulesContainer = styled.div`
 	@media (min-width: 720px) {
 		min-height: auto;
 		width: 22rem;
-		position: absolute;
 		top: 8rem;
 		left: 38.5vw;
 		grid-template-columns: repeat(2, 1fr);

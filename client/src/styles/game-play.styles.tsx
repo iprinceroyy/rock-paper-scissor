@@ -63,10 +63,10 @@ export const PlayerIdentity = styled.div`
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
-	padding-inline-start: 1.6rem;
+	padding-inline-start: 1.8rem;
 
 	@media (min-width: 720px) {
-		padding-inline-start: 2.2rem;
+		padding-inline: 3.6rem 2.5rem;
 	}
 
 	p {

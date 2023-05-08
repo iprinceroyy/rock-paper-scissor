@@ -1,13 +1,20 @@
 import styled from 'styled-components';
 
 export const GameResultContainer = styled.div`
+	margin-block-start: 3rem;
 	justify-self: center;
 	display: grid;
 	justify-items: center;
 	gap: 0.7rem;
 
+	@media (min-width: 720px) {
+		position: absolute;
+		top: 3%;
+		left: 37%;
+	}
+
 	p {
-		font-size: 3rem;
+		font-size: 4rem;
 		color: white;
 		text-transform: uppercase;
 
@@ -16,6 +23,14 @@ export const GameResultContainer = styled.div`
 		animation-duration: 1s;
 		animation-delay: 0.7s;
 		animation-fill-mode: backwards;
+
+		@media (min-width: 720px) {
+			font-size: 3rem;
+		}
+
+		@media (max-width: 280px) {
+			font-size: 2rem;
+		}
 	}
 
 	button {
@@ -23,12 +38,6 @@ export const GameResultContainer = styled.div`
 		animation-duration: 1s;
 		animation-delay: 1.3s;
 		animation-fill-mode: backwards;
-	}
-
-	@media (min-width: 720px) {
-		position: absolute;
-		top: 4rem;
-		left: 14rem;
 	}
 
 	@-webkit-keyframes fadeIn {

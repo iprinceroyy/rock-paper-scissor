@@ -1,13 +1,14 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const GameInfoContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	padding-block: 0.7rem;
 	padding-inline: 1rem 0.7rem;
 	border: 3px solid hsl(217, 16%, 45%);
-	border-radius: 5px;
-	align-items: center;
+	border-radius: 6px;
 
 	//Animation
 	animation-name: flipInX;
@@ -16,23 +17,32 @@ export const GameInfoContainer = styled.div`
 	animation-fill-mode: backwards;
 
 	@media (min-width: 720px) {
-		margin-inline: 4rem;
+		padding-inline: 1rem;
+		margin-inline: 6rem;
+		border-radius: 12px;
 	}
 `;
 
-export const GameLogo = styled.div`
+export const GameLogo = styled(Link)`
+	text-decoration: none;
 	display: grid;
+
 	img {
-		width: min(22vw, 120px);
+		width: clamp(4rem, 3.0859rem + 3.9vw, 5.6rem);
+
+		@media (min-width: 1024px) {
+			width: 5.3rem;
+		}
 	}
 `;
 
 export const GameScore = styled.div`
+	font-weight: 700;
 	text-align: center;
 	padding-block: 0.5rem;
-	padding-inline: 1.4rem;
-	background-color: white;
-	border-radius: 4px;
+	padding-inline: 1.6rem;
+	background-image: linear-gradient(hsl(0, 0%, 100%), hsl(0, 0%, 94%));
+	border-radius: 5px;
 
 	@media (max-width: 281px) {
 		padding-block: 0.2rem;
@@ -48,13 +58,11 @@ export const GameScore = styled.div`
 	& :first-child {
 		font-size: 0.7rem;
 		color: hsl(230, 89%, 62%);
-		font-weight: 700;
 		letter-spacing: 1px;
 	}
 
 	& :last-child {
 		font-size: 2.5rem;
-		font-weight: 700;
 
 		@media (max-width: 281px) {
 			font-size: 1.5rem;

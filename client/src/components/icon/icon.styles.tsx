@@ -128,8 +128,8 @@ type BorderColorProps = {
 };
 
 export const IconContainer = styled.div<BorderColorProps>`
-	width: ${({ $size }) => ($size ? `8.7rem` : `7rem`)};
-	height: ${({ $size }) => ($size ? `8.7rem` : `7rem`)};
+	width: ${({ $size }) => ($size ? `9rem` : `7rem`)};
+	height: ${({ $size }) => ($size ? `9rem` : `7rem`)};
 	justify-self: ${({ $iconId }) => justifySelf($iconId)};
 	display: grid;
 	grid-area: ${({ $title }) => $title === 'scissors' && `1 / 1 / span 1 / span 2`};
@@ -146,8 +146,8 @@ export const IconContainer = styled.div<BorderColorProps>`
 		0 7px 0 -1px ${selectBoxShadow($title)}`};
 
 	@media (max-width: 376px) {
-		width: 5.8rem;
-		height: 5.8rem;
+		width: ${({ $size }) => ($size ? `7.8rem` : `5.8rem`)};
+		height: ${({ $size }) => ($size ? `7.8rem` : `5.8rem`)};
 	}
 
 	@media (max-width: 280px) {
@@ -160,7 +160,7 @@ export const IconContainer = styled.div<BorderColorProps>`
 		height: 8.3rem;
 		box-shadow: ${({ $won, $title }) =>
 			$won
-				? `0 0 0 50px rgba(255, 255, 255, 0.03), 0 0 0 100px rgba(255, 255, 255, 0.01),
+				? `0 0 0 50px rgba(255, 255, 255, 0.04), 0 0 0 100px rgba(255, 255, 255, 0.02),
 		0 0 0 150px rgba(255, 255, 255, 0.01), 0 7px 0 -1px ${selectBoxShadow($title)}`
 				: `
 		0 7px 0 -1px ${selectBoxShadow($title)}`};
@@ -169,8 +169,8 @@ export const IconContainer = styled.div<BorderColorProps>`
 
 export const LargeIconContainer = styled(IconContainer)`
 	@media (min-width: 720px) {
-		width: 11rem;
-		height: 11rem;
+		width: 13rem;
+		height: 13rem;
 	}
 `;
 

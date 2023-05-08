@@ -1,6 +1,12 @@
 import { MouseEventHandler, ReactNode } from 'react';
 
-import { PlayOnline, PlayOffline, PrimaryButton, SecondaryButton } from './button.styles';
+import {
+	PlayOnline,
+	PlayOffline,
+	PrimaryButton,
+	SecondaryButton,
+	PlayButton,
+} from './button.styles';
 
 type ButtonProps = {
 	readonly btnStyle?: string;
@@ -22,6 +28,12 @@ const Button = ({ btnStyle, type, children, handler }: ButtonProps): JSX.Element
 				<SecondaryButton type={type} onClick={handler}>
 					<span>{children}</span>
 				</SecondaryButton>
+			)}
+
+			{btnStyle === 'play again' && (
+				<PlayButton type={type} onClick={handler}>
+					<span>{children}</span>
+				</PlayButton>
 			)}
 
 			{btnStyle === 'play online' && (
