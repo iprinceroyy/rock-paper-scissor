@@ -20,7 +20,7 @@ export const GameBodyContainer = styled.div`
 	animation-fill-mode: backwards;
 
 	@media (min-width: 720px) {
-		padding-inline: 8.5rem;
+		padding-inline: 9.5rem;
 		background-size: 47%;
 		gap: 1.3rem 3.2rem;
 	}

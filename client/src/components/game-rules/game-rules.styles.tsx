@@ -18,12 +18,12 @@ export const RulesContainer = styled.div`
 		min-height: auto;
 		width: 22rem;
 		top: 8rem;
-		left: 38.5vw;
+		left: 37vw;
 		grid-template-columns: repeat(2, 1fr);
 		gap: 2rem;
 		align-items: baseline;
 		border-radius: 8px;
-		padding-block: 1.5rem;
+		padding-block: 1.5rem 2rem;
 		padding-inline: 1.5rem;
 	}
 

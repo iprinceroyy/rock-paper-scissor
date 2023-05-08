@@ -96,7 +96,7 @@ export const FormInput = styled.input`
 	background-color: transparent;
 	outline: 3px solid transparent;
 	border: 2px solid white;
-	border-radius: 5px;
+	border-radius: 10px;
 	padding: 0.8rem;
 	margin-block-end: 1rem;
 
