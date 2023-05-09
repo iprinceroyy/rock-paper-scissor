@@ -13,7 +13,7 @@ import { FormInput, RoomContainer } from './room.styles';
 
 export const socket = io(
 	process.env.NODE_ENV === 'production'
-		? 'https://rps-backend-i8oe.onrender.com'
+		? `${process.env.REACT_APP_SERVER_URL}`
 		: 'http://localhost:4000'
 );
 
@@ -27,11 +27,11 @@ const Room = (): JSX.Element => {
 
 	useEffect(() => {
 		socket.on('connect', () => {
-			console.log('You connected to ', socket.id);
+			// console.log('You connected to ', socket.id);
 		});
 
 		socket.on('updated-users', users => {
-			console.log(users);
+			// console.log(users);
 			dispatch(setSockets(users));
 		});
 
