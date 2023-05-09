@@ -1,12 +1,12 @@
+import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Suspense } from 'react';
-
-import Home from './routes/home/home.component';
-import Offline from './routes/offline/game-start.component';
-import Online from './routes/online/room.component';
-import Spinner from './components/spinner/spinner.component';
 
 import './App.scss';
+
+const Home = lazy(() => import('./routes/home/home.component'));
+const Offline = lazy(() => import('./routes/offline/game-start.component'));
+const Online = lazy(() => import('./routes/online/room.component'));
+const Spinner = lazy(() => import('./components/spinner/spinner.component'));
 
 const App = (): JSX.Element => {
 	return (
