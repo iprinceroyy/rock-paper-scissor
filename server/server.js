@@ -39,7 +39,7 @@ io.on('connection', socket => {
 		});
 
 		socket.on('restart', () => {
-			socket.broadcast.to(room).emit('restart-message', 'Opponent restarted the game.');
+			socket.broadcast.to(room).emit('restart-message', 'Opponent wants to play again');
 		});
 
 		socket.on('disconnect', () => {
@@ -49,6 +49,7 @@ io.on('connection', socket => {
 		socket.on('p1Choice', data => {
 			const { choice, room } = data;
 			rooms['p1Choice'] = choice;
+
 			io.to(room).emit('p1Choice', { choice });
 
 			rooms.p2Choice !== null && declareWinner(room);
@@ -57,6 +58,7 @@ io.on('connection', socket => {
 		socket.on('p2Choice', data => {
 			const { choice, room } = data;
 			rooms['p2Choice'] = choice;
+
 			io.to(room).emit('p2Choice', { choice });
 
 			rooms.p1Choice !== null && declareWinner(room);
@@ -67,20 +69,6 @@ io.on('connection', socket => {
 		const player1 = rooms['p1Choice'];
 		const player2 = rooms['p2Choice'];
 		let winner = null;
-
-		// if (
-		// 	(player1 === 'scissors' && player2 === 'paper') ||
-		// 	(player1 === 'paper' && player2 === 'rock') ||
-		// 	(player1 === 'rock' && player2 === 'scissors')
-		// )
-		// 	winner = 'p1';
-		// else if (
-		// 	(player2 === 'scissors' && player1 === 'paper') ||
-		// 	(player2 === 'paper' && player1 === 'rock') ||
-		// 	(player2 === 'rock' && player1 === 'scissors')
-		// )
-		// 	winner = 'p2';
-		// else winner = 'd';
 
 		if (player1 === 'scissors') {
 			if (player2 === 'scissors') winner = 'draw';
