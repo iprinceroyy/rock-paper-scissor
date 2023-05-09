@@ -50,13 +50,12 @@ Users should be able to:
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project.
+I learned many new libraries/tools/technologies while building this app, jumped from one methodologies to another. First I used contextAPI for state management & to avoid prop drilling but it wasn't convenient way at large scale as more context provider has to be created. So from there moved on to the redux store, learned to configure store, create reducers, slice & actions creators for each particular reducer. This made debugging easy & more standardized way for state management globally.
 
-```js
-const proudOfThisFunc = () => {
-	console.log('🎉');
-};
-```
+
+	
+
+
 
 ### Continued development
 
