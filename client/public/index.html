@@ -13,10 +13,21 @@
 		<!-- Google fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<!-- Request stylesheet async -->
 		<link
+			rel="'preload"
 			href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap"
-			rel="stylesheet"
+			as="stylesheet"
+			onload="this.onload=null;this.rel='stylesheet'"
 		/>
+		<!-- fallback for onload -->
+		<noscript>
+			<link
+				href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap"
+				rel="stylesheet"
+				type="text/css"
+			/>
+		</noscript>
 
 		<title>React App</title>
 	</head>
