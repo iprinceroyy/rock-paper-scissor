@@ -47,15 +47,11 @@ Users should be able to:
 - Mobile-first workflow
 - [React](https://reactjs.org/) - JS library
 - [Styled Components](https://styled-components.com/) - For styles
+- [Typescript](https://react-typescript-cheatsheet.netlify.app/) - For type definitions
 
 ### What I learned
 
-I learned many new libraries/tools/technologies while building this app, jumped from one methodologies to another. First I used contextAPI for state management & to avoid prop drilling but it wasn't convenient way at large scale as more context provider has to be created. So from there moved on to the redux store, learned to configure store, create reducers, slice & actions creators for each particular reducer. This made debugging easy & more standardized way for state management globally.
-
-
-	
-
-
+I learned many new libraries/tools/technologies while building this app, and jumped from one methodology to another. First I used context API for state management & to avoid prop drilling but it wasn't a convenient way at a large scale as more context provider has to be created. So from there moved on to the redux store, and learned to configure the store, create reducers, and slice & action creators for each particular reducer. This made debugging easy & more standardized way for state management globally.
 
 ### Continued development
 
@@ -67,5 +63,5 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 ## Author
 
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
+- Frontend Mentor - [@iprinceroyy](https://www.frontendmentor.io/profile/iprinceroyy)
+- Twitter - [@prince_popups](https://www.twitter.com/yourusername)
