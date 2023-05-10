@@ -12,7 +12,6 @@
     - [Built with](#built-with)
     - [What I learned](#what-i-learned)
     - [Continued development](#continued-development)
-    - [Useful resources](#useful-resources)
   - [Author](#author)
 
 ## Overview
@@ -28,8 +27,8 @@ Users should be able to:
 
 ### Screenshot
 
-![](./client/src/assets/design/bonus/desktop-step-4-bonus.jpg)
-![](./client/src/assets/design/original/desktop-step-4-lose.jpg)
+![](./client/src/assets/design/original/desktop-step-4-bonus.jpg)
+![](./client/src/assets/design/original/desktop-step-4-win.jpg)
 
 ### Links
 
@@ -52,15 +51,11 @@ Users should be able to:
 
 ### What I learned
 
-I learned many new libraries/tools/technologies while building this app, and jumped from one methodology to another. First I used context API for state management & to avoid prop drilling but it wasn't a convenient way at a large scale as more context provider has to be created. So from there moved on to the redux store, and learned to configure the store, create reducers, and slice & action creators for each particular reducer. This made debugging easy & more standardized way for state management globally.
+I've learned many new libraries, tools, and technologies while building this app. I shifted from one methodology to another following the best practices. In the beginning, I used context API for state management & to avoid prop drilling but it wasn't a convenient way at a large scale as more context provider has to be created. So gradually moved on to the redux toolkit library, and learned to configure the store, create reducers, and slice & action creators for each particular reducer. This made debugging easy & more standardized way for state management globally. The styled component is something that I wanted to try hands-on & I implemented all the knowledge I grasped through documentation. The more challenging part was implementing socket.io to add the online multiplayer features to this app, learning how socket emits on one side(client/server) & how listens on the other side(client/server). I always followed the best pattern to make the code base more readable, scalable & reliable. I considered performance optimization to achieve a great user experience.
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-### Useful resources
-
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
+I want to know more about typescript; the advanced concepts as it is among emerging languages and moreover, typescript helps to reduce bugs at the compile time only by performing type checking.
 
 ## Author
 
