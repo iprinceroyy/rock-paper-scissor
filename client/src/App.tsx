@@ -12,6 +12,8 @@ const App = (): JSX.Element => {
 	return (
 		<Suspense fallback={<Spinner />}>
 			<main className='App'>
+				<h1 className='sr-only'>Rock Paper Scissor App</h1>
+
 				<Routes>
 					<Route path='/' element={<Home />}></Route>
 					<Route path='online' element={<Online />}></Route>
