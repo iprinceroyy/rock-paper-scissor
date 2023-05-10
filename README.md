@@ -28,7 +28,7 @@ Users should be able to:
 
 ### Screenshot
 
-![](./client/src/assets/design/original/desktop-step-4-win.jpg)
+![](./client/src/assets/design/original/desktop-step-4-bonus.jpg)
 ![](./client/src/assets/design/original/desktop-step-4-lose.jpg)
 
 ### Links
@@ -48,6 +48,7 @@ Users should be able to:
 - [React](https://reactjs.org/) - JS library
 - [Styled Components](https://styled-components.com/) - For styles
 - [Typescript](https://react-typescript-cheatsheet.netlify.app/) - For type definitions
+- [Redux Toolkit](https://redux-toolkit.js.org/) - For global state management
 
 ### What I learned
 
