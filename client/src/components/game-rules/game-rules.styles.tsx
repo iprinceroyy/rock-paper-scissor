@@ -17,8 +17,9 @@ export const RulesContainer = styled.div`
 	@media (min-width: 720px) {
 		min-height: auto;
 		width: 22rem;
-		top: 8rem;
-		left: 37vw;
+		inset: 0;
+		margin: auto;
+		aspect-ratio: 1;
 		grid-template-columns: repeat(2, 1fr);
 		gap: 2rem;
 		align-items: baseline;
