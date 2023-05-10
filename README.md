@@ -27,7 +27,7 @@ Users should be able to:
 
 ### Screenshot
 
-![](./client/src/assets/design/original/desktop-step-4-bonus.jpg)
+![](./client/src/assets/design/bonus/desktop-step-4-bonus.jpg)
 ![](./client/src/assets/design/original/desktop-step-4-win.jpg)
 
 ### Links
