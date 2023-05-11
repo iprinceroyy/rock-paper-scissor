@@ -24,6 +24,8 @@ Users should be able to:
 - Play Rock, Paper, Scissors against the computer
 - Maintain the state of the score after refreshing the browser _(optional)_
 - **Bonus**: Play Rock, Paper, Scissors, Lizard, Spock against the computer _(optional)_
+- Play online with friends in real-time, reconnect after disconnecting
+- Multiple rooms with each room containing 2 players
 
 ### Screenshot
 
@@ -48,6 +50,7 @@ Users should be able to:
 - [Styled Components](https://styled-components.com/) - For styles
 - [Typescript](https://react-typescript-cheatsheet.netlify.app/) - For type definitions
 - [Redux Toolkit](https://redux-toolkit.js.org/) - For global state management
+- [Socket.IO](https://socket.io/docs/v4/) - For establishing a low-latency, full-duplex communication channel between a client and a server
 
 ### What I learned
 
