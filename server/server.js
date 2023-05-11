@@ -1,10 +1,10 @@
-import express, { Express } from 'express';
-import { Server } from 'socket.io';
-import http from 'http';
-import cors from 'cors';
+const express = require('express');
+const { Server } = require('socket.io');
+const http = require('http');
+const cors = require('cors');
 
 // Create express app & use cors
-const app: Express = express();
+const app = express();
 app.use(cors());
 
 // Create http server
@@ -17,12 +17,7 @@ const io = new Server(server, {
 	},
 });
 
-type Choices = {
-	p1Choice: string | null;
-	p2Choice: string | null;
-};
-
-let choices = { p1Choice: null, p2Choice: null } as Choices;
+let choices = { p1Choice: null, p2Choice: null };
 
 const init = () => {
 	io.on('connection', socket => {
@@ -93,10 +88,10 @@ const init = () => {
  * @return void
  */
 
-const declareWinner = (room: string): void => {
+const declareWinner = room => {
 	const player1 = choices['p1Choice'];
 	const player2 = choices['p2Choice'];
-	let winner: string = '';
+	let winner = '';
 
 	if (player1 === 'scissors') {
 		if (player2 === 'scissors') winner = 'draw';
