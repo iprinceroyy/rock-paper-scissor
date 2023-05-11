@@ -5,7 +5,11 @@ const cors = require('cors');
 
 // Create express app & use cors
 const app = express();
-app.use(cors());
+app.use(
+	cors({
+		origin: ['https://game-rock-paper-scissorss.netlify.app/', 'http://localhost:3000'],
+	})
+);
 
 // Create http server
 const server = http.createServer(app);
