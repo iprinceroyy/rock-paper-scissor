@@ -17,10 +17,10 @@ export const socket = io(
 		: 'http://localhost:4000',
 	{
 		transports: ['websocket'],
-		// withCredentials: true,
-		// extraHeaders: {
-		// 	'my-custom-header': 'abcd',
-		// },
+		withCredentials: true,
+		extraHeaders: {
+			'my-custom-header': 'abcd',
+		},
 	}
 );
 
