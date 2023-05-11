@@ -14,7 +14,13 @@ import { FormInput, RoomContainer } from './room.styles';
 export const socket = io(
 	process.env.NODE_ENV === 'production'
 		? `${process.env.REACT_APP_SERVER_URL}`
-		: 'http://localhost:4000'
+		: 'http://localhost:4000',
+	{
+		withCredentials: true,
+		extraHeaders: {
+			'my-custom-header': 'abcd',
+		},
+	}
 );
 
 const Room = (): JSX.Element => {
