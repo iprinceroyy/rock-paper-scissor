@@ -49,13 +49,15 @@ const Room = (): JSX.Element => {
 	}, [sockets]);
 
 	const handleChangeRoom = (e: any) => {
-		dispatch(setRoom(e.target.value));
+		dispatch(setRoom(e.target.value.trim()));
 	};
 
 	const handleCreateRoom = (e: any) => {
 		e.preventDefault();
 		dispatch(setPlayerOneActive(true));
-		room && socket.emit('join-room', room) && setSuccessMessage('You created a room & joined');
+		room &&
+			socket.emit('join-room', room) &&
+			setSuccessMessage(`You created room ${room} & joined`);
 	};
 
 	const handleJoinRoom = (e: any) => {
@@ -81,7 +83,8 @@ const Room = (): JSX.Element => {
 						<Button type='submit' btnStyle='primary' children='join room' />
 					</form>
 
-					<p className={!room ? 'invalid-name' : ''}>{successMessage}</p>
+					{<p>{successMessage}</p>}
+					{successMessage && <p>Wait for an opponent to join</p>}
 				</RoomContainer>
 			)}
 		</>
