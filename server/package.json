@@ -4,8 +4,9 @@
 	"description": "",
 	"main": "server.js",
 	"scripts": {
-		"start": "node server.js",
-		"dev": "nodemon server.js"
+		"start": "node dist/server.js",
+		"dev": "nodemon dist/server.js",
+		"build": "esbuild server.ts --platform=node --bundle --minify --outfile=dist/server.js"
 	},
 	"author": "Prince Roy",
 	"license": "ISC",
@@ -13,10 +14,17 @@
 		"body-parser": "^1.20.2",
 		"cors": "^2.8.5",
 		"dotenv": "^16.0.3",
+		"esbuild": "^0.17.18",
+		"esbuild-node-tsc": "^2.0.5",
 		"express": "^4.18.2",
 		"http": "^0.0.1-security",
 		"nodemon": "^2.0.22",
 		"path": "^0.12.7",
 		"socket.io": "^4.6.1"
+	},
+	"devDependencies": {
+		"@types/express": "^4.17.17",
+		"@types/node": "^20.1.2",
+		"typescript": "^5.0.4"
 	}
 }
