@@ -16,6 +16,7 @@ const io = new Server(server, {
 		origin: ['https://game-rock-paper-scissorss.netlify.app/', 'http://localhost:3000'],
 		credentials: true,
 		allowedHeaders: ['my-custom-header'],
+		methods: ['GET', 'POST'],
 	},
 });
 
