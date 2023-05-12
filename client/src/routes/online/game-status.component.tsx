@@ -52,7 +52,7 @@ const GameStatus = (): JSX.Element => {
 	return (
 		<GameStatusContainer>
 			{!resultOut && <p>{opponentPickedMessage}</p>}
-			{gamePlay && <p>{opponentRestartedMessage}</p>}
+			{gamePlay && resultOut && <p>{opponentRestartedMessage}</p>}
 			<p>{leftMessage}</p>
 		</GameStatusContainer>
 	);
