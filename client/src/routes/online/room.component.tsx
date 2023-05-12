@@ -16,7 +16,6 @@ export const socket = io(
 		? `${process.env.REACT_APP_SERVER_URL}`
 		: 'http://localhost:4000',
 	{
-		transports: ['websocket'],
 		withCredentials: true,
 		extraHeaders: {
 			'my-custom-header': 'abcd',
@@ -79,13 +78,23 @@ const Room = (): JSX.Element => {
 			) : (
 				<RoomContainer>
 					<form onSubmit={handleCreateRoom}>
-						<FormInput type='text' onChange={handleChangeRoom} aria-label='join-room' />
+						<FormInput
+							type='text'
+							onChange={handleChangeRoom}
+							aria-label='join-room'
+							placeholder='room code'
+						/>
 						<br />
 						<Button type='submit' btnStyle='primary' children='create room' />
 					</form>
 
 					<form onSubmit={handleJoinRoom}>
-						<FormInput type='text' onChange={handleChangeRoom} aria-label='join-room' />
+						<FormInput
+							type='text'
+							onChange={handleChangeRoom}
+							aria-label='join-room'
+							placeholder='room code'
+						/>
 						<br />
 						<Button type='submit' btnStyle='primary' children='join room' />
 					</form>
