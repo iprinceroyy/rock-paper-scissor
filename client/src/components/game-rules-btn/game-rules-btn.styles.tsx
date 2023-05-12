@@ -9,7 +9,7 @@ export const ButtonContainer = styled.div`
 	animation-delay: 1.3s;
 	animation-fill-mode: backwards;
 
-	@media (min-width: 720px) {
+	@media (min-width: 1024px) {
 		position: absolute;
 		bottom: 3rem;
 		right: 3rem;

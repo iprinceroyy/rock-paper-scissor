@@ -100,6 +100,10 @@ export const FormInput = styled.input`
 	padding: 0.8rem;
 	margin-block-end: 1rem;
 
+	::placeholder {
+		font-size: 0.8rem;
+	}
+
 	// Animation
 	animation-name: fadeInDown;
 	animation-duration: 1s;

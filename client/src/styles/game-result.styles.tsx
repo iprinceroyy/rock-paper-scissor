@@ -14,7 +14,7 @@ export const GameResultContainer = styled.div`
 	}
 
 	p {
-		font-size: 4rem;
+		font-size: 3.2rem;
 		color: white;
 		text-transform: uppercase;
 
@@ -25,7 +25,7 @@ export const GameResultContainer = styled.div`
 		animation-fill-mode: backwards;
 
 		@media (min-width: 720px) {
-			font-size: 3rem;
+			font-size: 2.5rem;
 		}
 
 		@media (max-width: 280px) {

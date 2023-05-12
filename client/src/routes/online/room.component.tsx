@@ -82,7 +82,7 @@ const Room = (): JSX.Element => {
 							type='text'
 							onChange={handleChangeRoom}
 							aria-label='join-room'
-							placeholder='room code'
+							placeholder='type room code'
 						/>
 						<br />
 						<Button type='submit' btnStyle='primary' children='create room' />
@@ -93,7 +93,7 @@ const Room = (): JSX.Element => {
 							type='text'
 							onChange={handleChangeRoom}
 							aria-label='join-room'
-							placeholder='room code'
+							placeholder='type room code'
 						/>
 						<br />
 						<Button type='submit' btnStyle='primary' children='join room' />
