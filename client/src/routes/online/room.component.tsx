@@ -101,7 +101,9 @@ const Room = (): JSX.Element => {
 					</form>
 
 					{<p>{successMessage}</p>}
-					{successMessage && <p>Wait for an opponent to join</p>}
+					{successMessage && !successMessage.includes('two players') && (
+						<p>Wait for an opponent to join</p>
+					)}
 				</RoomContainer>
 			)}
 		</>
