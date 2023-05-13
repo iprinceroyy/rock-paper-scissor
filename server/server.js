@@ -13,7 +13,7 @@ const server = http.createServer(app);
 // Create instance of socket.io server
 const io = new Server(server, {
 	cors: {
-		origin: ['https://game-rock-paper-scissorss.netlify.app/', 'http://localhost:3000'],
+		origin: '*',
 	},
 });
 
