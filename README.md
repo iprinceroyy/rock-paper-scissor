@@ -34,7 +34,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Solution URL here](https://your-solution-url.com)
+- Solution URL: [Solution URL here](https://www.frontendmentor.io/solutions/online-multiplayer-rockpaper-scissor-game-using-react-4C0lvzCt5W)
 - Live Site URL: [Live site URL here](https://game-rock-paper-scissorss.netlify.app/)
 
 ## My process
@@ -63,4 +63,4 @@ I want to know more about typescript; the advanced concepts as it is among emerg
 ## Author
 
 - Frontend Mentor - [@iprinceroyy](https://www.frontendmentor.io/profile/iprinceroyy)
-- Twitter - [@prince_popups](https://www.twitter.com/yourusername)
+- Twitter - [@prince_popups](https://www.twitter.com/prince_popups)
