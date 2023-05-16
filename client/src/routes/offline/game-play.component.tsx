@@ -48,7 +48,6 @@ const GamePlay = (): JSX.Element => {
 					key={11}
 					title={firstPlayerTitle}
 					image={firstPlayerIcon}
-					large={true}
 					customSize={true}
 					won={winner === 'you'}
 				/>
@@ -58,7 +57,6 @@ const GamePlay = (): JSX.Element => {
 						key={22}
 						title={compChoiceTitle}
 						image={compChoiceIcon}
-						large={true}
 						customSize={true}
 						won={winner === 'opponent'}
 					/>
@@ -73,7 +71,6 @@ const GamePlay = (): JSX.Element => {
 			</PlayerIdentity>
 
 			{compChose && <GameResult />}
-			{/* {compChose && <GameResult player1={firstPlayerTitle} player2={compChoiceTitle} />} */}
 		</GamePlayContainer>
 	);
 };

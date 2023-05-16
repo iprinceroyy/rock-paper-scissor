@@ -122,7 +122,6 @@ const selectTranslateMobile = (id: number | undefined): string => {
 type BorderColorProps = {
 	$iconId?: number;
 	$title: string;
-	$bigSize?: boolean;
 	$won?: boolean;
 	$size?: boolean;
 };
@@ -156,8 +155,8 @@ export const IconContainer = styled.div<BorderColorProps>`
 	}
 
 	@media (min-width: 720px) {
-		width: 8.3rem;
-		height: 8.3rem;
+		width: ${({ $size }) => ($size ? `13rem` : `8.3rem`)};
+		height: ${({ $size }) => ($size ? `13rem` : `8.3rem`)};
 		box-shadow: ${({ $won, $title }) =>
 			$won
 				? `0 0 0 50px rgba(255, 255, 255, 0.04), 0 0 0 100px rgba(255, 255, 255, 0.02),
@@ -167,14 +166,7 @@ export const IconContainer = styled.div<BorderColorProps>`
 	}
 `;
 
-export const LargeIconContainer = styled(IconContainer)`
-	@media (min-width: 720px) {
-		width: 13rem;
-		height: 13rem;
-	}
-`;
-
-export const IconWrapper = styled.button`
+export const IconButton = styled.button`
 	width: 75%;
 	height: 75%;
 	display: grid;

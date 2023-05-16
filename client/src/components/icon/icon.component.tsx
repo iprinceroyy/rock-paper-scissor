@@ -1,11 +1,10 @@
 import { MouseEventHandler } from 'react';
-import { IconContainer, IconWrapper, LargeIconContainer } from './icon.styles';
+import { IconContainer, IconButton } from './icon.styles';
 
 type IconProps = {
 	iconId?: number;
 	title: string;
 	image: string;
-	large?: boolean;
 	won?: boolean;
 	allow?: boolean;
 	customSize?: boolean;
@@ -13,30 +12,14 @@ type IconProps = {
 };
 
 const Icon = (props: IconProps): JSX.Element => {
-	const { iconId, title, image, large, won, allow, customSize, handler } = props;
+	const { iconId, title, image, won, allow, customSize, handler } = props;
 
 	return (
-		<>
-			{large ? (
-				<LargeIconContainer $iconId={iconId} $title={title} $won={won} $size={customSize}>
-					<IconWrapper type='button' id='icon-wrapper' value={title} onClick={handler}>
-						<img src={image} alt={title} />
-					</IconWrapper>
-				</LargeIconContainer>
-			) : (
-				<IconContainer $iconId={iconId} $title={title} $won={won} $size={customSize}>
-					<IconWrapper
-						type='button'
-						id='icon-wrapper'
-						value={title}
-						onClick={handler}
-						disabled={allow}
-					>
-						<img src={image} alt={title} />
-					</IconWrapper>
-				</IconContainer>
-			)}
-		</>
+		<IconContainer $iconId={iconId} $title={title} $won={won} $size={customSize}>
+			<IconButton type='button' id='icon-wrapper' value={title} onClick={handler} disabled={allow}>
+				<img src={image} alt={title} />
+			</IconButton>
+		</IconContainer>
 	);
 };
 
