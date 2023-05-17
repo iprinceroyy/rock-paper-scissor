@@ -77,19 +77,13 @@ const justifySelf = (id: number | undefined): string => {
 			break;
 
 		case 2:
+		case 5:
 			justify = `flex-start`;
 			break;
 
 		case 3:
-			justify = `flex-end`;
-			break;
-
 		case 4:
 			justify = `flex-end`;
-			break;
-
-		case 5:
-			justify = `flex-start`;
 			break;
 
 		default:
