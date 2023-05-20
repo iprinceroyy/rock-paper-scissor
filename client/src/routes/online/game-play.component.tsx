@@ -32,18 +32,14 @@ import {
 const OnlineGamePlay = (): JSX.Element => {
 	const { playerOneActive, playerChoice, opponent } = useAppSelector(state => state.onlinePlayers);
 	const { resultOut, winnerText, didWin } = useAppSelector(state => state.onlineScorer);
-	const [image, setImage] = useState('');
-	const [opponentImage, setOpponentImage] = useState('');
 
 	const dispatch = useAppDispatch();
 
-	useEffect(() => {
-		const [firstPlayerData] = icons.filter(({ title }) => title === playerChoice);
-		setImage(firstPlayerData?.image);
+	const [firstPlayerData] = icons.filter(({ title }) => title === playerChoice);
+	const image = firstPlayerData?.image;
 
-		const [secondPlayerData] = icons.filter(({ title }) => title === opponent);
-		setOpponentImage(secondPlayerData?.image);
-	}, []);
+	const [secondPlayerData] = icons.filter(({ title }) => title === opponent);
+	const opponentImage = secondPlayerData?.image;
 
 	useEffect(() => {
 		socket.on('result', data => {
